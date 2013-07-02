@@ -88,6 +88,8 @@ the availability of items for selected services, one SHOULD use the properties
 
 [Chronology]: #chronology
 
+A [Chronology] is the description of enumeration and chronology of a periodical.
+
 # Properties
 
 ## narrowerExemplar
