@@ -21,7 +21,8 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix daia: <http://purl.org/ontology/daia/> .
     @prefix dso: <http://purl.org/ontology/dso#> .
     @prefix ssso: <http://purl.org/ontology/ssso#> .
-    @prefix ecpo: <http://purl.org/ontology/ecpo#>
+    @prefix ecpo: <http://purl.org/ontology/ecpo#> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
 {OVERVIEW}
 
@@ -110,6 +111,14 @@ the availability of items for selected services, one SHOULD use the properties
 ...
 
 ## exemplarOf
+
+...
+
+## heldBy
+
+...
+
+## holds
 
 ...
 
