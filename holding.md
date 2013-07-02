@@ -23,7 +23,7 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix ssso: <http://purl.org/ontology/ssso#> .
     @prefix ecpo: <http://purl.org/ontology/ecpo#>
 
-# Overview
+{OVERVIEW}
 
 ...
 
