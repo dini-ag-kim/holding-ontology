@@ -1,4 +1,4 @@
-# Proposed overview of a holding ontology
+# Overview
 
 ## Relation between Item and Item
 ``` {.ditaa}
