@@ -21,6 +21,7 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix daia: <http://purl.org/ontology/daia/> .
     @prefix dso: <http://purl.org/ontology/dso#> .
     @prefix ssso: <http://purl.org/ontology/ssso#> .
+    @prefix ecpo: <http://purl.org/ontology/ecpo#>
 
 # Overview
 
@@ -80,7 +81,11 @@ the availability of items for selected services, one SHOULD use the properties
 [daia:unavailableOf]: http://purl.org/ontology/daia/unavailableOf 
 
 [dso:Loan]: http://purl.org/ontology/dso#Loan
-[dso:Presentation]: http://purl.org/ontology/dso#Presentation 
+[dso:Presentation]: http://purl.org/ontology/dso#Presentation
+
+## Chronology
+
+[Chronology]: #chronology
 
 # Properties
 
