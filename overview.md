@@ -56,10 +56,10 @@ narrowerExemplarOf |       |           |       | broaderExemplarOf
 ## Other Relations
 ``` {.ditaa}
                                +--------+
-                               |        |  ecpo:hasChronology /   +------------+
-+-----------+     gn:locatedIn |        |  ecpo:hasChronologyGap  |            |
-| Location  |<-----------------+  Item  +------------------------>| Chronology |
-+-----------+                  |        |                         |            |
-                               |        |                         +------------+
+                               |        |  ecpo:hasChronology /   +-----------------+
++-----------+     gn:locatedIn |        |  ecpo:hasChronologyGap  |                 |
+| Location  |<-----------------+  Item  +------------------------>| ecpo:Chronology |
++-----------+                  |        |                         |                 |
+                               |        |                         +-----------------+
                                +--------+
 ```
