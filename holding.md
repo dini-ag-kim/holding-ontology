@@ -88,9 +88,22 @@ the availability of items for selected services, one SHOULD use the properties
 
 [Chronology]: #chronology
 
-A [Chronology] is the description of enumeration and chronology of a periodical.
+A [Chronology] is the description of enumeration and chronology of a periodical. The Chronology class is defined by the [Enumeration and Chronology of Periodicals Ontology].
 
-# Properties
+    ecpo:Chronology a owl:Class ;
+        rdfs:label "Chronology" ;
+        rdfs:isDefinedBy <http://purl.org/ontology/ecpo> .
+
+To relate an [Item] to a [Chronology] use [ecpo:hasChronology] or [ecpo:hasChronologyGap]. To be more specific on the nature (current or closed) of a [Chronology] use [ecpo:CurrentChronology] or [ecpo:ClosedChronology]. To simply express the fact that an [Item] has a current chronology or a closed chronology without giving further information one MAY use [ecpo:Current] or [ecpo:Closed].
+
+[ecpo:hasChronology]: http://purl.org/ontology/ecpo#hasChronology
+[ecpo:hasChronologyGap]: http://purl.org/ontology/ecpo#hasChronologyGap
+[ecpo:CurrentChronology]: http://purl.org/ontology/ecpo#CurrentChronology
+[ecpo:ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
+[ecpo:Current]: http://purl.org/ontology/ecpo#Current
+[ecpo:Closed]: http://purl.org/ontology/ecpo#Closed
+
+# Object properties
 
 ## narrowerExemplar
 
@@ -124,6 +137,8 @@ A [Chronology] is the description of enumeration and chronology of a periodical.
 
 ...
 
+# Datatype Properties
+
 # Examples
 
 ...
@@ -146,5 +161,6 @@ A [Chronology] is the description of enumeration and chronology of a periodical.
 [FOAF Ontology]: http://xmlns.com/foaf/spec/ 
 [Document Service Ontology]: http://purl.org/ontology/dso
 [DAIA Ontology]: http://purl.org/ontology/daia
+[Enumeration and Chronology of Periodicals Ontology]: http://purl.org/ontology/ecpo
 
 
