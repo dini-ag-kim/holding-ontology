@@ -107,35 +107,110 @@ To relate an [Item] to a [Chronology] use [ecpo:hasChronology] or [ecpo:hasChron
 
 ## narrowerExemplar
 
-...
+[narrowerExemplar]: #narrowerexemplar
+
+Relates an Item to a Document which is partly exemplified by the Item.
+
+	holding:narrowerExemplar a owl:ObjectProperty ;
+		rdfs:label "narrower exemplar"@en ;
+		rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
+		rdfs:domain frbr:Item ;
+		rdfs:range bibo:Document ;
+		owl:inverseOf holding:narrowerExemplarOf .
 
 ## narrowerExemplarOf
 
-...
+[narrowerExemplarOf]: #narrowerexemplarof
+
+Relates a Document to an Item that is an exemplar of a part of the Document.
+
+	holding:narrowerExemplarOf a owl:ObjectProperty ;
+		rdfs:label "narrower exemplar of"@en ;
+		rdfs:comment "Relates a Document to an Item that is an exemplar of a part of the Document."@en ;
+		rdfs:domain bibo:Document ;
+		rdfs:range frbr:Item ;
+		owl:inverseOf holding:narrowerExemplar .
 
 ## broaderExemplar
 
-...
+[broaderExemplar]: #broaderexemplar
+
+Relates a Document to an Item that contains an exemplar of the Document as part.
+
+	holding:broaderExemplar a owl:ObjectProperty ;
+		rdfs:label "broader exemplar"@en ;
+		rdfs:comment "Relates a Document to an Item that contains an exemplar of the Document as part."@en ;
+		rdfs:domain bibo:Document ;
+		rdfs:range frbr:Item ;
+		owl:inverseOf holding:broaderExemplarOf .
+	
 
 ## broaderExemplarOf
 
-...
+[broaderExemplarOf]: #broaderexemplarof
+
+Relates an Item to a Document which is partly exemplified by the Item.
+
+	holding:broaderExemplarOf a owl:ObjectProperty ;
+		rdfs:label "broader exemplar of"@en ;
+		rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
+		rdfs:domain frbr:Item ;
+		rdfs:range bibo:Document ;
+		owl:inverseOf holding:broaderExemplar .
 
 ## exemplar
 
-...
+[exemplar]: #exemplar
+
+Relates a Document to an Item that is an exemplar of the Document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation.
+
+	holding:exemplar a owl:ObjectProperty ;
+		rdfs:label "has exemplar"@en ;
+		rdfs:comment "Relates a Document to an Item that is an exemplar of the Document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation."@en ;
+		rdfs:domain bibo:Document ;		
+		rdfs:range frbr:Item ;
+		owl:inverseOf holding:exemplarOf .
 
 ## exemplarOf
 
-...
+[exemplarOf]: #exemplarof
+
+Relates an Item to the Document that is exemplified by the Item.
+
+	holding:exemplarOf a owl:ObjectProperty ;
+		rdfs:label "is examplar of"@en ;
+		rdfs:comment "Relates an Item to the Document that is exemplified by the Item."@en ;
+		rdfs:domain frbr:Item ;
+		rdfs:range bibo:Document ;
+		owl:inverseOf holding:exemplar .
 
 ## heldBy
 
-...
+[heldBy]: #heldby
+
+Relates an Item to an Institution that holds the Item.
+
+	holding:heldBy a owl:ObjectProperty ;
+		rdfs:label "held by"@en ;
+		rdfs:comment "Relates an Item to an Institution that holds the Item."@en ;
+		rdfs:domain frbr:Item ;
+		rdfs:range foaf:Organization ;
+		owl:inverseOf holding:holds ;
+		rdfs:subPropertyOf holding:collectedBy .	
 
 ## holds
 
-...
+[holds]: #holds
+
+Relates an Institution to an Item which the Institution holds.
+
+	holding:holds a owl:ObjectProperty ;
+		rdfs:label "holds"@en ;
+		rdfs:comment "Relates an Institution to an Item which the Institution holds."@en ;
+		rdfs:domain foaf:Organization ;
+		rdfs:range frbr:Item ;
+		rdfs:subPropertyOf holding:inCollection ;
+		owl:inverseOf holding:heldBy .
 
 # Datatype Properties
 
