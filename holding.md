@@ -46,8 +46,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 [Agent]: #agent
 
-An **Agent** is a person, organization, group or any other entity that can held
-items and provide services. The agent class is defined by the [FOAF Ontology].
+An **Agent** is a person, organization, group or any other entity that can held items and provide services. The agent class is defined by the [FOAF Ontology].
 
     foaf:Agent a owl:Class ;
         rdfs:label "agent" ;
@@ -57,10 +56,11 @@ items and provide services. The agent class is defined by the [FOAF Ontology].
 
 [Item]: #item
 
-An **item** is a particular copy of a bibliographic resource that is held by an
-[Agent]. Items are also referred to as holdings, but a holding can include more
-information about items, such as inventory and access.
+An **item** is a particular copy of a bibliographic resource that is held by an [Agent]. Items are also referred to as holdings, but a holding can include more information about items, such as inventory and access.
 
+	holding:Item a a owl:Class ;
+		rdfs:label "item"@en ;
+		rdfs:isDefinedBy <>;
 
 ## Document
 
@@ -72,21 +72,14 @@ information about items, such as inventory and access.
 
 [DocumentService]: #documentservice
 
-A **DocumentService** is a service event that is related to one or more
-[documents](#document). The service event involves a service provider (e.g.
-a library) and an optional service consumer (e.g. a library patron). Both
-service provider and service consumer SHOULD be instances of
-[foaf:Agent](#Agent). The DocumentService class is defined by the [Document
-Service Ontology].
+A **DocumentService** is a service event that is related to one or more [documents](#document). The service event involves a service provider (e.g.
+a library) and an optional service consumer (e.g. a library patron). Both service provider and service consumer SHOULD be instances of [foaf:Agent](#Agent). The DocumentService class is defined by the [Document Service Ontology].
 
     dso:DocumentService a owl:Class ;
         rdfs:label "DocumentService" ;
         rdfs:isDefinedBy <http://purl.org/ontology/dso> .
 
-Typical document services within the scope of holdings ontology involve a loan
-event ([dso:Loan]) and a presentation event ([dso:Presentation]). To express 
-the availability of items for selected services, one SHOULD use the properties
-[daia:availableFor] and [daia:unavailableFor] from the [DAIA Ontology].
+Typical document services within the scope of holdings ontology involve a loan event ([dso:Loan]) and a presentation event ([dso:Presentation]). To express the availability of items for selected services, one SHOULD use the properties [daia:availableFor] and [daia:unavailableFor] from the [DAIA Ontology].
 
 [daia:availableFor]: http://purl.org/ontology/daia/availableFor 
 [daia:availableOf]: http://purl.org/ontology/daia/availableOf 
@@ -114,6 +107,12 @@ To relate an [Item] to a [Chronology] use [ecpo:hasChronology] or [ecpo:hasChron
 [ecpo:ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
 [ecpo:Current]: http://purl.org/ontology/ecpo#Current
 [ecpo:Closed]: http://purl.org/ontology/ecpo#Closed
+
+## Location
+
+[Location]: #location
+
+
 
 # Object properties
 
@@ -260,6 +259,20 @@ Relates an Institution to an Item which the Institution holds.
         owl:inverseOf holding:heldBy .
 
 # Datatype Properties
+
+## label
+
+[label]: #label
+
+A call number, shelf mark or similar label of an item
+
+	holding:label a owl:DatatypeProperty ;
+		rdfs:label "label"@en ;
+		rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
+		rdfs:domain holding:Item ;
+		rdfs:range rdfs:Literal ;
+		rdfs:subPropertyOf dct:identifier .
+		
 
 # Examples
 
