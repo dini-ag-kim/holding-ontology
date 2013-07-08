@@ -10,19 +10,31 @@ resources.
 
 ## Namespaces and Ontology
 
-The URI namespace of this ontology is ... The namespace prefix `...` is recommeded.
+The URI namespace of this ontology is ... The namespace prefix `holding` is recommeded.
 The URI of this ontology as a whole is ...
+
+    @prefix holding: <http://example.org/#> .
+    @base            <http://example.org/> .
 
 The following namspace prefixes are used to refer to related ontologies:
 
-    @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-    @prefix owl:   <http://www.w3.org/2002/07/owl#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+    @prefix bibo: <http://purl.org/ontology/bibo/> .
     @prefix daia: <http://purl.org/ontology/daia/> .
-    @prefix dso: <http://purl.org/ontology/dso#> .
-    @prefix ssso: <http://purl.org/ontology/ssso#> .
+    @prefix dct:  <http://purl.org/dc/terms/> .
+    @prefix dso:  <http://purl.org/ontology/dso#> .
     @prefix ecpo: <http://purl.org/ontology/ecpo#> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+    @prefix frbr: <http://purl.org/vocab/frbr/core#> .
+    @prefix owl:  <http://www.w3.org/2002/07/owl#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+    @prefix ssso: <http://purl.org/ontology/ssso#> .
+    @prefix vann: <http://purl.org/vocab/vann/> .
+
+The Holding Ontology is defined in RDF/Turtle as following:
+
+    <> a owl:Ontology ;
+        rdfs:label "Holding Ontology" ;
+        vann:preferredNamespacePrefix "holding" .
 
 {OVERVIEW}
 
