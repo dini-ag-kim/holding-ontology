@@ -115,9 +115,7 @@ To relate an [Item] to a [Chronology] use [ecpo:hasChronology] or [ecpo:hasChron
 [ecpo:Current]: http://purl.org/ontology/ecpo#Current
 [ecpo:Closed]: http://purl.org/ontology/ecpo#Closed
 
-# Object properties
-
-## Relations between Documents and Items
+# Relations between Documents and Items
 
 ``` {.ditaa}
 
@@ -152,7 +150,7 @@ To relate an [Item] to a [Chronology] use [ecpo:hasChronology] or [ecpo:hasChron
 
 ```
 
-### narrowerExemplar
+## narrowerExemplar
 
 [narrowerExemplar]: #narrowerexemplar
 
@@ -211,6 +209,10 @@ Relates an Item to a Document which is partly exemplified by the Item.
 
 Relates a Document to an Item that is an exemplar of the Document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation.
 
+An exemplar should include all parts of a document but there may be gaps and
+omissions. If an exemplar only includes parts of a documents that can be
+identfied as other documents, one should better use property [narrowerExemplar].
+
     holding:exemplar a owl:ObjectProperty ;
         rdfs:label "has exemplar"@en ;
         rdfs:comment "Relates a Document to an Item that is an exemplar of the Document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation."@en ;
@@ -230,6 +232,8 @@ Relates an Item to the Document that is exemplified by the Item.
         rdfs:domain frbr:Item ;
         rdfs:range bibo:Document ;
         owl:inverseOf holding:exemplar .
+
+# Relations between items, agents, and locations
 
 ## heldBy
 
@@ -259,13 +263,64 @@ Relates an Institution to an Item which the Institution holds.
         rdfs:subPropertyOf holding:inCollection ;
         owl:inverseOf holding:heldBy .
 
-# Datatype Properties
+
+## ...
+
 
 # Examples
 
-...
+## A book series, fully held by a library
 
 ``` {.example}
+
+# The series is a document, consisting of multliple volumes
+$series a bibo:Periodical 
+    dcterms:hasPart $volume1, $volume2, $volume3 .
+
+$volume1 a bibo:Book ; bibo:volume "1" .
+$volume2 a bibo:Book ; bibo:volume "2" .
+$volume3 a bibo:Book ; bibo:volume "3" .
+
+# One chapter in Volume 1
+$chapter3 a bibo:Document ;
+    dcterms:isPartOf $volume1 .
+
+# A copy of the full series
+$librarycopies 
+    holding:exemplarOf $series ;
+    holding:heldBy $libray ;
+    ecpo:hasChronology [
+        a ecpo:CurrentChronology ;
+        ecpo:hasBeginVolumeNumbering "1"        
+    ] .
+
+# A particular copy of volume 1, located in the library
+$librarycopyofvolume1
+    holding:exemplarOf $volume1 ;
+    holding:narrowerExemplarOf $series ;
+    holding:broaderExemplaOf $chapter3 .
+```
+
+## The same series, partially held by Alice
+
+``` {.example}
+# A copy of volume 1 and 2
+$alicecopies 
+    holding:exemplarOf $series ;  
+        # alteratively: holdings:narrowerExemplarOf $series
+    dcterms:hasPart $volume2, $volume3
+    holding:heldBy $alice ;
+    ecpo:hasChronology [
+        a ecpo:CurrentChronology ;
+        ecpo:hasBeginVolumeNumbering "1" ;
+        ecpo:hasEndVolumeNumbering "2" 
+    ] .
+
+# Alice`s copies of volume 1
+$alicescopyofvolume1
+    holding:exemplarOf $volume1 ;
+    holding:narrowerExemplarOf $series ;
+    holding:narrowerExemplarOf $alicescopies .
 
 ```
 
@@ -278,6 +333,7 @@ Relates an Institution to an Item which the Institution holds.
 ## Informative References
 
 * ISO 20775
+* [Enumeration and Chronology of Periodicals Ontology] (ECPO).
 * ...
 
 [FOAF Ontology]: http://xmlns.com/foaf/spec/ 
