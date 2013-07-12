@@ -60,7 +60,7 @@ An **Item** is a particular copy of a bibliographic resource that is held by an 
 
 	frbr:Item a a owl:Class ;
 		rdfs:label "item"@en ;
-		rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#Item>;
+		rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#Item> .
 
 ## Document
 
