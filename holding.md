@@ -66,7 +66,7 @@ An **Item** is a particular copy of a bibliographic resource that is held by an 
 
 [Document]: #document
 
-A ***Document*** is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information.
+A **Document** is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information.
 
 	bibo:Document a owl:Class ;
 		owl:equivalentClass foaf:Document ;
@@ -98,7 +98,7 @@ Typical document services within the scope of holdings ontology involve a loan e
 
 [Chronology]: #chronology
 
-A [Chronology] is the description of enumeration and chronology of a periodical. The Chronology class is defined by the [Enumeration and Chronology of Periodicals Ontology].
+A **Chronology** is the description of enumeration and chronology of a periodical. The Chronology class is defined by the [Enumeration and Chronology of Periodicals Ontology].
 
     ecpo:Chronology a owl:Class ;
         rdfs:label "Chronology" ;
@@ -152,59 +152,6 @@ To relate an [Item] to a [Chronology] use [ecpo:hasChronology] or [ecpo:hasChron
 
 ```
 
-## narrowerExemplar
-
-[narrowerExemplar]: #narrowerexemplar
-
-Relates an Item to a Document which is partly exemplified by the Item.
-
-    holding:narrowerExemplar a owl:ObjectProperty ;
-        rdfs:label "narrower exemplar"@en ;
-        rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
-        rdfs:domain frbr:Item ;
-        rdfs:range bibo:Document ;
-        owl:inverseOf holding:narrowerExemplarOf .
-
-## narrowerExemplarOf
-
-[narrowerExemplarOf]: #narrowerexemplarof
-
-Relates a Document to an Item that is an exemplar of a part of the Document.
-
-    holding:narrowerExemplarOf a owl:ObjectProperty ;
-        rdfs:label "narrower exemplar of"@en ;
-        rdfs:comment "Relates a Document to an Item that is an exemplar of a part of the Document."@en ;
-        rdfs:domain bibo:Document ;
-        rdfs:range frbr:Item ;
-        owl:inverseOf holding:narrowerExemplar .
-
-## broaderExemplar
-
-[broaderExemplar]: #broaderexemplar
-
-Relates a Document to an Item that contains an exemplar of the Document as part.
-
-    holding:broaderExemplar a owl:ObjectProperty ;
-        rdfs:label "broader exemplar"@en ;
-        rdfs:comment "Relates a Document to an Item that contains an exemplar of the Document as part."@en ;
-        rdfs:domain bibo:Document ;
-        rdfs:range frbr:Item ;
-        owl:inverseOf holding:broaderExemplarOf .
-    
-
-## broaderExemplarOf
-
-[broaderExemplarOf]: #broaderexemplarof
-
-Relates an Item to a Document which is partly exemplified by the Item.
-
-    holding:broaderExemplarOf a owl:ObjectProperty ;
-        rdfs:label "broader exemplar of"@en ;
-        rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
-        rdfs:domain frbr:Item ;
-        rdfs:range bibo:Document ;
-        owl:inverseOf holding:broaderExemplar .
-
 ## exemplar
 
 [exemplar]: #exemplar
@@ -234,6 +181,59 @@ Relates an Item to the Document that is exemplified by the Item.
         rdfs:domain frbr:Item ;
         rdfs:range bibo:Document ;
         owl:inverseOf holding:exemplar .
+		
+## broaderExemplar
+
+[broaderExemplar]: #broaderexemplar
+
+Relates a Document to an Item that contains an exemplar of the Document as part.
+
+    holding:broaderExemplar a owl:ObjectProperty ;
+        rdfs:label "broader exemplar"@en ;
+        rdfs:comment "Relates a Document to an Item that contains an exemplar of the Document as part."@en ;
+        rdfs:domain bibo:Document ;
+        rdfs:range frbr:Item ;
+        owl:inverseOf holding:broaderExemplarOf .
+    
+
+## broaderExemplarOf
+
+[broaderExemplarOf]: #broaderexemplarof
+
+Relates an Item to a Document which is partly exemplified by the Item.
+
+    holding:broaderExemplarOf a owl:ObjectProperty ;
+        rdfs:label "broader exemplar of"@en ;
+        rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
+        rdfs:domain frbr:Item ;
+        rdfs:range bibo:Document ;
+        owl:inverseOf holding:broaderExemplar .
+
+## narrowerExemplar
+
+[narrowerExemplar]: #narrowerexemplar
+
+Relates an Item to a Document which is partly exemplified by the Item.
+
+    holding:narrowerExemplar a owl:ObjectProperty ;
+        rdfs:label "narrower exemplar"@en ;
+        rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
+        rdfs:domain frbr:Item ;
+        rdfs:range bibo:Document ;
+        owl:inverseOf holding:narrowerExemplarOf .
+
+## narrowerExemplarOf
+
+[narrowerExemplarOf]: #narrowerexemplarof
+
+Relates a Document to an Item that is an exemplar of a part of the Document.
+
+    holding:narrowerExemplarOf a owl:ObjectProperty ;
+        rdfs:label "narrower exemplar of"@en ;
+        rdfs:comment "Relates a Document to an Item that is an exemplar of a part of the Document."@en ;
+        rdfs:domain bibo:Document ;
+        rdfs:range frbr:Item ;
+        owl:inverseOf holding:narrowerExemplar .
 
 # Relations between items, agents, and locations
 
