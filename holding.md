@@ -56,17 +56,22 @@ An **Agent** is a person, organization, group or any other entity that can held 
 
 [Item]: #item
 
-An **item** is a particular copy of a bibliographic resource that is held by an [Agent]. Items are also referred to as holdings, but a holding can include more information about items, such as inventory and access.
+An **Item** is a particular copy of a bibliographic resource that is held by an [Agent]. Items are also referred to as holdings, but a holding can include more information about items, such as inventory and access.
 
-	holding:Item a a owl:Class ;
+	frbr:Item a a owl:Class ;
 		rdfs:label "item"@en ;
-		rdfs:isDefinedBy <>;
+		rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#Item>;
 
 ## Document
 
 [Document]: #document
 
-...
+A ***Document*** is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information.
+
+	bibo:Document a owl:Class ;
+		owl:equivalentClass foaf:Document ;
+		rdfs:label "Document"@en ;
+		rdfs:isDefinedBy <http://purl.org/ontology/bibo/Document> .
 
 ## DocumentService
 
