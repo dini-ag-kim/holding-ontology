@@ -117,6 +117,12 @@ To relate an [Item] to a [Chronology] use [ecpo:hasChronology] or [ecpo:hasChron
 
 [Location]: #location
 
+A spatial region or named place.
+
+	dct:Location a owl:Class ;
+        rdfs:label "Location" ;
+        rdfs:isDefinedBy <http://purl.org/dc/terms/Location> .
+
 # Relations between Documents and Items
 
 ``` {.ditaa}
