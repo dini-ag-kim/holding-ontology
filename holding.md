@@ -36,9 +36,8 @@ The Holding Ontology is defined in RDF/Turtle as following:
         rdfs:label "Holding Ontology" ;
         vann:preferredNamespacePrefix "holding" .
 
-{OVERVIEW}
 
-...
+`overview.md`{.include}
 
 # Classes
 
@@ -46,7 +45,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 [Agent]: #agent
 
-An **Agent** is a person, organization, group or any other entity that can held items and provide services. The agent class is defined by the [FOAF Ontology].
+An **Agent** is a person, organization, group or any other entity that can held items and provide services. The Agent class is defined by the [FOAF Ontology].
 
     foaf:Agent a owl:Class ;
         rdfs:label "agent" ;
@@ -56,22 +55,22 @@ An **Agent** is a person, organization, group or any other entity that can held 
 
 [Item]: #item
 
-An **Item** is a particular copy of a bibliographic resource that is held by an [Agent]. Items are also referred to as holdings, but a holding can include more information about items, such as inventory and access.
+An **Item** is a particular copy of a bibliographic resource that is held by an [Agent]. Items are also referred to as holdings, but a holding can include more information about items, such as inventory and access. The Item class is defined by the [FRBR Ontology] without implying the rest of the FRBR model.
 
 	frbr:Item a a owl:Class ;
 		rdfs:label "item"@en ;
-		rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#Item> .
+		rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> .
 
 ## Document
 
 [Document]: #document
 
-A **Document** is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information.
+A **Document** is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information. Documents may include both abstract works, such as "Romeo and Juliet", and more conrete entities, such as a specific edition of a book.
 
 	bibo:Document a owl:Class ;
 		owl:equivalentClass foaf:Document ;
 		rdfs:label "Document"@en ;
-		rdfs:isDefinedBy <http://purl.org/ontology/bibo/Document> .
+		rdfs:isDefinedBy <http://purl.org/ontology/bibo/> .
 
 ## DocumentService
 
@@ -117,13 +116,15 @@ To relate an [Item] to a [Chronology] use [ecpo:hasChronology] or [ecpo:hasChron
 
 [Location]: #location
 
-A spatial region or named place.
+A **Location** is a spatial region or named place. The property *TODO* should be used to indicate the location of an [Item]. The Location class is defined as part of the [DCMI Metadata Terms].
 
 	dct:Location a owl:Class ;
         rdfs:label "Location" ;
-        rdfs:isDefinedBy <http://purl.org/dc/terms/Location> .
+        rdfs:isDefinedBy <http://purl.org/dc/terms/> .
 
 # Relations between Documents and Items
+
+The [exemplar] relation is used to state that a concrete [Item] is a copy of an abstract [Document]. Additional relations exist for Items that only contain parts of a document and for Items that contain multiple documents (for instance a collection that the document is part of). 
 
 ``` {.ditaa}
 
@@ -147,7 +148,7 @@ A spatial region or named place.
                                       | |    |
                  narrowerExemplar     | |    | 
         +-----------------------------+ |    | dct:hasPart
-        | ------------------------------+    |
+        | +-----------------------------+    |
         | |     narrowerExemplarOf           | 
         | |                                  |
         v |                                  v
@@ -157,6 +158,17 @@ A spatial region or named place.
      +--------+     exemplarOf     +------------+
 
 ```
+
+To give an example:
+
+* Given a book series (a `Document`), a full shelve of books of the series
+  (an `Item`) is an `exemplarOf` the series.
+* A book of the series (a `Document`) has a copy of the book (an `Item`) 
+  as `exemplar`.
+* The copy (an `Item`) is a
+  * a `narrowerExemplarOf` the series (as `Document`), and
+  * a `broaderExemplarOf` a single chapter of the book (as `Document`).
+
 
 ## exemplar
 
@@ -351,12 +363,19 @@ $alicescopyofvolume1
 ## Informative References
 
 * ISO 20775
+* [Bibliographic Ontology]
+* [DAIA Ontology]
+* [DCMI Metadata Terms]
+* [Document Service Ontology] (DSO)
 * [Enumeration and Chronology of Periodicals Ontology] (ECPO).
-* ...
+* [FOAF Ontology]
+* [FRBR Ontology]
 
-[FOAF Ontology]: http://xmlns.com/foaf/spec/ 
-[Document Service Ontology]: http://purl.org/ontology/dso
+[Bibliographic Ontology]: http://purl.org/ontology/bibo/
 [DAIA Ontology]: http://purl.org/ontology/daia
+[DCMI Metadata Terms]: http://dublincore.org/documents/dcmi-terms/
+[Document Service Ontology]: http://purl.org/ontology/dso
 [Enumeration and Chronology of Periodicals Ontology]: http://purl.org/ontology/ecpo
-
+[FOAF Ontology]: http://xmlns.com/foaf/spec/ 
+[FRBR Ontology]: http://purl.org/vocab/frbr/core#
 
