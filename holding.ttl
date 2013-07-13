@@ -1,0 +1,124 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix holding: <http://example.org/#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix daia: <http://purl.org/ontology/daia/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dso: <http://purl.org/ontology/dso#> .
+@prefix ecpo: <http://purl.org/ontology/ecpo#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ssso: <http://purl.org/ontology/ssso#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+<http://example.org/>
+    vann:preferredNamespacePrefix "holding" ;
+    a owl:Ontology ;
+    rdfs:label "Holding Ontology" .
+
+holding:broaderExemplar
+    a owl:ObjectProperty ;
+    rdfs:comment "Relates a Document to an Item that contains an exemplar of the Document as part."@en ;
+    rdfs:domain bibo:Document ;
+    rdfs:label "broader exemplar"@en ;
+    rdfs:range frbr:Item ;
+    owl:inverseOf holding:broaderExemplarOf .
+
+holding:broaderExemplarOf
+    a owl:ObjectProperty ;
+    rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
+    rdfs:domain frbr:Item ;
+    rdfs:label "broader exemplar of"@en ;
+    rdfs:range bibo:Document ;
+    owl:inverseOf holding:broaderExemplar .
+
+holding:exemplar
+    a owl:ObjectProperty ;
+    rdfs:comment "Relates a Document to an Item that is an exemplar of the Document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation."@en ;
+    rdfs:domain bibo:Document ;
+    rdfs:label "has exemplar"@en ;
+    rdfs:range frbr:Item ;
+    owl:inverseOf holding:exemplarOf .
+
+holding:exemplarOf
+    a owl:ObjectProperty ;
+    rdfs:comment "Relates an Item to the Document that is exemplified by the Item."@en ;
+    rdfs:domain frbr:Item ;
+    rdfs:label "is examplar of"@en ;
+    rdfs:range bibo:Document ;
+    owl:inverseOf holding:exemplar .
+
+holding:heldBy
+    a owl:ObjectProperty ;
+    rdfs:comment "Relates an Item to an Institution that holds the Item."@en ;
+    rdfs:domain frbr:Item ;
+    rdfs:label "held by"@en ;
+    rdfs:range foaf:Organization ;
+    rdfs:subPropertyOf holding:collectedBy ;
+    owl:inverseOf holding:holds .
+
+holding:holds
+    a owl:ObjectProperty ;
+    rdfs:comment "Relates an Institution to an Item which the Institution holds."@en ;
+    rdfs:domain foaf:Organization ;
+    rdfs:label "holds"@en ;
+    rdfs:range frbr:Item ;
+    rdfs:subPropertyOf holding:inCollection ;
+    owl:inverseOf holding:heldBy .
+
+holding:label
+    a owl:DatatypeProperty ;
+    rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
+    rdfs:domain holding:Item ;
+    rdfs:label "label"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf dct:identifier .
+
+holding:narrowerExemplar
+    a owl:ObjectProperty ;
+    rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
+    rdfs:domain frbr:Item ;
+    rdfs:label "narrower exemplar"@en ;
+    rdfs:range bibo:Document ;
+    owl:inverseOf holding:narrowerExemplarOf .
+
+holding:narrowerExemplarOf
+    a owl:ObjectProperty ;
+    rdfs:comment "Relates a Document to an Item that is an exemplar of a part of the Document."@en ;
+    rdfs:domain bibo:Document ;
+    rdfs:label "narrower exemplar of"@en ;
+    rdfs:range frbr:Item ;
+    owl:inverseOf holding:narrowerExemplar .
+
+dct:Location
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Location" .
+
+bibo:Document
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/ontology/bibo/> ;
+    rdfs:label "Document"@en ;
+    owl:equivalentClass foaf:Document .
+
+dso:DocumentService
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/ontology/dso> ;
+    rdfs:label "DocumentService" .
+
+ecpo:Chronology
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/ontology/ecpo> ;
+    rdfs:label "Chronology" .
+
+frbr:Item
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> ;
+    rdfs:label "item"@en .
+
+foaf:Agent
+    a owl:Class ;
+    rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
+    rdfs:label "agent" .
+

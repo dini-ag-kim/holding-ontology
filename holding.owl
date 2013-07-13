@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bibo="http://purl.org/ontology/bibo/" xmlns:daia="http://purl.org/ontology/daia/" xmlns:dct="http://purl.org/dc/terms/" xmlns:dso="http://purl.org/ontology/dso#" xmlns:ecpo="http://purl.org/ontology/ecpo#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:frbr="http://purl.org/vocab/frbr/core#" xmlns:holding="http://example.org/#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ssso="http://purl.org/ontology/ssso#" xmlns:vann="http://purl.org/vocab/vann/">
+  <rdf:Description rdf:about="http://example.org/">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/">
+    <rdfs:label>Holding Ontology</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/">
+    <vann:preferredNamespacePrefix>holding</vann:preferredNamespacePrefix>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+    <rdfs:label>agent</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Item">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Item">
+    <rdfs:label xml:lang="en">item</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Item">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/frbr/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
+    <owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
+    <rdfs:label xml:lang="en">Document</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/bibo/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/dso#DocumentService">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/dso#DocumentService">
+    <rdfs:label>DocumentService</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/dso#DocumentService">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/dso"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/ecpo#Chronology">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/ecpo#Chronology">
+    <rdfs:label>Chronology</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/ecpo#Chronology">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ecpo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/Location">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/Location">
+    <rdfs:label>Location</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/Location">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplar">
+    <rdfs:label xml:lang="en">has exemplar</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplar">
+    <rdfs:comment xml:lang="en">Relates a Document to an Item that is an exemplar of the Document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplar">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplar">
+    <rdfs:range rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplar">
+    <owl:inverseOf rdf:resource="http://example.org/#exemplarOf"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplarOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplarOf">
+    <rdfs:label xml:lang="en">is examplar of</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplarOf">
+    <rdfs:comment xml:lang="en">Relates an Item to the Document that is exemplified by the Item.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplarOf">
+    <rdfs:domain rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplarOf">
+    <rdfs:range rdf:resource="http://purl.org/ontology/bibo/Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#exemplarOf">
+    <owl:inverseOf rdf:resource="http://example.org/#exemplar"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplar">
+    <rdfs:label xml:lang="en">broader exemplar</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplar">
+    <rdfs:comment xml:lang="en">Relates a Document to an Item that contains an exemplar of the Document as part.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplar">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplar">
+    <rdfs:range rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplar">
+    <owl:inverseOf rdf:resource="http://example.org/#broaderExemplarOf"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplarOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplarOf">
+    <rdfs:label xml:lang="en">broader exemplar of</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplarOf">
+    <rdfs:comment xml:lang="en">Relates an Item to a Document which is partly exemplified by the Item.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplarOf">
+    <rdfs:domain rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplarOf">
+    <rdfs:range rdf:resource="http://purl.org/ontology/bibo/Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#broaderExemplarOf">
+    <owl:inverseOf rdf:resource="http://example.org/#broaderExemplar"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplar">
+    <rdfs:label xml:lang="en">narrower exemplar</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplar">
+    <rdfs:comment xml:lang="en">Relates an Item to a Document which is partly exemplified by the Item.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplar">
+    <rdfs:domain rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplar">
+    <rdfs:range rdf:resource="http://purl.org/ontology/bibo/Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplar">
+    <owl:inverseOf rdf:resource="http://example.org/#narrowerExemplarOf"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplarOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplarOf">
+    <rdfs:label xml:lang="en">narrower exemplar of</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplarOf">
+    <rdfs:comment xml:lang="en">Relates a Document to an Item that is an exemplar of a part of the Document.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplarOf">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplarOf">
+    <rdfs:range rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#narrowerExemplarOf">
+    <owl:inverseOf rdf:resource="http://example.org/#narrowerExemplar"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#heldBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#heldBy">
+    <rdfs:label xml:lang="en">held by</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#heldBy">
+    <rdfs:comment xml:lang="en">Relates an Item to an Institution that holds the Item.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#heldBy">
+    <rdfs:domain rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#heldBy">
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#heldBy">
+    <owl:inverseOf rdf:resource="http://example.org/#holds"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#heldBy">
+    <rdfs:subPropertyOf rdf:resource="http://example.org/#collectedBy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#holds">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#holds">
+    <rdfs:label xml:lang="en">holds</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#holds">
+    <rdfs:comment xml:lang="en">Relates an Institution to an Item which the Institution holds.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#holds">
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#holds">
+    <rdfs:range rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#holds">
+    <rdfs:subPropertyOf rdf:resource="http://example.org/#inCollection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#holds">
+    <owl:inverseOf rdf:resource="http://example.org/#heldBy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#label">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#label">
+    <rdfs:label xml:lang="en">label</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#label">
+    <rdfs:comment xml:lang="en">A call number, shelf mark or similar label of an item</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#label">
+    <rdfs:domain rdf:resource="http://example.org/#Item"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#label">
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#label">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/identifier"/>
+  </rdf:Description>
+</rdf:RDF>
