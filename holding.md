@@ -57,7 +57,7 @@ An **Agent** is a person, organization, group or any other entity that can held 
 
 An **Item** is a particular copy of a bibliographic resource that is held by an [Agent]. Items are also referred to as holdings, but a holding can include more information about items, such as inventory and access. The Item class is defined by the [FRBR Ontology] without implying the rest of the FRBR model.
 
-	frbr:Item a a owl:Class ;
+	frbr:Item a owl:Class ;
 		rdfs:label "item"@en ;
 		rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> .
 
