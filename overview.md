@@ -20,36 +20,38 @@
                                  +-----------------------+
 ```
 
-## Relations between Item, Agent and Service
+## Relations between Items, Places, Services and Agents
 ``` {.ditaa}
-                                          dso:hasService
-                                 +----------------------------------+
-                                 |                                  |
-                                 |        daia:availableFor /       v
-+------------+     heldBy   +----+----+   daia:unavailableFor  +---------------------+                   
-|            |<-------------+         +----------------------->|                     |
-|   Agent    |              |  Item   |                        | dso:DocumentService |
-| (Provider) +------------->|         |<-----------------------+                     |
-+-----+------+    holds     +---------+   daia:availableOf /   +---------------------+
-      |                                   daia:unavailableOf        ^     ^                  
-      |                                                             |     |
-      |           ssso:provides                                     |     |
-      +-------------------------------------------------------------+     |
-                                                                          |
-                                                                          |
-+------------+                                                            |
-|  Agent     |    ssso:consumes                                           |
-| (Consumer) +------------------------------------------------------------+
-+------------+
-```
+                                          +----------------------+
+                                          |      foaf:Agent      |
+                                          |      (provider)      +-------------------------------+
+   +------------------+                   | +------------------+ |                               |
+   |                  +----org:siteOf------>|                  | |                               |
+   | geo:SpatialThing |                   | | org:Organization | |                               |
+   |                  |<---org:hasSite------+                  | |                             holds
+   +------------------+                   | +------------------+ |<--------heldBy----------+     |
+            ^                             |                      |                         |     |
+            |                             +-----------------+----+                         |     |
+            |                                  ^            |                              |     |
+            |                                  |            |                              |     |
+         ev:place                       ssso:providedBy  ssso:provides                     |     v
+            |                                  |            |                           +--+--------+
+            |                                  |            v       daia:availableFor / |           |
+            |                              +---+-----------------+ daia:unavailableFor  |           |
+            +------------------------------+                     |<---------------------+           |
+     +-------------------------------------+ dso:DocumentService |<---dso:hasService----+ frbr:Item |
+     |              +--------------------->|                     +--------------------->|           |
+     |              |                      +---------------------+   daia:availableOf / |           |
+     |              |                                ^              daia:unavailableOf  |           |
+     |              |                                |                                  +-----------+
+ssso:limitedBy   ssso:limits                    ssso:consumes
+     |              |                                |
+     |              |                                |
+     v              |                                |
++-------------------+----+                  +--------+-------+
+|                        |                  |    foaf:Agent  |
+| ssso:ServiceLimitation |                  |   (consumer)   |
+|                        |                  +----------------+
++------------------------+
 
-## Other Relations
-``` {.ditaa}
-                               +--------+
-                               |        |  ecpo:hasChronology /   +-----------------+
-+-----------+     gn:locatedIn |        |  ecpo:hasChronologyGap  |                 |
-| Location  |<-----------------+  Item  +------------------------>| ecpo:Chronology |
-+-----------+                  |        |                         |                 |
-                               |        |                         +-----------------+
-                               +--------+
 ```
