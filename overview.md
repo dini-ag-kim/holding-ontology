@@ -1,51 +1,6 @@
 # Overview
 
-## Examplar Relations between Documents and Items
-
-``` {.ditaa}
-
-     +--------+      exemplar      +------------+
-     |  Item  |<-------------------|  Document  |
-     |        |------------------->|            |
-     +--------+     exemplarOf     +------------+
-        | ^                                  |
-        | |                                  |
-        | |       broaderExemplar            |
-        | +-----------------------------+    | dct:hasPart
-        +-----------------------------+ |    |
-                 broaderExemplarOf    | |    | 
-                                      | |    |
-                                      v |    v
-     +--------+      exemplar      +------------+
-     |  Item  |<-------------------|  Document  |
-     |        |------------------->|            |
-     +--------+     exemplarOf     +------------+
-                                      | ^    |
-                                      | |    |
-                 narrowerExemplar     | |    | 
-        +-----------------------------+ |    | dct:hasPart
-        | ------------------------------+    |
-        | |     narrowerExemplarOf           | 
-        | |                                  |
-        v |                                  v
-     +--------+      exemplar      +------------+
-     |  Item  |<-------------------|  Document  |
-     |        |------------------->|            |
-     +--------+     exemplarOf     +------------+
-
-```
-
-To give an example:
-
-* Given a book series (a `Document`), a full shelve of books of the series
-  (an `Item`) is an `exemplarOf` the series.
-* A book of the series (a `Document`) has a copy of the book (an `Item`) 
-  as `exemplar`.
-* The copy (an `Item`) is a
-  * a `narrowerExemplarOf` the series (as `Document`), and
-  * a `broaderExemplarOf` a single chapter of the book (as `Document`).
-
-## Relations between Items and descriptions
+## Relations between Items and Descriptions
 
 ``` {.ditaa}
 +---------------------+    exemplarOf   +-------+    foaf:page    +-----------+
@@ -65,36 +20,38 @@ To give an example:
                                  +-----------------------+
 ```
 
-## Relation between Item, Agent and Service
+## Relations between Items, Places, Services and Agents
 ``` {.ditaa}
-                                          dso:hasService
-                                 +----------------------------------+
-                                 |                                  |
-                                 |        daia:availableFor /       v
-+------------+     heldBy   +----+----+   daia:unavailableFor  +---------------------+                   
-|            |<-------------+         +----------------------->|                     |
-|   Agent    |              |  Item   |                        | dso:DocumentService |
-| (Provider) +------------->|         |<-----------------------+                     |
-+-----+------+    holds     +---------+   daia:availableOf /   +---------------------+
-      |                                   daia:unavailableOf        ^     ^                  
-      |                                                             |     |
-      |           ssso:provides                                     |     |
-      +-------------------------------------------------------------+     |
-                                                                          |
-                                                                          |
-+------------+                                                            |
-|  Agent     |    ssso:consumes                                           |
-| (Consumer) +------------------------------------------------------------+
-+------------+
-```
+                                          +----------------------+
+                                          |      foaf:Agent      |
+                                          |      (provider)      +-------------------------------+
+   +------------------+                   | +------------------+ |                               |
+   |                  +----org:siteOf------>|                  | |                               |
+   | geo:SpatialThing |                   | | org:Organization | |                               |
+   |                  |<---org:hasSite------+                  | |                             holds
+   +------------------+                   | +------------------+ |<--------heldBy----------+     |
+            ^                             |                      |                         |     |
+            |                             +-----------------+----+                         |     |
+            |                                  ^            |                              |     |
+            |                                  |            |                              |     |
+         ev:place                       ssso:providedBy  ssso:provides                     |     v
+            |                                  |            |                           +--+--------+
+            |                                  |            v       daia:availableFor / |           |
+            |                              +---+-----------------+ daia:unavailableFor  |           |
+            +------------------------------+                     |<---------------------+           |
+     +-------------------------------------+ dso:DocumentService |<---dso:hasService----+ frbr:Item |
+     |              +--------------------->|                     +--------------------->|           |
+     |              |                      +---------------------+   daia:availableOf / |           |
+     |              |                                ^              daia:unavailableOf  |           |
+     |              |                                |                                  +-----------+
+ssso:limitedBy   ssso:limits                    ssso:consumes
+     |              |                                |
+     |              |                                |
+     v              |                                |
++-------------------+----+                  +--------+-------+
+|                        |                  |    foaf:Agent  |
+| ssso:ServiceLimitation |                  |   (consumer)   |
+|                        |                  +----------------+
++------------------------+
 
-## Other Relations
-``` {.ditaa}
-                               +--------+
-                               |        |  ecpo:hasChronology /   +-----------------+
-+-----------+     gn:locatedIn |        |  ecpo:hasChronologyGap  |                 |
-| Location  |<-----------------+  Item  +------------------------>| ecpo:Chronology |
-+-----------+                  |        |                         |                 |
-                               |        |                         +-----------------+
-                               +--------+
 ```
