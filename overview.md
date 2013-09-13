@@ -2,23 +2,7 @@
 
 ## Relations between Items and Descriptions
 
-``` {.ditaa}
-+---------------------+    exemplarOf   +-------+    foaf:page    +-----------+
-|      Document       |<----------------+       +---------------->| Document  |
-| (Title Description) |                 | Item  |                 | (Website) |
-|                     |---------------->|       |<----------------+           |
-+---------------------+     exemplar    +-------+    foaf:topic   +-----------+
-                                            ^
-                                            |
-                                    foaf:primaryTopic /
-                                    foaf:primaryTopicOf
-                                            |
-                                            v
-                                 +-----------------------+
-                                 |      Document         |
-                                 | (Holding Description) |
-                                 +-----------------------+
-```
+
 
 ## Relations between Items, Places, Services and Agents
 ``` {.ditaa}
