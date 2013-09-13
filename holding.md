@@ -38,7 +38,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
         rdfs:label "Holding Ontology" ;
         vann:preferredNamespacePrefix "holding" .
 
-# Core Classes
+# Core Relationships
 
 The holding Ontology does not define classes on its own but makes usage of classes defined in other Ontologies. See [Informative References](#informative) for references to the used onotologies.
 
