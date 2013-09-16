@@ -310,7 +310,7 @@ A call number, shelf mark or similar label of an item
 	holding:label a owl:DatatypeProperty ;
 		rdfs:label "label"@en ;
 		rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
-		rdfs:domain holding:Item ;
+		rdfs:domain frbr:Item ;
 		rdfs:range rdfs:Literal ;
 		rdfs:subPropertyOf dct:identifier .
 		
