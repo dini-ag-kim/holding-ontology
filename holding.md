@@ -45,7 +45,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 | Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)| Individuals |
 |:---:|:---:|:---:|:---:|
-| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Offering]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf] | [Loan]<br>[Presentation] |
+| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Offering]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[inCollection]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf] | [Loan]<br>[Presentation] |
 
 # Core Relationships
 
@@ -81,15 +81,19 @@ Relates an Item to an Institution that holds the Item.
 
 ## holds
 
-Relates an Institution to an Item which the Institution holds.
+Relates an [Agent] with an [Item] which the [Agent] holds.
 
     holding:holds a owl:ObjectProperty ;
         rdfs:label "holds"@en ;
         rdfs:comment "Relates an Institution to an Item which the Institution holds."@en ;
-        rdfs:domain foaf:Organization ;
+        rdfs:domain foaf:Agent ;
         rdfs:range frbr:Item ;
         rdfs:subPropertyOf holding:inCollection ;
         owl:inverseOf holding:heldBy .
+
+## inCollection
+
+TODO
 
 ## Document
 
