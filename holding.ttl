@@ -7,15 +7,35 @@
 @prefix ecpo: <http://purl.org/ontology/ecpo#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ssso: <http://purl.org/ontology/ssso#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/>
     vann:preferredNamespacePrefix "holding" ;
     a owl:Ontology ;
     rdfs:label "Holding Ontology" .
+
+holding:Loan
+    gr:includes [
+        a dso:Loan
+    ] ;
+    a gr:Offering, owl:NamedIndividual ;
+    rdfs:comment "offering for a loan service"@en ;
+    rdfs:label "loan" .
+
+holding:Presentation
+    gr:includes [
+        a dso:Presentation
+    ] ;
+    a gr:Offering, owl:NamedIndividual ;
+    rdfs:comment "offering for a presentation service"@en ;
+    rdfs:label "presentation" .
 
 holding:broaderExemplar
     a owl:ObjectProperty ;
@@ -70,7 +90,7 @@ holding:holds
 holding:label
     a owl:DatatypeProperty ;
     rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
-    rdfs:domain holding:Item ;
+    rdfs:domain frbr:Item ;
     rdfs:label "label"@en ;
     rdfs:range rdfs:Literal ;
     rdfs:subPropertyOf dct:identifier .
@@ -91,10 +111,20 @@ holding:narrowerExemplarOf
     rdfs:range frbr:Item ;
     owl:inverseOf holding:narrowerExemplar .
 
-dct:Location
+gr:Location
     a owl:Class ;
-    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
     rdfs:label "Location" .
+
+gr:Offering
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    rdfs:label "Offering"@en .
+
+gr:availableAtOrFrom
+    a owl:AnnotationProperty ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    skos:scopeNote "This property is used to relate a location with an agent."@en, "Used to relate a document service offered for an item with a location."@en .
 
 bibo:Document
     a owl:Class ;
