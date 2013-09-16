@@ -45,7 +45,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 | Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)| Individuals |
 |:---:|:---:|:---:|:---:|
-| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Offering]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[inCollection]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf] | [Loan]<br>[Presentation] |
+| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Offering]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[inCollection]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] | [Loan]<br>[Presentation] |
 
 # Core Relationships
 
