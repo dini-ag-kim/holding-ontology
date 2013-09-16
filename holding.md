@@ -117,7 +117,7 @@ The reltions between an [Item] and different kinds of document is shown in this 
 
 The [exemplar] relation is used to state that a concrete [Item] is a copy of an abstract [Document]. Additional relations exist for Items that only contain parts of a document and for Items that contain multiple documents (for instance a collection that the document is part of). 
 
-`item-document-relation.md`{.include}
+`item-doc-relation.md`{.include}
 
 ## exemplar
 
