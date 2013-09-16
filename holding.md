@@ -112,6 +112,8 @@ The reltions between an [Item] and different kinds of document is shown in this 
 
 `item-description-relation.md`{.include}
 
+`item-offering-relation.md`{.include}
+
 
 # Relations between abstract Documents and Items
 
