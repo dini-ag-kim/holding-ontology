@@ -81,7 +81,7 @@ holding:heldBy
 holding:holds
     a owl:ObjectProperty ;
     rdfs:comment "Relates an Institution to an Item which the Institution holds."@en ;
-    rdfs:domain foaf:Organization ;
+    rdfs:domain foaf:Agent ;
     rdfs:label "holds"@en ;
     rdfs:range frbr:Item ;
     rdfs:subPropertyOf holding:inCollection ;
@@ -123,14 +123,29 @@ gr:Offering
 
 gr:availableAtOrFrom
     a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1>, <http://www.w3.org/ns/org> ;
     skos:scopeNote "This property is used to relate a location with an agent."@en, "Used to relate a document service offered for an item with a location."@en .
+
+gr:hasStockKeepingUnit
+    a owl:AnnotationProperty ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    skos:scopeNote "Used to identify the item for which a document service is offered."@en .
+
+gr:name
+    a owl:AnnotationProperty ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    skos:scopeNote "When a document service is offered for an item, this property is used to name the location where the document service should be provided."@en .
 
 bibo:Document
     a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/ontology/bibo/> ;
     rdfs:label "Document"@en ;
     owl:equivalentClass foaf:Document .
+
+daia:providedBy
+    a owl:AnnotationProperty ;
+    rdfs:isDefinedBy <http://purl.org/ontology/daia> ;
+    skos:scopeNote "Used to relate an offering with an agent who provides the service offered."@en .
 
 dso:DocumentService
     a owl:Class ;
