@@ -31,6 +31,9 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
     @prefix ssso: <http://purl.org/ontology/ssso#> .
     @prefix vann: <http://purl.org/vocab/vann/> .
+    @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 The Holding Ontology is defined in RDF/Turtle as following:
 
@@ -112,12 +115,21 @@ The reltions between an [Item] and different kinds of document is shown in this 
 
 `item-description-relation.md`{.include}
 
-
 # Relations between abstract Documents and Items
 
 The [exemplar] relation is used to state that a concrete [Item] is a copy of an abstract [Document]. Additional relations exist for Items that only contain parts of a document and for Items that contain multiple documents (for instance a collection that the document is part of). 
 
-`item-document-relation.md`{.include}
+`item-doc-relation.md`{.include}
+
+To give an example:
+
+* Given a book series (a [Document]), a full shelve of books of the series
+  (an [Item]) is an [exemplarOf] the series.
+* A book of the series (a [Document]) has a copy of the book (an [Item]) 
+  as [exemplar].
+* The copy (an [Item]) is a
+  * a [narrowerExemplarOf] the series (as [Document]), and
+  * a [broaderExemplarOf] a single chapter of the book (as [Document]).
 
 ## exemplar
 
@@ -203,8 +215,6 @@ Relates a Document to an Item that is an exemplar of a part of the Document.
         owl:inverseOf holding:narrowerExemplar .
 
 # Relation between Items and Services
-
-Holding description
 
 `item-offering-relation.md`{.include}
 
@@ -310,7 +320,7 @@ A call number, shelf mark or similar label of an item
 	holding:label a owl:DatatypeProperty ;
 		rdfs:label "label"@en ;
 		rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
-		rdfs:domain holding:Item ;
+		rdfs:domain frbr:Item ;
 		rdfs:range rdfs:Literal ;
 		rdfs:subPropertyOf dct:identifier .
 		
