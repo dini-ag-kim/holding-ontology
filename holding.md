@@ -257,6 +257,14 @@ A **Location** is a point or area of interest from which a particular [Item] or 
         rdfs:label "Location" ;
         rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
 
+## name
+
+When a [DocumentService] is offered for an [Item], this property is used to name the location where the [DocumentService] should be provided. The Location class is defined by [GoodRelations].
+
+    gr:name a owl:AnnotationProperty ;
+        skos:scopeNote "When a document service is offered for an item, this property is used to name the location where the document service should be provided."@en ;
+        rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
+ 
 ## providedBy
 
 Used to relate an [Offering] with an [Agent] who provides the service offered. This property is defined by the the [DAIA Ontology].
