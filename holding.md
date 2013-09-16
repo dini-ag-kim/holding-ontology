@@ -31,6 +31,9 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
     @prefix ssso: <http://purl.org/ontology/ssso#> .
     @prefix vann: <http://purl.org/vocab/vann/> .
+    @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 The Holding Ontology is defined in RDF/Turtle as following:
 
