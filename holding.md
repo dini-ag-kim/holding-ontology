@@ -110,14 +110,7 @@ In the context of this ontology when talking about documents several kinds of do
 
 The reltions between an [Item] and different kinds of document is shown in this diagram:
 
-# Relation between Items and Services
-
 `item-description-relation.md`{.include}
-
-
-
-`item-offering-relation.md`{.include}
-
 
 # Relations between abstract Documents and Items
 
