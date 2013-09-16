@@ -43,7 +43,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 # Core Relationships
 
-The holding Ontology does not define classes on its own but makes usage of classes defined in other Ontologies. See [Informative References](#informative) for references to the used onotologies.
+The holding Ontology does not define classes on its own but makes usage of classes defined in other Ontologies. See [Informative References] for references to the used onotologies.
 
 ## frbr:Item
 
@@ -411,8 +411,6 @@ $alicecopies
 ...
 
 ## Informative References
-
-[informative]: #informative
 
 * ISO 20775
 * [Bibliographic Ontology]
