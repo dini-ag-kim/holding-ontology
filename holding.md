@@ -204,8 +204,6 @@ Relates a Document to an Item that is an exemplar of a part of the Document.
 
 # Relation between Items and Services
 
-Holding description
-
 `item-offering-relation.md`{.include}
 
 ## dso:DocumentService
