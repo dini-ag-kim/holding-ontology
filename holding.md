@@ -207,7 +207,7 @@ a library) and an optional service consumer (e.g. a library patron). Both servic
 
 ## Offering
 
-In the scope of holding ontology an **Offering** includes a [DocumentService] for an [Item] and optional a [Location] where the service takes place and a [SKU]. Offering is defined by [GoodRelations].
+In the scope of holding ontology an **Offering** includes a [DocumentService] for an [Item] and optional a [Location] where the service takes place. The class Offering is defined by [GoodRelations].
 
     gr:Offering a owl:Class ;
         rdfs:label "Offering"@en ;
@@ -241,7 +241,7 @@ A **Loan** is an offering for a document service [dso:Loan]. Use properties [dai
 
 ## Location
 
-A **Location** is a point or area of interest from which a particular [Item] or [DocumentService] is available. The property [availableAtorFrom] should be used to indicate the location of an offered [DocumentService] for an [Item]. The Location class is defined as part of [GoodRelations].
+A **Location** is a point or area of interest from which a particular [Item] or [DocumentService] is available. The property [availableAtorFrom] should be used to indicate the location of an offered [DocumentService] for an [Item]. The Location class is defined by [GoodRelations].
 
     gr:Location a owl:Class ;
         rdfs:label "Location" ;
@@ -249,7 +249,7 @@ A **Location** is a point or area of interest from which a particular [Item] or 
 
 ## availableAtOrFrom
 
-This property is used to relate a Offering of a [DocumentService] for an [Item] with a [Location]. See [examples] for usage. This property is defined as part of [GoodRelations].
+This property is used to relate a Offering of a [DocumentService] for an [Item] with a [Location]. See [examples] for usage. This property is defined by [GoodRelations].
 
     gr:availableAtOrFrom a owl:AnnotationProperty ;
         skos:scopeNote "Used to relate a document service offered for an item with a location."@en ;
@@ -257,7 +257,7 @@ This property is used to relate a Offering of a [DocumentService] for an [Item] 
 
 ## hasStockKeepingUnit
 
-This property is used as an identifier for the [Item] for which a [DocumentService] is offered. See [examples] for usage. This property is defined as part of [GoodRelations].
+This property is used as an identifier for the [Item] for which a [DocumentService] is offered. See [examples] for usage. This property is defined by [GoodRelations].
 
     gr:hasStockKeepingUnit a owl:AnnotationProperty ;
         skos:scopeNote "Used to identify the item for which a document service is offered."@en ;
@@ -265,7 +265,7 @@ This property is used as an identifier for the [Item] for which a [DocumentServi
 
 ## siteOf
 
-This property is used to relate a [Location] with an [Agent]. See examples for usage. The property siteOf is defined as part of the [Organization Ontology].
+This property is used to relate a [Location] with an [Agent]. See examples for usage. This property is defined by the [Organization Ontology].
 
     gr:availableAtOrFrom a owl:AnnotationProperty ;
         skos:scopeNote "This property is used to relate a location with an agent."@en ;
