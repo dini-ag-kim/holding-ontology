@@ -121,13 +121,13 @@ The [exemplar] relation is used to state that a concrete [Item] is a copy of an 
 
 To give an example:
 
-* Given a book series (a `Document`), a full shelve of books of the series
-  (an `Item`) is an `exemplarOf` the series.
-* A book of the series (a `Document`) has a copy of the book (an `Item`) 
-  as `exemplar`.
-* The copy (an `Item`) is a
-  * a `narrowerExemplarOf` the series (as `Document`), and
-  * a `broaderExemplarOf` a single chapter of the book (as `Document`).
+* Given a book series (a [Document]), a full shelve of books of the series
+  (an [Item]) is an [exemplarOf] the series.
+* A book of the series (a [Document]) has a copy of the book (an [Item]) 
+  as [exemplar].
+* The copy (an [Item]) is a
+  * a [narrowerExemplarOf] the series (as [Document]), and
+  * a [broaderExemplarOf] a single chapter of the book (as [Document]).
 
 ## exemplar
 
