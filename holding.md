@@ -41,6 +41,12 @@ The Holding Ontology is defined in RDF/Turtle as following:
         rdfs:label "Holding Ontology" ;
         vann:preferredNamespacePrefix "holding" .
 
+# Overview
+
+| Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)| Individuals |
+|---|---|---|---|
+| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Offering]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf] | [Loan]<br>[Presentation] |
+
 # Core Relationships
 
 The holding Ontology does not define classes on its own but makes usage of classes defined in other Ontologies. See [Informative References] for references to the used onotologies.
@@ -213,11 +219,11 @@ In the scope of holding ontology an **Offering** includes a [DocumentService] fo
         rdfs:label "Offering"@en ;
         rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
 
-Typical offerings for document services within the scope of holding ontology involve a loan service ([Loan]) and/or a presentation service ([Presentation]) and are included in an offering for that document service.
+Typical offerings for document services within the scope of holding ontology involve a loan service ([dso:Loan]) and/or a presentation service ([dso:Presentation]) and are included in an offering for that document service.
 
 ## Presentation
 
-A **Presentation** is an offering for a document service [dso:Presentation]. Use properties [daia:availableFor] and [daia:unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
+A **Presentation** is an offering for a document service [dso:Presentation]. Use properties [availableFor] and [unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
 
     holding:Presentation a owl:NamedIndividual ;
         rdf:type gr:Offering ;
@@ -229,7 +235,7 @@ A **Presentation** is an offering for a document service [dso:Presentation]. Use
 
 ## Loan
 
-A **Loan** is an offering for a document service [dso:Loan]. Use properties [daia:availableFor] and [daia:unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
+A **Loan** is an offering for a document service [dso:Loan]. Use properties [availableFor] and [unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
 
     holding:Loan a owl:NamedIndividual ;
         rdf:type gr:Offering ;
@@ -246,6 +252,14 @@ A **Location** is a point or area of interest from which a particular [Item] or 
     gr:Location a owl:Class ;
         rdfs:label "Location" ;
         rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
+
+## providedBy
+
+Used to relate an [Offering] with an [Agent] who provides the service offered. This property is defined by the the [DAIA Ontology].
+
+    daia:providedBy a owl:AnnotationProperty ;
+        skos:scopeNote "Used to relate an offering with an agent who provides the service offered."@en ;
+        rdfs:isDefinedBy <http://purl.org/ontology/daia> .
 
 ## availableAtOrFrom
 
@@ -279,7 +293,7 @@ A **Chronology** is the description of enumeration and chronology of a periodica
         rdfs:label "Chronology" ;
         rdfs:isDefinedBy <http://purl.org/ontology/ecpo> .
 
-To relate an [Item] to a Chronology use [ecpo:hasChronology] or [ecpo:hasChronologyGap]. To be more specific on the nature (current or closed) of a Chronology use [ecpo:CurrentChronology] or [ecpo:ClosedChronology]. To simply express the fact that an [Item] has a current chronology or a closed chronology without giving further information one MAY use [ecpo:Current] or [ecpo:Closed].
+To relate an [Item] to a Chronology use [hasChronology] or [hasChronologyGap]. To be more specific on the nature (current or closed) of a Chronology use [CurrentChronology] or [ClosedChronology]. To simply express the fact that an [Item] has a current chronology or a closed chronology without giving further information one MAY use [Current] or [Closed].
 
 ## label
 
@@ -400,17 +414,17 @@ $alicecopies
 [FRBR Ontology]: http://purl.org/vocab/frbr/core
 [GoodRelations]: http://purl.org/goodrelations/v1
 [Organization Ontology]: http://www.w3.org/ns/org
-[daia:availableFor]: http://purl.org/ontology/daia/availableFor 
-[daia:availableOf]: http://purl.org/ontology/daia/availableOf 
-[daia:unavailableFor]: http://purl.org/ontology/daia/unavailableFor 
-[daia:unavailableOf]: http://purl.org/ontology/daia/unavailableOf 
+[availableFor]: http://purl.org/ontology/daia/availableFor 
+[availableOf]: http://purl.org/ontology/daia/availableOf 
+[unavailableFor]: http://purl.org/ontology/daia/unavailableFor 
+[unavailableOf]: http://purl.org/ontology/daia/unavailableOf 
 [dso:Loan]: http://purl.org/ontology/dso#Loan
 [dso:Presentation]: http://purl.org/ontology/dso#Presentation
-[ecpo:hasChronology]: http://purl.org/ontology/ecpo#hasChronology
-[ecpo:hasChronologyGap]: http://purl.org/ontology/ecpo#hasChronologyGap
-[ecpo:CurrentChronology]: http://purl.org/ontology/ecpo#CurrentChronology
-[ecpo:ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
-[ecpo:Current]: http://purl.org/ontology/ecpo#Current
-[ecpo:Closed]: http://purl.org/ontology/ecpo#Closed
+[hasChronology]: http://purl.org/ontology/ecpo#hasChronology
+[hasChronologyGap]: http://purl.org/ontology/ecpo#hasChronologyGap
+[CurrentChronology]: http://purl.org/ontology/ecpo#CurrentChronology
+[ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
+[Current]: http://purl.org/ontology/ecpo#Current
+[Closed]: http://purl.org/ontology/ecpo#Closed
 
 
