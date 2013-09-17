@@ -383,7 +383,7 @@ $alicecopies
     daia:availableFor (
         [
             a holding:Presentation ;
-            gr:hasStockKeepingUnit "HB 17 Rg 500 ;
+            gr:hasStockKeepingUnit "HB 17 Rg 500" ;
             daia:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
             gr:availableAtOrFrom [
                 a gr:Location ;
