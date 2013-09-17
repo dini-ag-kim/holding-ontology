@@ -38,7 +38,7 @@ The following namspace prefixes are used to refer to related ontologies:
 The Holding Ontology is defined in RDF/Turtle as following:
 
     <> a owl:Ontology ;
-        rdfs:label "Holding Ontology" ;
+        rdfs:label "Holding Ontology"@en ;
         vann:preferredNamespacePrefix "holding" .
 
 # Overview
@@ -56,7 +56,7 @@ The holding Ontology does not define classes on its own but makes usage of class
 An **Item** is a particular copy of a bibliographic resource that is held by an [Agent]. Items are also referred to as holdings, but a holding can include more information about items, such as inventory and access. The Item class is defined by the [FRBR Ontology] without implying the rest of the FRBR model.
 
 	frbr:Item a owl:Class ;
-		rdfs:label "item"@en ;
+		rdfs:label "Item"@en ;
 		rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> .
 
 ## Agent
@@ -64,7 +64,7 @@ An **Item** is a particular copy of a bibliographic resource that is held by an 
 An **Agent** is a person, organization, group or any other entity that can held items and provide services. The Agent class is defined by the [FOAF Ontology].
 
     foaf:Agent a owl:Class ;
-        rdfs:label "agent" ;
+        rdfs:label "Agent"@en ;
         rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
 
 ## heldBy
@@ -231,7 +231,7 @@ A **Presentation** is an offering for a document service [dso:Presentation]. Use
 
     holding:Presentation a owl:NamedIndividual ;
         rdf:type gr:Offering ;
-        rdfs:label "presentation" ;
+        rdfs:label "Presentation"@en ;
         rdfs:comment "offering for a presentation service"@en ; 
         gr:includes [
             a dso:Presentation
@@ -243,10 +243,22 @@ A **Loan** is an offering for a document service [dso:Loan]. Use properties [ava
 
     holding:Loan a owl:NamedIndividual ;
         rdf:type gr:Offering ;
-        rdfs:label "loan" ;
+        rdfs:label "Loan"@en ;
         rdfs:comment "offering for a loan service"@en ; 
         gr:includes [
             a dso:Loan
+        ] .
+
+## Interloan
+
+An **Interloan** is an offering for a document service [dso:Interloan]. Use properties [availableFor] and [unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
+
+    holding:Interloan a owl:NamedIndividual ;
+        rdf:type gr:Offering ;
+        rdfs:label "Interloan"@en ;
+        rdfs:comment "offering for a interloan service"@en ; 
+        gr:includes [
+            a dso:Interloan
         ] .
 
 ## Location
@@ -254,7 +266,7 @@ A **Loan** is an offering for a document service [dso:Loan]. Use properties [ava
 A **Location** is a point or area of interest from which a particular [Item] or [DocumentService] is available. The property [availableAtorFrom] should be used to indicate the location of an offered [DocumentService] for an [Item]. The Location class is defined by [GoodRelations].
 
     gr:Location a owl:Class ;
-        rdfs:label "Location" ;
+        rdfs:label "Location"@en ;
         rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
 
 ## name
@@ -302,7 +314,7 @@ This property is used to relate a [Location] with an [Agent]. See examples for u
 A **Chronology** is the description of enumeration and chronology of a periodical. The Chronology class is defined by the [Enumeration and Chronology of Periodicals Ontology].
 
     ecpo:Chronology a owl:Class ;
-        rdfs:label "Chronology" ;
+        rdfs:label "Chronology"@en ;
         rdfs:isDefinedBy <http://purl.org/ontology/ecpo> .
 
 To relate an [Item] to a Chronology use [hasChronology] or [hasChronologyGap]. To be more specific on the nature (current or closed) of a Chronology use [CurrentChronology] or [ClosedChronology]. To simply express the fact that an [Item] has a current chronology or a closed chronology without giving further information one MAY use [Current] or [Closed].
@@ -431,6 +443,7 @@ $alicecopies
 [unavailableFor]: http://purl.org/ontology/daia/unavailableFor 
 [unavailableOf]: http://purl.org/ontology/daia/unavailableOf 
 [dso:Loan]: http://purl.org/ontology/dso#Loan
+[dso:Interloan]: http://purl.org/ontology/dso#Interloan
 [dso:Presentation]: http://purl.org/ontology/dso#Presentation
 [hasChronology]: http://purl.org/ontology/ecpo#hasChronology
 [hasChronologyGap]: http://purl.org/ontology/ecpo#hasChronologyGap
