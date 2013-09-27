@@ -275,7 +275,7 @@ Used to relate an [Offering] with an [Agent] who provides the service offered. T
 
 ## availableAtOrFrom
 
-This property is used to relate a Offering of a [DocumentService] for an [Item] with a [Location]. See [examples] for usage. This property is defined by [GoodRelations].
+This property is used to relate an Offering of a [DocumentService] for an [Item] with a [Location]. See [examples] for usage. This property is defined by [GoodRelations].
 
     gr:availableAtOrFrom a owl:AnnotationProperty ;
         skos:scopeNote "Used to relate a document service offered for an item with a location."@en ;
@@ -325,7 +325,7 @@ A call number, shelf mark or similar label of an item
 
 ``` {.example}
 
-# The series is a document, consisting of multliple volumes
+# The series is a document, consisting of multiple volumes
 $series a bibo:Periodical 
     dcterms:hasPart $volume1, $volume2, $volume3 .
 
