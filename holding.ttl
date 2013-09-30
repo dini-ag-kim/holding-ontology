@@ -19,7 +19,15 @@
 <http://example.org/>
     vann:preferredNamespacePrefix "holding" ;
     a owl:Ontology ;
-    rdfs:label "Holding Ontology" .
+    rdfs:label "Holding Ontology"@en .
+
+holding:Interloan
+    gr:includes [
+        a dso:Interloan
+    ] ;
+    a gr:Offering, owl:NamedIndividual ;
+    rdfs:comment "offering for a interloan service"@en ;
+    rdfs:label "Interloan"@en .
 
 holding:Loan
     gr:includes [
@@ -27,7 +35,7 @@ holding:Loan
     ] ;
     a gr:Offering, owl:NamedIndividual ;
     rdfs:comment "offering for a loan service"@en ;
-    rdfs:label "loan" .
+    rdfs:label "Loan"@en .
 
 holding:Presentation
     gr:includes [
@@ -35,7 +43,7 @@ holding:Presentation
     ] ;
     a gr:Offering, owl:NamedIndividual ;
     rdfs:comment "offering for a presentation service"@en ;
-    rdfs:label "presentation" .
+    rdfs:label "Presentation"@en .
 
 holding:broaderExemplar
     a owl:ObjectProperty ;
@@ -114,7 +122,7 @@ holding:narrowerExemplarOf
 gr:Location
     a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    rdfs:label "Location" .
+    rdfs:label "Location"@en .
 
 gr:Offering
     a owl:Class ;
@@ -155,15 +163,15 @@ dso:DocumentService
 ecpo:Chronology
     a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/ontology/ecpo> ;
-    rdfs:label "Chronology" .
+    rdfs:label "Chronology"@en .
 
 frbr:Item
     a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> ;
-    rdfs:label "item"@en .
+    rdfs:label "Item"@en .
 
 foaf:Agent
     a owl:Class ;
     rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
-    rdfs:label "agent" .
+    rdfs:label "Agent"@en .
 

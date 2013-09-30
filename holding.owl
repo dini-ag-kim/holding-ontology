@@ -4,7 +4,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/">
-    <rdfs:label>Holding Ontology</rdfs:label>
+    <rdfs:label xml:lang="en">Holding Ontology</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/">
     <vann:preferredNamespacePrefix>holding</vann:preferredNamespacePrefix>
@@ -13,7 +13,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Item">
-    <rdfs:label xml:lang="en">item</rdfs:label>
+    <rdfs:label xml:lang="en">Item</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Item">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/frbr/core"/>
@@ -22,7 +22,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
-    <rdfs:label>agent</rdfs:label>
+    <rdfs:label xml:lang="en">Agent</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
     <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
@@ -217,7 +217,7 @@
     <rdf:type rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#Presentation">
-    <rdfs:label>presentation</rdfs:label>
+    <rdfs:label xml:lang="en">Presentation</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#Presentation">
     <rdfs:comment xml:lang="en">offering for a presentation service</rdfs:comment>
@@ -235,7 +235,7 @@
     <rdf:type rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#Loan">
-    <rdfs:label>loan</rdfs:label>
+    <rdfs:label xml:lang="en">Loan</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#Loan">
     <rdfs:comment xml:lang="en">offering for a loan service</rdfs:comment>
@@ -243,11 +243,29 @@
   <rdf:Description rdf:about="http://example.org/#Loan">
     <gr:includes rdf:nodeID="genid2"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="genid3">
+    <rdf:type rdf:resource="http://purl.org/ontology/dso#Interloan"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#Interloan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#Interloan">
+    <rdf:type rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#Interloan">
+    <rdfs:label xml:lang="en">Interloan</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#Interloan">
+    <rdfs:comment xml:lang="en">offering for a interloan service</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/#Interloan">
+    <gr:includes rdf:nodeID="genid3"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Location">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Location">
-    <rdfs:label>Location</rdfs:label>
+    <rdfs:label xml:lang="en">Location</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Location">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1"/>
@@ -301,7 +319,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/ecpo#Chronology">
-    <rdfs:label>Chronology</rdfs:label>
+    <rdfs:label xml:lang="en">Chronology</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/ecpo#Chronology">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ecpo"/>

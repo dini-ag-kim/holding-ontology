@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
-  <meta name="date" content="2013-09-30 01:25:27 -0700" />
+  <meta name="date" content="2013-09-17 09:50:37 +0200" />
   <title>Holding Ontology</title>
    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,7 +30,7 @@
 <body>
 <header>
 <h1 class="title">Holding Ontology</h1>
-<h4 class="date">2013-09-30 01:25:27 -0700</h4>
+<h4 class="date">2013-09-17 09:50:37 +0200</h4>
 </header>
 
 <h1>Table of Contents</h1>
@@ -345,7 +345,7 @@
     skos:scopeNote &quot;Used to relate an offering with an agent who provides the service offered.&quot;@en ;
     rdfs:isDefinedBy &lt;http://purl.org/ontology/daia&gt; .</code></pre>
 <a id="availableAtOrFrom"></a><h2 id="availableatorfrom"><a href="#availableatorfrom"><span class="header-section-number">5.9</span> availableAtOrFrom</a></h2>
-<p>This property is used to relate an Offering of a <a href="#documentservice">DocumentService</a> for an <a href="#item">Item</a> with a <a href="#location">Location</a>. See [examples] for usage. This property is defined by <a href="http://purl.org/goodrelations/v1">GoodRelations</a>.</p>
+<p>This property is used to relate a Offering of a <a href="#documentservice">DocumentService</a> for an <a href="#item">Item</a> with a <a href="#location">Location</a>. See [examples] for usage. This property is defined by <a href="http://purl.org/goodrelations/v1">GoodRelations</a>.</p>
 <pre><code>gr:availableAtOrFrom a owl:AnnotationProperty ;
     skos:scopeNote &quot;Used to relate a document service offered for an item with a location.&quot;@en ;
     rdfs:isDefinedBy &lt;http://purl.org/goodrelations/v1&gt; .</code></pre>
@@ -377,7 +377,7 @@
 <h1 id="examples"><a href="#examples"><span class="header-section-number">6</span> Examples</a></h1>
 <a id="A book series, fully held by a library"></a><h2 id="a-book-series-fully-held-by-a-library"><a href="#a-book-series-fully-held-by-a-library"><span class="header-section-number">6.1</span> A book series, fully held by a library</a></h2>
 <pre class="example"><code>
-# The series is a document, consisting of multiple volumes
+# The series is a document, consisting of multliple volumes
 $series a bibo:Periodical 
     dcterms:hasPart $volume1, $volume2, $volume3 .
 
