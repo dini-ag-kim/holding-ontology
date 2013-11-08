@@ -131,8 +131,8 @@ gr:Offering
 
 gr:availableAtOrFrom
     a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1>, <http://www.w3.org/ns/org> ;
-    skos:scopeNote "This property is used to relate a location with an agent."@en, "Used to relate a document service offered for an item with a location."@en .
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    skos:scopeNote "Used to relate a document service offered for an item with a location."@en .
 
 gr:hasStockKeepingUnit
     a owl:AnnotationProperty ;
@@ -169,6 +169,11 @@ frbr:Item
     a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> ;
     rdfs:label "Item"@en .
+
+org:siteOf
+    a owl:AnnotationProperty ;
+    rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+    skos:scopeNote "This property is used to relate a location with an agent."@en .
 
 foaf:Agent
     a owl:Class ;

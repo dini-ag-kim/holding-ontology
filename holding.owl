@@ -306,13 +306,13 @@
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#hasStockKeepingUnit">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#availableAtOrFrom">
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#siteOf">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#availableAtOrFrom">
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#siteOf">
     <skos:scopeNote xml:lang="en">This property is used to relate a location with an agent.</skos:scopeNote>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#availableAtOrFrom">
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#siteOf">
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/org"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/ecpo#Chronology">
