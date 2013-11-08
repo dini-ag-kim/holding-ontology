@@ -53,13 +53,17 @@ The holding Ontology does not define classes on its own but makes usage of class
 
 ## Item
 
+[Item]: #item
+
 An **Item** is a particular copy of a bibliographic resource that is held by an [Agent]. Items are also referred to as holdings, but a holding can include more information about items, such as inventory and access. The Item class is defined by the [FRBR Ontology] without implying the rest of the FRBR model.
 
-	frbr:Item a owl:Class ;
-		rdfs:label "Item"@en ;
-		rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> .
+    frbr:Item a owl:Class ;
+        rdfs:label "Item"@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> .
 
 ## Agent
+
+[Agent]: #agent
 
 An **Agent** is a person, organization, group or any other entity that can held items and provide services. The Agent class is defined by the [FOAF Ontology].
 
@@ -68,6 +72,8 @@ An **Agent** is a person, organization, group or any other entity that can held 
         rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
 
 ## heldBy
+
+[heldby]: #heldby
 
 Relates an Item to an Institution that holds the Item.
 
@@ -81,6 +87,8 @@ Relates an Item to an Institution that holds the Item.
 
 ## holds
 
+[holds]: #holds
+
 Relates an [Agent] with an [Item] which the [Agent] holds.
 
     holding:holds a owl:ObjectProperty ;
@@ -93,9 +101,13 @@ Relates an [Agent] with an [Item] which the [Agent] holds.
 
 ## inCollection
 
+[inCollection]: #incollection
+
 TODO
 
 ## Document
+
+[Document]: #document
 
 A **Document** is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information. Documents may include both abstract works, such as "Romeo and Juliet", and more conrete entities, such as a specific edition of a book.
 
@@ -133,6 +145,8 @@ To give an example:
 
 ## exemplar
 
+[exemplar]: #exemplar
+
 Relates a [Document] to an [Item] that is an exemplar of the [Document]. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation.
 
 An exemplar should include all parts of a document but there may be gaps and
@@ -148,6 +162,8 @@ identfied as other documents, one should better use property [narrowerExemplar].
 
 ## exemplarOf
 
+[exemplarOf]: #exemplarof
+
 Relates an Item to the Document that is exemplified by the Item.
 
     holding:exemplarOf a owl:ObjectProperty ;
@@ -158,6 +174,8 @@ Relates an Item to the Document that is exemplified by the Item.
         owl:inverseOf holding:exemplar .
 
 ## broaderExemplar
+
+[broaderExemplar]: #broaderexemplar
 
 Relates a Document to an Item that contains an exemplar of the Document as part.
 
@@ -171,6 +189,8 @@ Relates a Document to an Item that contains an exemplar of the Document as part.
 
 ## broaderExemplarOf
 
+[broaderExemplarOf]: #broaderexemplarof
+
 Relates an Item to a Document which is partly exemplified by the Item.
 
     holding:broaderExemplarOf a owl:ObjectProperty ;
@@ -182,6 +202,8 @@ Relates an Item to a Document which is partly exemplified by the Item.
 
 ## narrowerExemplar
 
+[narrowerExemplar]: #narrowerexemplar
+
 Relates an Item to a Document which is partly exemplified by the Item.
 
     holding:narrowerExemplar a owl:ObjectProperty ;
@@ -192,6 +214,8 @@ Relates an Item to a Document which is partly exemplified by the Item.
         owl:inverseOf holding:narrowerExemplarOf .
 
 ## narrowerExemplarOf
+
+[narrowerExemplarOf]: #narrowerexemplarof
 
 Relates a Document to an Item that is an exemplar of a part of the Document.
 
@@ -208,6 +232,8 @@ Relates a Document to an Item that is an exemplar of a part of the Document.
 
 ## DocumentService
 
+[DocumentService]: #documentservice
+
 A **DocumentService** is a service that is related to one or more [documents](#document). The service involves a service provider (e.g.
 a library) and an optional service consumer (e.g. a library patron). Both service provider and service consumer SHOULD be instances of [Agent]. The DocumentService class is defined by the [Document Service Ontology].
 
@@ -216,6 +242,8 @@ a library) and an optional service consumer (e.g. a library patron). Both servic
         rdfs:isDefinedBy <http://purl.org/ontology/dso> .
 
 ## Offering
+
+[Offering]: #offering
 
 In the scope of holding ontology an **Offering** includes a [DocumentService] for an [Item] and optional a [Location] where the service takes place. The class Offering is defined by [GoodRelations].
 
@@ -226,6 +254,8 @@ In the scope of holding ontology an **Offering** includes a [DocumentService] fo
 Typical offerings for document services within the scope of holding ontology involve a loan service ([dso:Loan]) and/or a presentation service ([dso:Presentation]) and are included in an offering for that document service.
 
 ## Presentation
+
+[Presentation]: #presentation
 
 A **Presentation** is an offering for a document service [dso:Presentation]. Use properties [availableFor] and [unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
 
@@ -239,6 +269,8 @@ A **Presentation** is an offering for a document service [dso:Presentation]. Use
 
 ## Loan
 
+[Loan]: #loan
+
 A **Loan** is an offering for a document service [dso:Loan]. Use properties [availableFor] and [unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
 
     holding:Loan a owl:NamedIndividual ;
@@ -250,6 +282,8 @@ A **Loan** is an offering for a document service [dso:Loan]. Use properties [ava
         ] .
 
 ## Interloan
+
+[Interloan]: #interloan
 
 An **Interloan** is an offering for a document service [dso:Interloan]. Use properties [availableFor] and [unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
 
@@ -263,6 +297,8 @@ An **Interloan** is an offering for a document service [dso:Interloan]. Use prop
 
 ## Location
 
+[Location]: #location
+
 A **Location** is a point or area of interest from which a particular [Item] or [DocumentService] is available. The property [availableAtorFrom] should be used to indicate the location of an offered [DocumentService] for an [Item]. The Location class is defined by [GoodRelations].
 
     gr:Location a owl:Class ;
@@ -270,6 +306,8 @@ A **Location** is a point or area of interest from which a particular [Item] or 
         rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
 
 ## name
+
+[name]: #name
 
 When a [DocumentService] is offered for an [Item], this property is used to name the location where the [DocumentService] should be provided. The Location class is defined by [GoodRelations].
 
@@ -279,6 +317,8 @@ When a [DocumentService] is offered for an [Item], this property is used to name
  
 ## providedBy
 
+[providedBy]: #providedby
+
 Used to relate an [Offering] with an [Agent] who provides the service offered. This property is defined by the the [DAIA Ontology].
 
     daia:providedBy a owl:AnnotationProperty ;
@@ -286,6 +326,8 @@ Used to relate an [Offering] with an [Agent] who provides the service offered. T
         rdfs:isDefinedBy <http://purl.org/ontology/daia> .
 
 ## availableAtOrFrom
+
+[availableAtOrFrom]: #availableatorfrom
 
 This property is used to relate an Offering of a [DocumentService] for an [Item] with a [Location]. See [examples] for usage. This property is defined by [GoodRelations].
 
@@ -295,6 +337,8 @@ This property is used to relate an Offering of a [DocumentService] for an [Item]
 
 ## hasStockKeepingUnit
 
+[hasStockKeepingUnit]: #hasstockkeepingunit
+
 This property is used as an identifier for the [Item] for which a [DocumentService] is offered. See [examples] for usage. This property is defined by [GoodRelations].
 
     gr:hasStockKeepingUnit a owl:AnnotationProperty ;
@@ -303,13 +347,17 @@ This property is used as an identifier for the [Item] for which a [DocumentServi
 
 ## siteOf
 
+[siteOf]: #siteOf
+
 This property is used to relate a [Location] with an [Agent]. See examples for usage. This property is defined by the [Organization Ontology].
 
-    gr:availableAtOrFrom a owl:AnnotationProperty ;
+    org:siteOf a owl:AnnotationProperty ;
         skos:scopeNote "This property is used to relate a location with an agent."@en ;
         rdfs:isDefinedBy <http://www.w3.org/ns/org> .
 
 ## Chronology
+
+[Chronology]: #chronology
 
 A **Chronology** is the description of enumeration and chronology of a periodical. The Chronology class is defined by the [Enumeration and Chronology of Periodicals Ontology].
 
@@ -321,17 +369,21 @@ To relate an [Item] to a Chronology use [hasChronology] or [hasChronologyGap]. T
 
 ## label
 
+[label]: #label
+
 A call number, shelf mark or similar label of an item
 
-	holding:label a owl:DatatypeProperty ;
-		rdfs:label "label"@en ;
-		rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
-		rdfs:domain frbr:Item ;
-		rdfs:range rdfs:Literal ;
-		rdfs:subPropertyOf dct:identifier .
-		
+    holding:label a owl:DatatypeProperty ;
+        rdfs:label "label"@en ;
+        rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
+        rdfs:domain frbr:Item ;
+        rdfs:range rdfs:Literal ;
+        rdfs:subPropertyOf dct:identifier .
+        
 
 # Examples
+
+[Examples]: #examples
 
 ## A book series, fully held by a library
 
@@ -451,5 +503,3 @@ $alicecopies
 [ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
 [Current]: http://purl.org/ontology/ecpo#Current
 [Closed]: http://purl.org/ontology/ecpo#Closed
-
-
