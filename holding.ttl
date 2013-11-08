@@ -79,16 +79,16 @@ holding:exemplarOf
 
 holding:heldBy
     a owl:ObjectProperty ;
-    rdfs:comment "Relates an Item to an Institution that holds the Item."@en ;
+    rdfs:comment "Relates an Item to an Agent that holds the Item."@en ;
     rdfs:domain frbr:Item ;
     rdfs:label "held by"@en ;
-    rdfs:range foaf:Organization ;
+    rdfs:range foaf:Agent ;
     rdfs:subPropertyOf holding:collectedBy ;
     owl:inverseOf holding:holds .
 
 holding:holds
     a owl:ObjectProperty ;
-    rdfs:comment "Relates an Institution to an Item which the Institution holds."@en ;
+    rdfs:comment "Relates an Agent to an Item which the Agent holds."@en ;
     rdfs:domain foaf:Agent ;
     rdfs:label "holds"@en ;
     rdfs:range frbr:Item ;

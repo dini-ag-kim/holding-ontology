@@ -34,13 +34,13 @@
     <rdfs:label xml:lang="en">held by</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#heldBy">
-    <rdfs:comment xml:lang="en">Relates an Item to an Institution that holds the Item.</rdfs:comment>
+    <rdfs:comment xml:lang="en">Relates an Item to an Agent that holds the Item.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#heldBy">
     <rdfs:domain rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#heldBy">
-    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#heldBy">
     <owl:inverseOf rdf:resource="http://example.org/#holds"/>
@@ -55,7 +55,7 @@
     <rdfs:label xml:lang="en">holds</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#holds">
-    <rdfs:comment xml:lang="en">Relates an Institution to an Item which the Institution holds.</rdfs:comment>
+    <rdfs:comment xml:lang="en">Relates an Agent to an Item which the Agent holds.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#holds">
     <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
