@@ -1,6 +1,6 @@
 # Introduction
 
-The **Holding Ontology** is a vocabulary to express library holdings in RDF.
+The **Holding Ontology** is a vocabulary to express (library) holdings in RDF.
 
 ## Status of this document
 
@@ -34,6 +34,7 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
     @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
     @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+    @prefix service: <http://purl.org/ontology/service#> .
 
 The Holding Ontology is defined in RDF/Turtle as following:
 
@@ -43,9 +44,9 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 # Overview
 
-| Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)| Individuals |
+| Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)|
 |:---:|:---:|:---:|:---:|
-| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Offering]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[inCollection]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] | [Loan]<br>[Presentation] |
+| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[inCollection]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] |
 
 # Core Relationships
 
@@ -75,13 +76,13 @@ An **Agent** is a person, organization, group or any other entity that can held 
 
 [heldby]: #heldby
 
-Relates an [Item] to an [Agent] that holds the Item.
+Relates an Item to an Institution that holds the Item.
 
     holding:heldBy a owl:ObjectProperty ;
         rdfs:label "held by"@en ;
-        rdfs:comment "Relates an Item to an Agent that holds the Item."@en ;
+        rdfs:comment "Relates an Item to an Institution that holds the Item."@en ;
         rdfs:domain frbr:Item ;
-        rdfs:range foaf:Agent ;
+        rdfs:range foaf:Organization ;
         owl:inverseOf holding:holds ;
         rdfs:subPropertyOf holding:collectedBy .
 
@@ -89,11 +90,11 @@ Relates an [Item] to an [Agent] that holds the Item.
 
 [holds]: #holds
 
-Relates an [Agent] to an [Item] which the Agent holds.
+Relates an [Agent] with an [Item] which the [Agent] holds.
 
     holding:holds a owl:ObjectProperty ;
         rdfs:label "holds"@en ;
-        rdfs:comment "Relates an Agent to an Item which the Agent holds."@en ;
+        rdfs:comment "Relates an Institution to an Item which the Institution holds."@en ;
         rdfs:domain foaf:Agent ;
         rdfs:range frbr:Item ;
         rdfs:subPropertyOf holding:inCollection ;
@@ -241,60 +242,6 @@ a library) and an optional service consumer (e.g. a library patron). Both servic
         rdfs:label "DocumentService" ;
         rdfs:isDefinedBy <http://purl.org/ontology/dso> .
 
-## Offering
-
-[Offering]: #offering
-
-In the scope of holding ontology an **Offering** includes a [DocumentService] for an [Item] and optional a [Location] where the service takes place. The class Offering is defined by [GoodRelations].
-
-    gr:Offering a owl:Class ;
-        rdfs:label "Offering"@en ;
-        rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
-
-Typical offerings for document services within the scope of holding ontology involve a loan service ([dso:Loan]) and/or a presentation service ([dso:Presentation]) and are included in an offering for that document service.
-
-## Presentation
-
-[Presentation]: #presentation
-
-A **Presentation** is an offering for a document service [dso:Presentation]. Use properties [availableFor] and [unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
-
-    holding:Presentation a owl:NamedIndividual ;
-        rdf:type gr:Offering ;
-        rdfs:label "Presentation"@en ;
-        rdfs:comment "offering for a presentation service"@en ; 
-        gr:includes [
-            a dso:Presentation
-        ] .
-
-## Loan
-
-[Loan]: #loan
-
-A **Loan** is an offering for a document service [dso:Loan]. Use properties [availableFor] and [unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
-
-    holding:Loan a owl:NamedIndividual ;
-        rdf:type gr:Offering ;
-        rdfs:label "Loan"@en ;
-        rdfs:comment "offering for a loan service"@en ; 
-        gr:includes [
-            a dso:Loan
-        ] .
-
-## Interloan
-
-[Interloan]: #interloan
-
-An **Interloan** is an offering for a document service [dso:Interloan]. Use properties [availableFor] and [unavailableFor] from the [DAIA Ontology] to relate this offer with the [Item].
-
-    holding:Interloan a owl:NamedIndividual ;
-        rdf:type gr:Offering ;
-        rdfs:label "Interloan"@en ;
-        rdfs:comment "offering for a interloan service"@en ; 
-        gr:includes [
-            a dso:Interloan
-        ] .
-
 ## Location
 
 [Location]: #location
@@ -319,11 +266,11 @@ When a [DocumentService] is offered for an [Item], this property is used to name
 
 [providedBy]: #providedby
 
-Used to relate an [Offering] with an [Agent] who provides the service offered. This property is defined by the the [DAIA Ontology].
+Used to relate a [DocumentService] with an [Agent] who offered the service. This property is defined by the the [Service Ontology].
 
-    daia:providedBy a owl:AnnotationProperty ;
-        skos:scopeNote "Used to relate an offering with an agent who provides the service offered."@en ;
-        rdfs:isDefinedBy <http://purl.org/ontology/daia> .
+    service:providedBy a owl:ObjectProperty ;
+        rdfs:label "providedBy"@en ;
+        rdfs:isDefinedBy <http://purl.org/ontology/service> .
 
 ## availableAtOrFrom
 
@@ -446,18 +393,18 @@ $alicescopyofvolume1
 $alicecopies
     daia:availableFor (
         [
-            a holding:Presentation ;
+            a dso:Presentation ;
             gr:hasStockKeepingUnit "HB 17 Rg 500" ;
-            daia:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
+            service:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
             gr:availableAtOrFrom [
                 a gr:Location ;
                 gr:name "Leesesaal" ;
                 org:siteOf <http://ld.zdb-services.de/resource/organisations/DE-1a>
             ]
         ] [
-            holding:Loan ;
+            dso:Loan ;
             gr:hasStockKeepingUnit "Zsn 70488" ;
-            daia:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
+            service:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
         ]
     ) .
 ```
@@ -503,3 +450,4 @@ $alicecopies
 [ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
 [Current]: http://purl.org/ontology/ecpo#Current
 [Closed]: http://purl.org/ontology/ecpo#Closed
+[Service Ontology]:  http://purl.org/ontology/service
