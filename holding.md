@@ -76,13 +76,13 @@ An **Agent** is a person, organization, group or any other entity that can held 
 
 [heldby]: #heldby
 
-Relates an Item to an Institution that holds the Item.
+Relates an [Item] to an [Agent] who holds the Item.
 
     holding:heldBy a owl:ObjectProperty ;
         rdfs:label "held by"@en ;
-        rdfs:comment "Relates an Item to an Institution that holds the Item."@en ;
+        rdfs:comment "Relates an item to an agent who holds the item."@en ;
         rdfs:domain frbr:Item ;
-        rdfs:range foaf:Organization ;
+        rdfs:range foaf:Agent ;
         owl:inverseOf holding:holds ;
         rdfs:subPropertyOf holding:collectedBy .
 
@@ -94,7 +94,7 @@ Relates an [Agent] with an [Item] which the [Agent] holds.
 
     holding:holds a owl:ObjectProperty ;
         rdfs:label "holds"@en ;
-        rdfs:comment "Relates an Institution to an Item which the Institution holds."@en ;
+        rdfs:comment "Relates an agent to an item which the agent holds."@en ;
         rdfs:domain foaf:Agent ;
         rdfs:range frbr:Item ;
         rdfs:subPropertyOf holding:inCollection ;
