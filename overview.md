@@ -1,44 +1,37 @@
 # Overview
 
-## Relations between Items and Descriptions
-
-
-
 ## Relations between Items, Places, Services and Agents
 ``` {.ditaa}
-                                          +----------------------+
-                                          |      foaf:Agent      |
-                                          |      (provider)      +-----------------------------------+
-   +------------------+                   | +------------------+ |                                   |
-   |                  +----org:siteOf------>|                  | |                                   |
-   |   gr:Location    |                   | | org:Organization | |                                   |
-   |                  |<---gr:hasPOS------| |                  | |                                 holds
-   +------------------+                   | +------------------+ |<--------heldBy--------------+     |
+
+   +------------------+                   +----------------------+
+   |                  +----org:siteOf---->|                      +-----------------------------------+
+   |   gr:Location    |                   |       foaf:Agent     |                                   |
+   |                  |<---gr:hasPOS------|      (provider)      |                                 holds
+   +------------------+                   |                      |<--------heldBy--------------+     |
             ^                             |                      |                             |     |
             |                             +-----------+----------+                             |     |
             |                                         |                                        |     |
-            |                                     gr:offers                                    |     |
-            |                                      gr:seeks                                    |     |
+            |                                  service:provides                                |     |
+            |                                         |                                        |     |
    gr:availableAtorFrom                               |                                        |     |
             |                                         v                                        |     |
             |                            +-------------------------+                           |     v
             |                            |                         |                        +--+--------+
-            |                            |        Offering         |   daia:availableFor /  |           |
-            |                            | +---------------------+ |  daia:unavailableFor   |           |
-            +----------------------------| |                     | |<-----------------------+           |
-     +-------------------------------------+ dso:DocumentService |<-------dso:hasService----+ frbr:Item |
-     |              +--------------------->|                     +------------------------->|           |
-     |              |                    | +---------------------+ |    daia:availableOf /  |           |
-     |              |                    |     ^                   |   daia:unavailableOf   |           |
-     |              |                    +-----|-------------------+                        +-----------+
-ssso:limitedBy   ssso:limits                   |           ^
-     |              |                     ssso:consumes    |
-     |              |                          |        gr:seeks
-     v              |                          |           |
-+-------------------+----+                  +--+-----------+----+
-|                        |                  |     foaf:Agent    |
-| ssso:ServiceLimitation |                  |     consumer)     |
-|                        |                  +-------------------+
-+------------------------+
-
+            |                            |                         |   daia:availableFor /  |           |
+            |                            |                         |  daia:unavailableFor   |           |
+            +----------------------------+                         |<-----------------------+           |
+        +--------------------------------+   dso:DocumentService   |<-----dso:hasService----+ frbr:Item |
+        |              +---------------->|                         +----------------------->|           |
+        |              |                 |                         |    daia:availableOf /  |           |
+        |              |                 |                         |   daia:unavailableOf   |           |
+        |              |                 +-------------------------+                        +-----------+
+   ssso:limitedBy   ssso:limits                ^           ^
+        |              |                       |           |
+        |              |                service:consumes   |
+        v              |                       |        gr:seeks
+   +-------------------+----+                  |           |
+   |                        |               +--+-----------+----+
+   | ssso:ServiceLimitation |               |     foaf:Agent    |
+   |                        |               |     (consumer)    |
+   +------------------------+               +-------------------+
 ```
