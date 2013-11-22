@@ -294,6 +294,7 @@ This property is used as an identifier for the [Item] for which a [DocumentServi
 
     gr:hasStockKeepingUnit a owl:AnnotationProperty ;
         skos:scopeNote "Used to identify the item for which a document service is offered."@en ;
+        owl:equivalentProperty schema:sku ;
         rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
 
 ## siteOf
