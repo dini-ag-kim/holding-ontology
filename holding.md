@@ -2,6 +2,8 @@
 
 The **Holding Ontology** is a vocabulary to express (library) holdings in RDF.
 
+This ontology deals with items and their relations to agents, documents and services. An item is a copy or exemplar of a document. Items are also referred to as holdings, but a holding is moreover the description of an agents inventory and access information for the item. Although this ontology derives the Item class from the FRBR Ontology, it does not imply the use of the FRBR model.
+
 ## Status of this document
 
 This document is an early draft, created by a DINI AG KIM Working Group. See
@@ -18,22 +20,23 @@ The URI of this ontology as a whole is ...
 
 The following namspace prefixes are used to refer to related ontologies:
 
-    @prefix bibo: <http://purl.org/ontology/bibo/> .
-    @prefix daia: <http://purl.org/ontology/daia/> .
-    @prefix dct:  <http://purl.org/dc/terms/> .
-    @prefix dso:  <http://purl.org/ontology/dso#> .
-    @prefix ecpo: <http://purl.org/ontology/ecpo#> .
-    @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-    @prefix frbr: <http://purl.org/vocab/frbr/core#> .
-    @prefix gr:   <http://purl.org/goodrelations/v1#> .
-    @prefix org:  <http://www.w3.org/ns/org#> .
-    @prefix owl:  <http://www.w3.org/2002/07/owl#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix ssso: <http://purl.org/ontology/ssso#> .
-    @prefix vann: <http://purl.org/vocab/vann/> .
-    @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+    @prefix bibo:    <http://purl.org/ontology/bibo/> .
+    @prefix daia:    <http://purl.org/ontology/daia/> .
+    @prefix dct:     <http://purl.org/dc/terms/> .
+    @prefix dso:     <http://purl.org/ontology/dso#> .
+    @prefix ecpo:    <http://purl.org/ontology/ecpo#> .
+    @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+    @prefix frbr:    <http://purl.org/vocab/frbr/core#> .
+    @prefix gr:      <http://purl.org/goodrelations/v1#> .
+    @prefix schema:  <http://schema.org/> .
+    @prefix org:     <http://www.w3.org/ns/org#> .
+    @prefix owl:     <http://www.w3.org/2002/07/owl#> .
+    @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+    @prefix ssso:    <http://purl.org/ontology/ssso#> .
+    @prefix vann:    <http://purl.org/vocab/vann/> .
+    @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+    @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
     @prefix service: <http://purl.org/ontology/service#> .
 
 The Holding Ontology is defined in RDF/Turtle as following:
@@ -56,7 +59,7 @@ The holding Ontology does not define classes on its own but makes usage of class
 
 [Item]: #item
 
-An **Item** is a particular copy of a bibliographic resource that is held by an [Agent]. Items are also referred to as holdings, but a holding can include more information about items, such as inventory and access. The Item class is defined by the [FRBR Ontology] without implying the rest of the FRBR model.
+An **Item** is a particular copy or exemplar of a document. The Item class is defined by the [FRBR Ontology].
 
     frbr:Item a owl:Class ;
         rdfs:label "Item"@en ;
@@ -90,7 +93,7 @@ Relates an [Item] to an [Agent] who holds the Item.
 
 [holds]: #holds
 
-Relates an [Agent] with an [Item] which the [Agent] holds.
+Relates an [Agent] to an [Item] which the [Agent] holds.
 
     holding:holds a owl:ObjectProperty ;
         rdfs:label "holds"@en ;
@@ -250,6 +253,7 @@ A **Location** is a point or area of interest from which a particular [Item] or 
 
     gr:Location a owl:Class ;
         rdfs:label "Location"@en ;
+        owl:equivalentClass schema:Place ;
         rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
 
 ## name
@@ -427,6 +431,8 @@ $alicecopies
 * [FRBR Ontology]
 * [GoodRelations]
 * [Organization Ontology]
+* [Service Ontology]
+* [Schema.org]
 
 [Bibliographic Ontology]: http://purl.org/ontology/bibo/
 [DAIA Ontology]: http://purl.org/ontology/daia
@@ -451,3 +457,4 @@ $alicecopies
 [Current]: http://purl.org/ontology/ecpo#Current
 [Closed]: http://purl.org/ontology/ecpo#Closed
 [Service Ontology]:  http://purl.org/ontology/service
+[Schema.org]: http://schema.org
