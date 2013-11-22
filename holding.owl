@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bibo="http://purl.org/ontology/bibo/" xmlns:daia="http://purl.org/ontology/daia/" xmlns:dct="http://purl.org/dc/terms/" xmlns:dso="http://purl.org/ontology/dso#" xmlns:ecpo="http://purl.org/ontology/ecpo#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:frbr="http://purl.org/vocab/frbr/core#" xmlns:gr="http://purl.org/goodrelations/v1#" xmlns:holding="http://example.org/#" xmlns:org="http://www.w3.org/ns/org#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:ssso="http://purl.org/ontology/ssso#" xmlns:vann="http://purl.org/vocab/vann/" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<rdf:RDF xmlns:bibo="http://purl.org/ontology/bibo/" xmlns:daia="http://purl.org/ontology/daia/" xmlns:dct="http://purl.org/dc/terms/" xmlns:dso="http://purl.org/ontology/dso#" xmlns:ecpo="http://purl.org/ontology/ecpo#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:frbr="http://purl.org/vocab/frbr/core#" xmlns:gr="http://purl.org/goodrelations/v1#" xmlns:holding="http://example.org/#" xmlns:org="http://www.w3.org/ns/org#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:schema="http://schema.org/" xmlns:service="http://purl.org/ontology/service#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:ssso="http://purl.org/ontology/ssso#" xmlns:vann="http://purl.org/vocab/vann/" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
   <rdf:Description rdf:about="http://example.org/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
   </rdf:Description>
@@ -34,7 +34,7 @@
     <rdfs:label xml:lang="en">held by</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#heldBy">
-    <rdfs:comment xml:lang="en">Relates an Item to an Agent that holds the Item.</rdfs:comment>
+    <rdfs:comment xml:lang="en">Relates an item to an agent who holds the item.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#heldBy">
     <rdfs:domain rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
@@ -55,7 +55,7 @@
     <rdfs:label xml:lang="en">holds</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#holds">
-    <rdfs:comment xml:lang="en">Relates an Agent to an Item which the Agent holds.</rdfs:comment>
+    <rdfs:comment xml:lang="en">Relates an agent to an item which the agent holds.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#holds">
     <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
@@ -198,74 +198,14 @@
   <rdf:Description rdf:about="http://purl.org/ontology/dso#DocumentService">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/dso"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Offering">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Offering">
-    <rdfs:label xml:lang="en">Offering</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Offering">
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="genid1">
-    <rdf:type rdf:resource="http://purl.org/ontology/dso#Presentation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Presentation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Presentation">
-    <rdf:type rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Presentation">
-    <rdfs:label xml:lang="en">Presentation</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Presentation">
-    <rdfs:comment xml:lang="en">offering for a presentation service</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Presentation">
-    <gr:includes rdf:nodeID="genid1"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="genid2">
-    <rdf:type rdf:resource="http://purl.org/ontology/dso#Loan"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Loan">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Loan">
-    <rdf:type rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Loan">
-    <rdfs:label xml:lang="en">Loan</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Loan">
-    <rdfs:comment xml:lang="en">offering for a loan service</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Loan">
-    <gr:includes rdf:nodeID="genid2"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="genid3">
-    <rdf:type rdf:resource="http://purl.org/ontology/dso#Interloan"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Interloan">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Interloan">
-    <rdf:type rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Interloan">
-    <rdfs:label xml:lang="en">Interloan</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Interloan">
-    <rdfs:comment xml:lang="en">offering for a interloan service</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#Interloan">
-    <gr:includes rdf:nodeID="genid3"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Location">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Location">
     <rdfs:label xml:lang="en">Location</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Location">
+    <owl:equivalentClass rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Location">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1"/>
@@ -279,14 +219,14 @@
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#name">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/daia/providedBy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  <rdf:Description rdf:about="http://purl.org/ontology/service#providedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/daia/providedBy">
-    <skos:scopeNote xml:lang="en">Used to relate an offering with an agent who provides the service offered.</skos:scopeNote>
+  <rdf:Description rdf:about="http://purl.org/ontology/service#providedBy">
+    <rdfs:label xml:lang="en">providedBy</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/daia/providedBy">
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/daia"/>
+  <rdf:Description rdf:about="http://purl.org/ontology/service#providedBy">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/service"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#availableAtOrFrom">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
@@ -302,6 +242,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#hasStockKeepingUnit">
     <skos:scopeNote xml:lang="en">Used to identify the item for which a document service is offered.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#hasStockKeepingUnit">
+    <owl:equivalentProperty rdf:resource="http://schema.org/sku"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#hasStockKeepingUnit">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1"/>

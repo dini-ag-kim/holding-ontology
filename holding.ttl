@@ -8,6 +8,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frbr: <http://purl.org/vocab/frbr/core#> .
 @prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix schema: <http://schema.org/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -15,35 +16,12 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix service: <http://purl.org/ontology/service#> .
 
 <http://example.org/>
     vann:preferredNamespacePrefix "holding" ;
     a owl:Ontology ;
     rdfs:label "Holding Ontology"@en .
-
-holding:Interloan
-    gr:includes [
-        a dso:Interloan
-    ] ;
-    a gr:Offering, owl:NamedIndividual ;
-    rdfs:comment "offering for a interloan service"@en ;
-    rdfs:label "Interloan"@en .
-
-holding:Loan
-    gr:includes [
-        a dso:Loan
-    ] ;
-    a gr:Offering, owl:NamedIndividual ;
-    rdfs:comment "offering for a loan service"@en ;
-    rdfs:label "Loan"@en .
-
-holding:Presentation
-    gr:includes [
-        a dso:Presentation
-    ] ;
-    a gr:Offering, owl:NamedIndividual ;
-    rdfs:comment "offering for a presentation service"@en ;
-    rdfs:label "Presentation"@en .
 
 holding:broaderExemplar
     a owl:ObjectProperty ;
@@ -79,7 +57,7 @@ holding:exemplarOf
 
 holding:heldBy
     a owl:ObjectProperty ;
-    rdfs:comment "Relates an Item to an Agent that holds the Item."@en ;
+    rdfs:comment "Relates an item to an agent who holds the item."@en ;
     rdfs:domain frbr:Item ;
     rdfs:label "held by"@en ;
     rdfs:range foaf:Agent ;
@@ -88,7 +66,7 @@ holding:heldBy
 
 holding:holds
     a owl:ObjectProperty ;
-    rdfs:comment "Relates an Agent to an Item which the Agent holds."@en ;
+    rdfs:comment "Relates an agent to an item which the agent holds."@en ;
     rdfs:domain foaf:Agent ;
     rdfs:label "holds"@en ;
     rdfs:range frbr:Item ;
@@ -122,12 +100,8 @@ holding:narrowerExemplarOf
 gr:Location
     a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    rdfs:label "Location"@en .
-
-gr:Offering
-    a owl:Class ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    rdfs:label "Offering"@en .
+    rdfs:label "Location"@en ;
+    owl:equivalentClass schema:Place .
 
 gr:availableAtOrFrom
     a owl:AnnotationProperty ;
@@ -137,6 +111,7 @@ gr:availableAtOrFrom
 gr:hasStockKeepingUnit
     a owl:AnnotationProperty ;
     rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    owl:equivalentProperty schema:sku ;
     skos:scopeNote "Used to identify the item for which a document service is offered."@en .
 
 gr:name
@@ -150,11 +125,6 @@ bibo:Document
     rdfs:label "Document"@en ;
     owl:equivalentClass foaf:Document .
 
-daia:providedBy
-    a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/ontology/daia> ;
-    skos:scopeNote "Used to relate an offering with an agent who provides the service offered."@en .
-
 dso:DocumentService
     a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/ontology/dso> ;
@@ -164,6 +134,11 @@ ecpo:Chronology
     a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/ontology/ecpo> ;
     rdfs:label "Chronology"@en .
+
+service:providedBy
+    a owl:ObjectProperty ;
+    rdfs:isDefinedBy <http://purl.org/ontology/service> ;
+    rdfs:label "providedBy"@en .
 
 frbr:Item
     a owl:Class ;
