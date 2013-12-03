@@ -49,7 +49,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 | Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)|
 |:---:|:---:|:---:|:---:|
-| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[inCollection]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] |
+| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] |
 
 # Core Relationships
 
@@ -100,14 +100,8 @@ Relates an [Agent] to an [Item] which the [Agent] holds.
         rdfs:comment "Relates an agent to an item which the agent holds."@en ;
         rdfs:domain foaf:Agent ;
         rdfs:range frbr:Item ;
-        rdfs:subPropertyOf holding:inCollection ;
         owl:inverseOf holding:heldBy .
 
-## inCollection
-
-[inCollection]: #incollection
-
-TODO
 
 ## Document
 
