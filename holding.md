@@ -230,6 +230,31 @@ Relates a Document to an Item that is an exemplar of a part of the Document.
 
 An [Item] may be available for a specific [DocumentService]. While an [Agent] provides a [DocumentService] for an [Item] this often implies an offer ([gr:Offering] and/or [schema:Offer]) to an unknown [Agent].
 
+Thus
+
+``` {.example}
+$alicecopies
+    daia:availableFor [
+        a dso:Presentation ;
+        gr:hasStockKeepingUnit "HB 17 Rg 500" ;
+        service:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
+    ] .
+```
+
+is a shortcut for
+
+``` {.example}
+<http://ld.zdb-services.de/resource/organisations/DE-1a>
+    gr:offers [
+        a gr:Offering ;
+        gr:hasBusinessFunction [
+            dso:Presentation;
+            gr:hasStockKeepingUnit "HB 17 Rg 500" ;
+        ] ;
+        gr:includes $alicecopies
+    ] .
+```
+
 ## DocumentService
 
 [DocumentService]: #documentservice
