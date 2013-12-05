@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bibo="http://purl.org/ontology/bibo/" xmlns:daia="http://purl.org/ontology/daia/" xmlns:dct="http://purl.org/dc/terms/" xmlns:dso="http://purl.org/ontology/dso#" xmlns:ecpo="http://purl.org/ontology/ecpo#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:frbr="http://purl.org/vocab/frbr/core#" xmlns:gr="http://purl.org/goodrelations/v1#" xmlns:holding="http://example.org/#" xmlns:org="http://www.w3.org/ns/org#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:schema="http://schema.org/" xmlns:service="http://purl.org/ontology/service#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:ssso="http://purl.org/ontology/ssso#" xmlns:vann="http://purl.org/vocab/vann/" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<rdf:RDF xmlns:bf="http://bibframe.org/vocab/" xmlns:bibo="http://purl.org/ontology/bibo/" xmlns:daia="http://purl.org/ontology/daia/" xmlns:dct="http://purl.org/dc/terms/" xmlns:dso="http://purl.org/ontology/dso#" xmlns:ecpo="http://purl.org/ontology/ecpo#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:frbr="http://purl.org/vocab/frbr/core#" xmlns:gr="http://purl.org/goodrelations/v1#" xmlns:holding="http://example.org/#" xmlns:org="http://www.w3.org/ns/org#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:schema="http://schema.org/" xmlns:service="http://purl.org/ontology/service#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:ssso="http://purl.org/ontology/ssso#" xmlns:vann="http://purl.org/vocab/vann/" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
   <rdf:Description rdf:about="http://example.org/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
   </rdf:Description>
@@ -18,6 +18,9 @@
   <rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Item">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/frbr/core"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Item">
+    <rdfs:seeAlso rdf:resource="http://bibframe.org/vocab/Instance"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
@@ -26,6 +29,24 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
     <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+    <rdfs:seeAlso rdf:resource="http://bibframe.org/vocab/Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
+    <owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
+    <rdfs:label xml:lang="en">Document</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/bibo/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
+    <rdfs:seeAlso rdf:resource="http://bibframe.org/vocab/Work"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#heldBy">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -64,22 +85,7 @@
     <rdfs:range rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#holds">
-    <rdfs:subPropertyOf rdf:resource="http://example.org/#inCollection"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/#holds">
     <owl:inverseOf rdf:resource="http://example.org/#heldBy"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
-    <owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
-    <rdfs:label xml:lang="en">Document</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/bibo/Document">
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/bibo/"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://example.org/#exemplar">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -220,10 +226,10 @@
     <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/service#providedBy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/service#providedBy">
-    <rdfs:label xml:lang="en">providedBy</rdfs:label>
+    <skos:scopeNote>Used to relate a document service with an agent who offered the service.</skos:scopeNote>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/service#providedBy">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/service"/>
@@ -244,7 +250,7 @@
     <skos:scopeNote xml:lang="en">Used to identify the item for which a document service is offered.</skos:scopeNote>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#hasStockKeepingUnit">
-    <owl:equivalentProperty rdf:resource="http://schema.org/sku"/>
+    <rdfs:seeAlso rdf:resource="http://schema.org/sku"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/goodrelations/v1#hasStockKeepingUnit">
     <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1"/>
