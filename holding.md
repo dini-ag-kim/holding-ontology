@@ -49,7 +49,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 | Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)|
 |:---:|:---:|:---:|:---:|
-| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[inCollection]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] |
+| [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] |
 
 # Core Relationships
 
@@ -100,14 +100,8 @@ Relates an [Agent] to an [Item] which the [Agent] holds.
         rdfs:comment "Relates an agent to an item which the agent holds."@en ;
         rdfs:domain foaf:Agent ;
         rdfs:range frbr:Item ;
-        rdfs:subPropertyOf holding:inCollection ;
         owl:inverseOf holding:heldBy .
 
-## inCollection
-
-[inCollection]: #incollection
-
-TODO
 
 ## Document
 
@@ -234,6 +228,33 @@ Relates a Document to an Item that is an exemplar of a part of the Document.
 
 `item-offering-relation.md`{.include}
 
+An [Item] may be available for a specific [DocumentService]. While an [Agent] provides a [DocumentService] for an [Item] this often implies an offer ([gr:Offering] and/or [schema:Offer]) to an unknown [Agent].
+
+Thus
+
+``` {.example}
+$alicecopies
+    daia:availableFor [
+        a dso:Presentation ;
+        gr:hasStockKeepingUnit "HB 17 Rg 500" ;
+        service:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
+    ] .
+```
+
+is a shortcut for
+
+``` {.example}
+<http://ld.zdb-services.de/resource/organisations/DE-1a>
+    gr:offers [
+        a gr:Offering ;
+        gr:hasBusinessFunction [
+            dso:Presentation;
+            gr:hasStockKeepingUnit "HB 17 Rg 500" ;
+        ] ;
+        gr:includes $alicecopies
+    ] .
+```
+
 ## DocumentService
 
 [DocumentService]: #documentservice
@@ -272,8 +293,8 @@ When a [DocumentService] is offered for an [Item], this property is used to name
 
 Used to relate a [DocumentService] with an [Agent] who offered the service. This property is defined by the the [Service Ontology].
 
-    service:providedBy a owl:ObjectProperty ;
-        rdfs:label "providedBy"@en ;
+    service:providedBy a owl:AnnotationProperty ;
+        skos:scopeNote "Used to relate a document service with an agent who offered the service." ;
         rdfs:isDefinedBy <http://purl.org/ontology/service> .
 
 ## availableAtOrFrom
@@ -294,7 +315,7 @@ This property is used as an identifier for the [Item] for which a [DocumentServi
 
     gr:hasStockKeepingUnit a owl:AnnotationProperty ;
         skos:scopeNote "Used to identify the item for which a document service is offered."@en ;
-        owl:equivalentProperty schema:sku ;
+        rdfs:seeAlso schema:sku ;
         rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
 
 ## siteOf
@@ -459,3 +480,5 @@ $alicecopies
 [Closed]: http://purl.org/ontology/ecpo#Closed
 [Service Ontology]:  http://purl.org/ontology/service
 [Schema.org]: http://schema.org
+[schema:Offer]: http://schema.org/Offer
+[gr:Offering]: http://purl.org/goodrelations/v1#Offering
