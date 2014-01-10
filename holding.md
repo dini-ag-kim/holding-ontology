@@ -12,16 +12,18 @@ resources.
 
 ## Namespaces and Ontology
 
-The URI namespace of this ontology is ... The namespace prefix `holding` is recommeded.
-The URI of this ontology as a whole is ...
+The URI namespace of this ontology is `http://purl.org/ontology/holding#`. The
+namespace prefix `holding` is recommeded.  The URI of this ontology as a whole
+is <http://purl.org/ontology/holding>.
 
-    @prefix holding: <http://example.org/#> .
-    @base            <http://example.org/> .
+    @prefix holding: <http://purl.org/ontology/holding#> .
+    @base            <http://purl.org/ontology/holding> .
 
 The following namspace prefixes are used to refer to related ontologies:
 
     @prefix bf:      <http://bibframe.org/vocab/> .
     @prefix bibo:    <http://purl.org/ontology/bibo/> .
+    @prefix cc:      <http://creativecommons.org/ns#> .
     @prefix daia:    <http://purl.org/ontology/daia/> .
     @prefix dct:     <http://purl.org/dc/terms/> .
     @prefix dso:     <http://purl.org/ontology/dso#> .
@@ -43,8 +45,15 @@ The following namspace prefixes are used to refer to related ontologies:
 The Holding Ontology is defined in RDF/Turtle as following:
 
     <> a owl:Ontology ;
+        dct:title "Holding Ontology"@en ;
         rdfs:label "Holding Ontology"@en ;
-        vann:preferredNamespacePrefix "holding" .
+        vann:preferredNamespacePrefix "holding" ;
+        vann:preferredNamespaceUri "http://purl.org/ontology/holding#" ;
+        dct:modified "{GIT_REVISION_DATE}"^^xsd:date ;
+        owl:versionInfo "{VERSION}" ;
+        cc:license <http://creativecommons.org/licenses/by/3.0/> ;
+        dct:creator "Carsten Klee", "Jakob Voß" 
+    .
 
 # Overview
 
