@@ -1,7 +1,8 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix holding: <http://example.org/#> .
+@prefix holding: <http://purl.org/ontology/holding#> .
 @prefix bf: <http://bibframe.org/vocab/> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix cc: <http://creativecommons.org/ns#> .
 @prefix daia: <http://purl.org/ontology/daia/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix dso: <http://purl.org/ontology/dso#> .
@@ -19,10 +20,55 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.org/>
+gr:Location
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    rdfs:label "Location"@en ;
+    owl:equivalentClass schema:Place .
+
+gr:availableAtOrFrom
+    a owl:AnnotationProperty ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    skos:scopeNote "Used to relate a document service offered for an item with a location."@en .
+
+gr:hasStockKeepingUnit
+    a owl:AnnotationProperty ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    rdfs:seeAlso schema:sku ;
+    skos:scopeNote "Used to identify the item for which a document service is offered."@en .
+
+gr:name
+    a owl:AnnotationProperty ;
+    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+    skos:scopeNote "When a document service is offered for an item, this property is used to name the location where the document service should be provided."@en .
+
+bibo:Document
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/ontology/bibo/> ;
+    rdfs:label "Document"@en ;
+    rdfs:seeAlso bf:Work ;
+    owl:equivalentClass foaf:Document .
+
+dso:DocumentService
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/ontology/dso> ;
+    rdfs:label "DocumentService" .
+
+ecpo:Chronology
+    a owl:Class ;
+    rdfs:isDefinedBy <http://purl.org/ontology/ecpo> ;
+    rdfs:label "Chronology"@en .
+
+<http://purl.org/ontology/holding>
+    cc:license <http://creativecommons.org/licenses/by/3.0/> ;
+    dct:creator "Carsten Klee", "Jakob Voß" ;
+    dct:modified "2014-01-10"^^xsd:date ;
+    dct:title "Holding Ontology"@en ;
     vann:preferredNamespacePrefix "holding" ;
+    vann:preferredNamespaceUri "http://purl.org/ontology/holding#" ;
     a owl:Ontology ;
-    rdfs:label "Holding Ontology"@en .
+    rdfs:label "Holding Ontology"@en ;
+    owl:versionInfo "0.1.2" .
 
 holding:broaderExemplar
     a owl:ObjectProperty ;
@@ -96,45 +142,6 @@ holding:narrowerExemplarOf
     rdfs:label "narrower exemplar of"@en ;
     rdfs:range frbr:Item ;
     owl:inverseOf holding:narrowerExemplar .
-
-gr:Location
-    a owl:Class ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    rdfs:label "Location"@en ;
-    owl:equivalentClass schema:Place .
-
-gr:availableAtOrFrom
-    a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    skos:scopeNote "Used to relate a document service offered for an item with a location."@en .
-
-gr:hasStockKeepingUnit
-    a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    rdfs:seeAlso schema:sku ;
-    skos:scopeNote "Used to identify the item for which a document service is offered."@en .
-
-gr:name
-    a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    skos:scopeNote "When a document service is offered for an item, this property is used to name the location where the document service should be provided."@en .
-
-bibo:Document
-    a owl:Class ;
-    rdfs:isDefinedBy <http://purl.org/ontology/bibo/> ;
-    rdfs:label "Document"@en ;
-    rdfs:seeAlso bf:Work ;
-    owl:equivalentClass foaf:Document .
-
-dso:DocumentService
-    a owl:Class ;
-    rdfs:isDefinedBy <http://purl.org/ontology/dso> ;
-    rdfs:label "DocumentService" .
-
-ecpo:Chronology
-    a owl:Class ;
-    rdfs:isDefinedBy <http://purl.org/ontology/ecpo> ;
-    rdfs:label "Chronology"@en .
 
 service:providedBy
     a owl:AnnotationProperty ;
