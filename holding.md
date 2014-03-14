@@ -33,6 +33,7 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix gr:      <http://purl.org/goodrelations/v1#> .
     @prefix org:     <http://www.w3.org/ns/org#> .
     @prefix owl:     <http://www.w3.org/2002/07/owl#> .
+    @prefix rdac:    <http://rdaregistry.info/Elements/c/> .
     @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
     @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
     @prefix schema:  <http://schema.org/> .
@@ -69,20 +70,24 @@ used onotologies.
 
 ## Item
 
-An **Item** is a particular copy or exemplar of a document. The holding
-ontology recommends to use class [frbr:Item] as defined by the [FRBR Ontology].
-Items may further be instances of class [bf:Instance] from the [Bibframe
-Vocabulary].
+[Item]: #item
 
-    frbr:Item a owl:Class ;
+An **Item** is a particular copy or exemplar of a document. The holding
+ontology recommends to either use class [bf:HeldItem] from the [Bibframe
+Vocabulary], class [frbr:Item] from the [FRBR Ontology] or class [rdac:Item] from the [RDA Classes] vocabulary.
+
+    holding:Item a owl:Class ;
         rdfs:label "Item"@en ;
-        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> ;
-        rdfs:seeAlso bf:Instance .
+        rdfs:comment "Use one of bf:HeldItem frbr:Item rdac:Item"@en ;
+        owl:unionOf (bf:HeldItem frbr:Item rdac:Item) .
 
 [frbr:Item]: http://purl.org/vocab/frbr/core#Item
-[bf:Instance]: http://bibframe.org/vocab/Instance
+[rdac:Item]: http://rdaregistry.info/Elements/c/Item
+[bf:HeldItem]: http://bibframe.org/vocab/HeldItem
 
 ## Agent
+
+[Agent]: #agent
 
 An **Agent** is a person, organization, group or any other entity that can held
 items and provide services.  The holding ontology recommends to use class
@@ -99,6 +104,8 @@ instances of class [bf:Agent] from the [Bibframe Vocabulary].
 
 ## Document
 
+[Document]: #document
+
 A **Document** is a body of information used designed with the capacity (and
 usually intent) to communicate.  A document may manifest symbolic, diagrammatic
 or sensory-representational information.  Documents may include both abstract
@@ -106,7 +113,7 @@ works, such as "Romeo and Juliet", and more conrete entities, such as a
 specific edition of a book. The holding ontology recommends to use class
 [bibo:Document] as defined in the [Bibliographic Ontology] (equivalent to class
 [foaf:Document] as defined in the [FOAF Ontology]). Some documents may further
-be instances of [bf:Work] from the [Bibframe Vocabulary]. Some documents may
+be instances of [bf:Work] or [bf:Instance] from the [Bibframe Vocabulary]. Some documents may
 also be items ([Document] and [Item] are not disjoint).
 
     bibo:Document a owl:Class ;
@@ -118,6 +125,7 @@ also be items ([Document] and [Item] are not disjoint).
 [bibo:Document]: http://purl.org/ontology/bibo/Document
 [foaf:Document]: http://xmlns.com/foaf/0.1/Document
 [bf:Work]: http://bibframe.org/vocab/Work
+[bf:Instance]: http://bibframe.org/vocab/Insatance
 
 In the context of this ontology when talking about documents several kinds of documents are involved:
 
@@ -134,17 +142,21 @@ The reltions between an [Item] and different kinds of document is shown in this 
 
 ## heldBy
 
+[heldBy]: #heldby
+
 Relates an [Item] to an [Agent] who holds the Item.
 
     holding:heldBy a owl:ObjectProperty ;
         rdfs:label "held by"@en ;
         rdfs:comment "Relates an item to an agent who holds the item."@en ;
-        rdfs:domain frbr:Item ;
+        rdfs:domain holding:Item ;
         rdfs:range foaf:Agent ;
         owl:inverseOf holding:holds ;
         rdfs:subPropertyOf holding:collectedBy .
 
 ## holds
+
+[holds]: #holds
 
 Relates an [Agent] to an [Item] which the [Agent] holds.
 
@@ -152,7 +164,7 @@ Relates an [Agent] to an [Item] which the [Agent] holds.
         rdfs:label "holds"@en ;
         rdfs:comment "Relates an agent to an item which the agent holds."@en ;
         rdfs:domain foaf:Agent ;
-        rdfs:range frbr:Item ;
+        rdfs:range holding:Item ;
         owl:inverseOf holding:heldBy .
 
 
@@ -186,8 +198,8 @@ identfied as other documents, one should better use property [narrowerExemplar].
     holding:exemplar a owl:ObjectProperty ;
         rdfs:label "has exemplar"@en ;
         rdfs:comment "Relates a Document to an Item that is an exemplar of the Document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation."@en ;
-        rdfs:domain bibo:Document ;        
-        rdfs:range frbr:Item ;
+        rdfs:domain bibo:Document ;
+        rdfs:range holding:Item ;
         owl:inverseOf holding:exemplarOf .
 
 ## exemplarOf
@@ -199,7 +211,7 @@ Relates an Item to the Document that is exemplified by the Item.
     holding:exemplarOf a owl:ObjectProperty ;
         rdfs:label "is examplar of"@en ;
         rdfs:comment "Relates an Item to the Document that is exemplified by the Item."@en ;
-        rdfs:domain frbr:Item ;
+        rdfs:domain holding:Item ;
         rdfs:range bibo:Document ;
         owl:inverseOf holding:exemplar .
 
@@ -213,7 +225,7 @@ Relates a Document to an Item that contains an exemplar of the Document as part.
         rdfs:label "broader exemplar"@en ;
         rdfs:comment "Relates a Document to an Item that contains an exemplar of the Document as part."@en ;
         rdfs:domain bibo:Document ;
-        rdfs:range frbr:Item ;
+        rdfs:range holding:Item ;
         owl:inverseOf holding:broaderExemplarOf .
     
 
@@ -226,7 +238,7 @@ Relates an Item to a Document which is partly exemplified by the Item.
     holding:broaderExemplarOf a owl:ObjectProperty ;
         rdfs:label "broader exemplar of"@en ;
         rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
-        rdfs:domain frbr:Item ;
+        rdfs:domain holding:Item ;
         rdfs:range bibo:Document ;
         owl:inverseOf holding:broaderExemplar .
 
@@ -239,7 +251,7 @@ Relates an Item to a Document which is partly exemplified by the Item.
     holding:narrowerExemplar a owl:ObjectProperty ;
         rdfs:label "narrower exemplar"@en ;
         rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en ;
-        rdfs:domain frbr:Item ;
+        rdfs:domain holding:Item ;
         rdfs:range bibo:Document ;
         owl:inverseOf holding:narrowerExemplarOf .
 
@@ -253,7 +265,7 @@ Relates a Document to an Item that is an exemplar of a part of the Document.
         rdfs:label "narrower exemplar of"@en ;
         rdfs:comment "Relates a Document to an Item that is an exemplar of a part of the Document."@en ;
         rdfs:domain bibo:Document ;
-        rdfs:range frbr:Item ;
+        rdfs:range holding:Item ;
         owl:inverseOf holding:narrowerExemplar .
 
 # Relation between Items and Services
@@ -381,7 +393,7 @@ A call number, shelf mark or similar label of an item
     holding:label a owl:DatatypeProperty ;
         rdfs:label "label"@en ;
         rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
-        rdfs:domain frbr:Item ;
+        rdfs:domain holding:Item ;
         rdfs:range rdfs:Literal ;
         rdfs:subPropertyOf dct:identifier .
         
@@ -488,6 +500,7 @@ $alicecopies
 * [Service Ontology]
 * [Schema.org]
 * [Bibframe Vocabulary]
+* [RDA Classes]
 
 [Bibframe Vocabulary]: http://bibframe.org/
 [Bibliographic Ontology]: http://purl.org/ontology/bibo/
@@ -516,3 +529,4 @@ $alicecopies
 [Schema.org]: http://schema.org
 [schema:Offer]: http://schema.org/Offer
 [gr:Offering]: http://purl.org/goodrelations/v1#Offering
+[RDA Classes]: http://rdaregistry.info/Elements/c/
