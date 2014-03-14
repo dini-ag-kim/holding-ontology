@@ -117,7 +117,7 @@ also be items ([Document] and [Item] are not disjoint).
 
     holding:Document a owl:Class ;
         rdfs:label "Document"@en ;
-        rdfs:comment "Use one of bf:Agent or foaf:Agent"@en ;
+        rdfs:comment "Use one of bibo:Document, foaf:Document, bf:Work or bf:Instance"@en ;
         owl:unionOf (bibo:Document foaf:Document bf:Work bf:Instance) .
 
 [bibo:Document]: http://purl.org/ontology/bibo/Document
