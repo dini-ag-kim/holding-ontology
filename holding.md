@@ -12,15 +12,18 @@ resources.
 
 ## Namespaces and Ontology
 
-The URI namespace of this ontology is ... The namespace prefix `holding` is recommeded.
-The URI of this ontology as a whole is ...
+The URI namespace of this ontology is `http://purl.org/ontology/holding#`. The
+namespace prefix `holding` is recommeded.  The URI of this ontology as a whole
+is <http://purl.org/ontology/holding>.
 
-    @prefix holding: <http://example.org/#> .
-    @base            <http://example.org/> .
+    @prefix holding: <http://purl.org/ontology/holding#> .
+    @base            <http://purl.org/ontology/holding> .
 
 The following namspace prefixes are used to refer to related ontologies:
 
+    @prefix bf:      <http://bibframe.org/vocab/> .
     @prefix bibo:    <http://purl.org/ontology/bibo/> .
+    @prefix cc:      <http://creativecommons.org/ns#> .
     @prefix daia:    <http://purl.org/ontology/daia/> .
     @prefix dct:     <http://purl.org/dc/terms/> .
     @prefix dso:     <http://purl.org/ontology/dso#> .
@@ -28,22 +31,29 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
     @prefix frbr:    <http://purl.org/vocab/frbr/core#> .
     @prefix gr:      <http://purl.org/goodrelations/v1#> .
-    @prefix schema:  <http://schema.org/> .
     @prefix org:     <http://www.w3.org/ns/org#> .
     @prefix owl:     <http://www.w3.org/2002/07/owl#> .
+    @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
     @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+    @prefix schema:  <http://schema.org/> .
+    @prefix service: <http://purl.org/ontology/service#> .
+    @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
     @prefix ssso:    <http://purl.org/ontology/ssso#> .
     @prefix vann:    <http://purl.org/vocab/vann/> .
-    @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
     @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
-    @prefix service: <http://purl.org/ontology/service#> .
 
 The Holding Ontology is defined in RDF/Turtle as following:
 
     <> a owl:Ontology ;
+        dct:title "Holding Ontology"@en ;
         rdfs:label "Holding Ontology"@en ;
-        vann:preferredNamespacePrefix "holding" .
+        vann:preferredNamespacePrefix "holding" ;
+        vann:preferredNamespaceUri "http://purl.org/ontology/holding#" ;
+        dct:modified "{GIT_REVISION_DATE}"^^xsd:date ;
+        owl:versionInfo "{VERSION}" ;
+        cc:license <http://creativecommons.org/licenses/by/3.0/> ;
+        dct:creator "Carsten Klee", "Jakob Voß" 
+    .
 
 # Overview
 
@@ -51,33 +61,78 @@ The Holding Ontology is defined in RDF/Turtle as following:
 |:---:|:---:|:---:|:---:|
 | [Item]<br>[Agent]<br>[Document]<br>[DocumentService]<br>[Location]<br>[Chronology]| [heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] |
 
-# Core Relationships
+# Core Classes
 
-The holding Ontology does not define classes on its own but makes usage of classes defined in other Ontologies. See [Informative References] for references to the used onotologies.
+The holding Ontology does not define classes on its own but makes usage of
+classes defined in other Ontologies. See [References] for references to the
+used onotologies.
 
 ## Item
 
-[Item]: #item
-
-An **Item** is a particular copy or exemplar of a document. The Item class is defined by the [FRBR Ontology].
+An **Item** is a particular copy or exemplar of a document. The holding
+ontology recommends to use class [frbr:Item] as defined by the [FRBR Ontology].
+Items may further be instances of class [bf:Instance] from the [Bibframe
+Vocabulary].
 
     frbr:Item a owl:Class ;
         rdfs:label "Item"@en ;
-        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> .
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> ;
+        rdfs:seeAlso bf:Instance .
+
+[frbr:Item]: http://purl.org/vocab/frbr/core#Item
+[bf:Instance]: http://bibframe.org/vocab/Instance
 
 ## Agent
 
-[Agent]: #agent
-
-An **Agent** is a person, organization, group or any other entity that can held items and provide services. The Agent class is defined by the [FOAF Ontology].
+An **Agent** is a person, organization, group or any other entity that can held
+items and provide services.  The holding ontology recommends to use class
+[foaf:Agent] as defined by the [FOAF Ontology].  Agents may further be
+instances of class [bf:Agent] from the [Bibframe Vocabulary].
 
     foaf:Agent a owl:Class ;
         rdfs:label "Agent"@en ;
-        rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+        rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
+        rdfs:seeAlso bf:Agent .
+
+[foaf:Agent]: http://xmlns.com/foaf/0.1/Agent
+[bf:Agent]: http://bibframe.org/vocab/Agent
+
+## Document
+
+A **Document** is a body of information used designed with the capacity (and
+usually intent) to communicate.  A document may manifest symbolic, diagrammatic
+or sensory-representational information.  Documents may include both abstract
+works, such as "Romeo and Juliet", and more conrete entities, such as a
+specific edition of a book. The holding ontology recommends to use class
+[bibo:Document] as defined in the [Bibliographic Ontology] (equivalent to class
+[foaf:Document] as defined in the [FOAF Ontology]). Some documents may further
+be instances of [bf:Work] from the [Bibframe Vocabulary]. Some documents may
+also be items ([Document] and [Item] are not disjoint).
+
+    bibo:Document a owl:Class ;
+        owl:equivalentClass foaf:Document ;
+        rdfs:label "Document"@en ;
+        rdfs:isDefinedBy <http://purl.org/ontology/bibo/> ;
+        rdfs:seeAlso bf:Work .
+
+[bibo:Document]: http://purl.org/ontology/bibo/Document
+[foaf:Document]: http://xmlns.com/foaf/0.1/Document
+[bf:Work]: http://bibframe.org/vocab/Work
+
+In the context of this ontology when talking about documents several kinds of documents are involved:
+
+* the abstract document
+* the document describing the title
+* the document describing the holdings
+* document as a website 
+
+The reltions between an [Item] and different kinds of document is shown in this diagram:
+
+`item-description-relation.md`{.include}
+
+# Holding Relationships
 
 ## heldBy
-
-[heldby]: #heldby
 
 Relates an [Item] to an [Agent] who holds the Item.
 
@@ -91,8 +146,6 @@ Relates an [Item] to an [Agent] who holds the Item.
 
 ## holds
 
-[holds]: #holds
-
 Relates an [Agent] to an [Item] which the [Agent] holds.
 
     holding:holds a owl:ObjectProperty ;
@@ -103,27 +156,6 @@ Relates an [Agent] to an [Item] which the [Agent] holds.
         owl:inverseOf holding:heldBy .
 
 
-## Document
-
-[Document]: #document
-
-A **Document** is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information. Documents may include both abstract works, such as "Romeo and Juliet", and more conrete entities, such as a specific edition of a book.
-
-    bibo:Document a owl:Class ;
-        owl:equivalentClass foaf:Document ;
-        rdfs:label "Document"@en ;
-        rdfs:isDefinedBy <http://purl.org/ontology/bibo/> .
-
-In the context of this ontology when talking about documents several kinds of documents are involved:
-
-* the abstract document
-* the document describing the title
-* the document describing the holdings
-* document as a website 
-
-The reltions between an [Item] and different kinds of document is shown in this diagram:
-
-`item-description-relation.md`{.include}
 
 # Relations between abstract Documents and Items
 
@@ -455,7 +487,9 @@ $alicecopies
 * [Organization Ontology]
 * [Service Ontology]
 * [Schema.org]
+* [Bibframe Vocabulary]
 
+[Bibframe Vocabulary]: http://bibframe.org/
 [Bibliographic Ontology]: http://purl.org/ontology/bibo/
 [DAIA Ontology]: http://purl.org/ontology/daia
 [DCMI Metadata Terms]: http://dublincore.org/documents/dcmi-terms/
