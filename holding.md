@@ -60,7 +60,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 | Classes<br>(defined by this ontology)| Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)|
 |:---:|:---:|:---:|:---:|
-| [Item]<br>[Agent]| [Document]<br>[DocumentService]<br>[Location]<br>[Chronology]| [collectedBy]<br>[heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] |
+| [Item]<br>[Agent]<br>[Document]| [DocumentService]<br>[Location]<br>[Chronology]| [collectedBy]<br>[heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [availableFor]<br>[unavailableFor]<br>[providedBy]<br>[hasChronology]<br>[hasChronologyGap]<br>[availableAtOrFrom]<br>[hasStockKeepingUnit]<br>[siteOf]<br>[name] |
 
 # Core Classes
 
