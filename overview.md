@@ -2,10 +2,9 @@
 
 ## Relations between Documents, Items, Places, Services and Agents
 ``` {.ditaa}
-
    +------------------+                   +----------------------+
    |                  +----org:siteOf---->|                      +-----------------------------------+
-   |   gr:Location    |                   |       foaf:Agent     |                                   |
+   |     Location     |                   |         Agent        |                                   |
    |                  |<---gr:hasPOS------|      (provider)      |                                 holds
    +------------------+                   |                      |<--------heldBy--------------+     |
             ^                             +------------------+---+                             |     |
@@ -17,7 +16,7 @@
             |                                 |              v         daia:availableFor /     |     v
             |                            +----+--------------------+  daia:unavailableFor   +--+----------+
             +----------------------------+                         |<-----------------------+             |<----------------------+
-        +--------------------------------+   dso:DocumentService   |                        |  frbr:Item  |                       |
+        +--------------------------------+   dso:DocumentService   |                        |     Item    |                       |
         |                +-------------->|                         +----------------------->|             +------+             exemplar
         |                |               +----------------+--------+    daia:availableOf /  +-------------+      |            broaderExemplar
         |                |                    ^           |    ^        daia:unavailableOf                   exemplarOf       narrowerExemplar
@@ -25,10 +24,10 @@
    service:limitedBy service:limits    service:consumes   |    +---------dso:hasService---------------+    narrowerExemplarOf     |
         |                |                    |           |                                  +--------+------+   |                |
         |                |                    |  service:consumedBy                          |               |<--+                |
-        v                |                    |           |                                  | bibo:Document |                    |
+        v                |                    |           |                                  |    Document   |                    |
    +---------------------+-----+              |           v                                  |               +--------------------+
    |                           |           +--+-----------+----+                             +---------------+
-   | service:ServiceLimitation |           |     foaf:Agent    |
+   | service:ServiceLimitation |           |        Agent      |
    |                           |           |     (consumer)    |
    +---------------------------+           +-------------------+
 ```

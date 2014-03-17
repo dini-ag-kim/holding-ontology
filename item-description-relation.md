@@ -1,7 +1,7 @@
 ``` {.ditaa}
         +---------------------+                 +---------------+                 +-----------+
         |      Document       |<---exemplarOf---+               +----foaf:page--->| Document  |
-        |     (abstract)      |                 |   frbr:Item   |                 | (Website) |
+        |     (abstract)      |                 |      Item     |                 | (Website) |
         |                     |-----exemplar--->|               |<---foaf:topic---+           |
         +------------------+--+                 +-------------+-+                 +-----------+
           ^                |                      ^           |
