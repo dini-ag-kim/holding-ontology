@@ -90,15 +90,16 @@ ontology recommends to either use class [bf:HeldItem] from the [Bibframe Vocabul
 
 An **Agent** is a person, organization, group or any other entity that can held
 items and provide services. The holding ontology recommends to either use class
-[foaf:Agent] from the [FOAF Ontology] or class [bf:Agent] from the [Bibframe Vocabulary].
+[foaf:Agent] from the [FOAF Ontology], class [bf:Agent] from the [Bibframe Vocabulary] or [schema:Organization] from [Schema.org].
 
     holding:Agent a owl:Class ;
         rdfs:label "Agent"@en ;
         rdfs:comment "Use one of bf:Agent or foaf:Agent"@en ;
-        owl:unionOf (bf:Agent foaf:Agent) .
+        owl:unionOf (bf:Agent foaf:Agent schema:Organization) .
 
 [foaf:Agent]: http://xmlns.com/foaf/0.1/Agent
 [bf:Agent]: http://bibframe.org/vocab/Agent
+[schema:Organization]: http://schema.org/Organization
 
 ## Document
 
@@ -112,7 +113,7 @@ specific edition of a book.
 
 The holding ontology recommends to either use class
 [bibo:Document] from the [Bibliographic Ontology], class
-[foaf:Document] from the [FOAF Ontology], class [bf:Work] or [bf:Instance] from the [Bibframe Vocabulary]. Some documents may
+[foaf:Document] from the [FOAF Ontology], class [bf:Work] or [bf:Instance] from the [Bibframe Vocabulary] or [schema:CreativeWork] from [Schema.org]. Some documents may
 also be items ([Document] and [Item] are not disjoint).
 
     holding:Document a owl:Class ;
@@ -124,6 +125,7 @@ also be items ([Document] and [Item] are not disjoint).
 [foaf:Document]: http://xmlns.com/foaf/0.1/Document
 [bf:Work]: http://bibframe.org/vocab/Work
 [bf:Instance]: http://bibframe.org/vocab/Instance
+[schema:CreativeWork]: http://schema.org/CreativeWork
 
 In the context of this ontology when talking about documents several kinds of documents are involved:
 
