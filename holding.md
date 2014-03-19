@@ -118,7 +118,7 @@ also be items ([Document] and [Item] are not disjoint).
     holding:Document a owl:Class ;
         rdfs:label "Document"@en ;
         rdfs:comment "Use one of bibo:Document, foaf:Document, bf:Work or bf:Instance"@en ;
-        owl:unionOf (bibo:Document foaf:Document bf:Work bf:Instance) .
+        owl:unionOf (bibo:Document foaf:Document bf:Work bf:Instance schema:CreativeWork) .
 
 [bibo:Document]: http://purl.org/ontology/bibo/Document
 [foaf:Document]: http://xmlns.com/foaf/0.1/Document
@@ -407,6 +407,7 @@ A call number, shelf mark or similar label of an item
         rdfs:domain holding:Item ;
         rdfs:range rdfs:Literal ;
         rdfs:seeAlso bf:label ;
+        rdfs:seeAlso bf:shelfMark ;
         rdfs:subPropertyOf dct:identifier .
         
 
@@ -427,7 +428,7 @@ $volume2 a bibo:Book ; bibo:volume "2" .
 $volume3 a bibo:Book ; bibo:volume "3" .
 
 # One chapter in Volume 1
-$chapter3 a holding:Document ;
+$chapter3 a bibo:Document ;
     dcterms:isPartOf $volume1 .
 
 # A copy of the full series
