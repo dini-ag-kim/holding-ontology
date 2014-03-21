@@ -147,7 +147,7 @@ The reltions between an [Item] and different kinds of document is shown in this 
 Relates an [Item] to an [Agent] who collected the item.
 
     holding:collectedBy a owl:ObjectProperty ;
-        rdfs:label "held by"@en ;
+        rdfs:label "collected by"@en ;
         rdfs:comment "Relates an item to an agent who holds the item."@en ;
         rdfs:domain holding:Item ;
         rdfs:range holding:Agent ;
