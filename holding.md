@@ -347,9 +347,9 @@ a library) and an optional service consumer (e.g. a library patron). Both servic
         rdfs:label "DocumentService" ;
         rdfs:isDefinedBy <http://purl.org/ontology/dso> .
 
-To relate a [Document] to a DocumentService one should use the properties [dso:hasService], [daia:availableFor] or  [daia:unavailableFor].
+To relate an [Item] to a DocumentService one should use the properties [dso:hasService], [daia:availableFor] or  [daia:unavailableFor].
 
-To relate a DocumentService to a [Document] one should use the properties [dso:hasDocument], [daia:availableOf] or  [daia:unavailableOf].
+To relate a DocumentService to an [Item] one should use the properties [dso:hasDocument], [daia:availableOf] or  [daia:unavailableOf].
 
 
 [dso:hasService]: http://purl.org/ontology/dso#hasService
