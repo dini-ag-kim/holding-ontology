@@ -7,10 +7,9 @@ development git for holding ontology
 
 ## Relations between Documents, Items, Places, Services and Agents
 ``` {.ditaa}
-
    +------------------+                   +----------------------+
    |                  +----org:siteOf---->|                      +-----------------------------------+
-   |   gr:Location    |                   |       foaf:Agent     |                                   |
+   |     Location     |                   |         Agent        |                                   |
    |                  |<---gr:hasPOS------|      (provider)      |                                 holds
    +------------------+                   |                      |<--------heldBy--------------+     |
             ^                             +------------------+---+                             |     |
@@ -18,22 +17,22 @@ development git for holding ontology
             |                                 |       service:provides                         |     |
             |                                 |              |                                 |     |
    gr:availableAtorFrom             service:providedBy       |                                 |     |
-            |                                 |              |                                 |     |
+            |                                 |              |          dso:hasService /       |     |
             |                                 |              v         daia:availableFor /     |     v
             |                            +----+--------------------+  daia:unavailableFor   +--+----------+
             +----------------------------+                         |<-----------------------+             |<----------------------+
-        +--------------------------------+   dso:DocumentService   |                        |  frbr:Item  |                       |
+        +--------------------------------+         Service         |                        |     Item    |                       |
         |                +-------------->|                         +----------------------->|             +------+             exemplar
         |                |               +----------------+--------+    daia:availableOf /  +-------------+      |            broaderExemplar
-        |                |                    ^           |    ^        daia:unavailableOf                   exemplarOf       narrowerExemplar
-        |                |                    |           |    |                                            broaderExemplarOf     |
-   service:limitedBy service:limits    service:consumes   |    +---------dso:hasService---------------+    narrowerExemplarOf     |
-        |                |                    |           |                                  +--------+------+   |                |
+        |                |                    ^           |             daia:unavailableOf /                 exemplarOf       narrowerExemplar
+        |                |                    |           |             dso:hasDocument                     broaderExemplarOf     |
+   service:limitedBy service:limits    service:consumes   |                                                narrowerExemplarOf     |
+        |                |                    |           |                                  +---------------+   |                |
         |                |                    |  service:consumedBy                          |               |<--+                |
-        v                |                    |           |                                  | bibo:Document |                    |
+        v                |                    |           |                                  |    Document   |                    |
    +---------------------+-----+              |           v                                  |               +--------------------+
    |                           |           +--+-----------+----+                             +---------------+
-   | service:ServiceLimitation |           |     foaf:Agent    |
+   |     ServiceLimitation     |           |        Agent      |
    |                           |           |     (consumer)    |
    +---------------------------+           +-------------------+
 ```
