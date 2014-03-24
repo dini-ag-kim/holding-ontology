@@ -54,8 +54,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
         dct:modified "{GIT_REVISION_DATE}"^^xsd:date ;
         owl:versionInfo "{VERSION}" ;
         cc:license <http://creativecommons.org/licenses/by/3.0/> ;
-        dct:creator "Carsten Klee", "Jakob Voß" 
-    .
+        dct:creator "Carsten Klee", "Jakob Voß" .
 
 # Overview
 
@@ -414,7 +413,7 @@ To relate an [Item] to a Chronology use [ecpo:hasChronology] or [ecpo:hasChronol
 
 # The series is a document, consisting of multiple volumes
 $series a bibo:Periodical 
-    dcterms:hasPart $volume1, $volume2, $volume3 .
+    dct:hasPart $volume1, $volume2, $volume3 .
 
 $volume1 a bibo:Book ; bibo:volume "1" .
 $volume2 a bibo:Book ; bibo:volume "2" .
@@ -422,7 +421,7 @@ $volume3 a bibo:Book ; bibo:volume "3" .
 
 # One chapter in Volume 1
 $chapter3 a bibo:Document ;
-    dcterms:isPartOf $volume1 .
+    dct:isPartOf $volume1 .
 
 # A copy of the full series
 $librarycopies 
@@ -447,7 +446,7 @@ $librarycopyofvolume1
 $alicecopies 
     holding:exemplarOf $series ;  
         # alteratively: holdings:narrowerExemplarOf $series
-    dcterms:hasPart $volume2, $volume3
+    dct:hasPart $volume2, $volume3
     holding:heldBy $alice ;
     ecpo:hasChronology [
         a ecpo:CurrentChronology ;
