@@ -90,15 +90,16 @@ ontology recommends to either use class [bf:HeldItem] from the [Bibframe Vocabul
 
 An **Agent** is a person, organization, group or any other entity that can held
 items and provide services. The holding ontology recommends to either use class
-[foaf:Agent] from the [FOAF Ontology] or class [bf:Agent] from the [Bibframe Vocabulary].
+[foaf:Agent] from the [FOAF Ontology], class [bf:Agent] from the [Bibframe Vocabulary] or [schema:Organization] from [Schema.org].
 
     holding:Agent a owl:Class ;
         rdfs:label "Agent"@en ;
         rdfs:comment "Use one of bf:Agent or foaf:Agent"@en ;
-        owl:unionOf (bf:Agent foaf:Agent) .
+        owl:unionOf (bf:Agent foaf:Agent schema:Organization) .
 
 [foaf:Agent]: http://xmlns.com/foaf/0.1/Agent
 [bf:Agent]: http://bibframe.org/vocab/Agent
+[schema:Organization]: http://schema.org/Organization
 
 ## Document
 
@@ -112,18 +113,19 @@ specific edition of a book.
 
 The holding ontology recommends to either use class
 [bibo:Document] from the [Bibliographic Ontology], class
-[foaf:Document] from the [FOAF Ontology], class [bf:Work] or [bf:Instance] from the [Bibframe Vocabulary]. Some documents may
+[foaf:Document] from the [FOAF Ontology], class [bf:Work] or [bf:Instance] from the [Bibframe Vocabulary] or [schema:CreativeWork] from [Schema.org]. Some documents may
 also be items ([Document] and [Item] are not disjoint).
 
     holding:Document a owl:Class ;
         rdfs:label "Document"@en ;
         rdfs:comment "Use one of bibo:Document, foaf:Document, bf:Work or bf:Instance"@en ;
-        owl:unionOf (bibo:Document foaf:Document bf:Work bf:Instance) .
+        owl:unionOf (bibo:Document foaf:Document bf:Work bf:Instance schema:CreativeWork) .
 
 [bibo:Document]: http://purl.org/ontology/bibo/Document
 [foaf:Document]: http://xmlns.com/foaf/0.1/Document
 [bf:Work]: http://bibframe.org/vocab/Work
 [bf:Instance]: http://bibframe.org/vocab/Instance
+[schema:CreativeWork]: http://schema.org/CreativeWork
 
 In the context of this ontology when talking about documents several kinds of documents are involved:
 
@@ -145,7 +147,7 @@ The reltions between an [Item] and different kinds of document is shown in this 
 Relates an [Item] to an [Agent] who collected the item.
 
     holding:collectedBy a owl:ObjectProperty ;
-        rdfs:label "held by"@en ;
+        rdfs:label "collected by"@en ;
         rdfs:comment "Relates an item to an agent who holds the item."@en ;
         rdfs:domain holding:Item ;
         rdfs:range holding:Agent ;
@@ -407,6 +409,7 @@ A call number, shelf mark or similar label of an item
         rdfs:domain holding:Item ;
         rdfs:range rdfs:Literal ;
         rdfs:seeAlso bf:label ;
+        rdfs:seeAlso bf:shelfMark ;
         rdfs:subPropertyOf dct:identifier .
         
 
@@ -427,7 +430,7 @@ $volume2 a bibo:Book ; bibo:volume "2" .
 $volume3 a bibo:Book ; bibo:volume "3" .
 
 # One chapter in Volume 1
-$chapter3 a holding:Document ;
+$chapter3 a bibo:Document ;
     dcterms:isPartOf $volume1 .
 
 # A copy of the full series
