@@ -32,6 +32,7 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix frbr:    <http://purl.org/vocab/frbr/core#> .
     @prefix gr:      <http://purl.org/goodrelations/v1#> .
     @prefix org:     <http://www.w3.org/ns/org#> .
+    @prefix rdaa:    <http://rdaregistry.info/Elements/a/> .
     @prefix owl:     <http://www.w3.org/2002/07/owl#> .
     @prefix rdac:    <http://rdaregistry.info/Elements/c/> .
     @prefix rdai:    <http://rdaregistry.info/Elements/i/> .
@@ -204,6 +205,8 @@ Relates an [Agent] to an [Item] which the [Agent] holds.
         rdfs:comment "Relates an agent to an item which the agent holds."@en ;
         rdfs:domain holding:Agent ;
         rdfs:range holding:Item ;
+        rdfs:seeAlso rdaa:currentOwnerOf ;
+        rdfs:seeAlso rdaa:ownerOf ;
         owl:inverseOf holding:heldBy .
 
 
@@ -235,9 +238,10 @@ identfied as other documents, one should better use property [narrowerExemplar].
 
     holding:exemplar a owl:ObjectProperty ;
         rdfs:label "has exemplar"@en ;
-        rdfs:comment "Relates a document to an item that is an exemplar of the document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation."@en ;
+        rdfs:comment "Relates a document to an item that is an exemplar of the document."@en ;
         rdfs:domain holding:Document ;
         rdfs:range holding:Item ;
+        rdfs:seeAlso frbr:exemplar ;
         owl:inverseOf holding:exemplarOf .
 
 ## exemplarOf
