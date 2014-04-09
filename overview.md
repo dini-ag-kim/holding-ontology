@@ -12,22 +12,22 @@
             |                                 |       service:provides                         |     |
             |                                 |              |                                 |     |
    gr:availableAtorFrom             service:providedBy       |                                 |     |
-            |                                 |              |                                 |     |
+            |                                 |              |          dso:hasService /       |     |
             |                                 |              v         daia:availableFor /     |     v
             |                            +----+--------------------+  daia:unavailableFor   +--+----------+
             +----------------------------+                         |<-----------------------+             |<----------------------+
-        +--------------------------------+   dso:DocumentService   |                        |     Item    |                       |
+        +--------------------------------+         Service         |                        |     Item    |                       |
         |                +-------------->|                         +----------------------->|             +------+             exemplar
         |                |               +----------------+--------+    daia:availableOf /  +-------------+      |            broaderExemplar
-        |                |                    ^           |    ^        daia:unavailableOf                   exemplarOf       narrowerExemplar
-        |                |                    |           |    |                                            broaderExemplarOf     |
-   service:limitedBy service:limits    service:consumes   |    +---------dso:hasService---------------+    narrowerExemplarOf     |
-        |                |                    |           |                                  +--------+------+   |                |
+        |                |                    ^           |             daia:unavailableOf /                 exemplarOf       narrowerExemplar
+        |                |                    |           |             dso:hasDocument                     broaderExemplarOf     |
+   service:limitedBy service:limits    service:consumes   |                                                narrowerExemplarOf     |
+        |                |                    |           |                                  +---------------+   |                |
         |                |                    |  service:consumedBy                          |               |<--+                |
         v                |                    |           |                                  |    Document   |                    |
    +---------------------+-----+              |           v                                  |               +--------------------+
    |                           |           +--+-----------+----+                             +---------------+
-   | service:ServiceLimitation |           |        Agent      |
+   |     ServiceLimitation     |           |        Agent      |
    |                           |           |     (consumer)    |
    +---------------------------+           +-------------------+
 ```
