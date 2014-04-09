@@ -32,8 +32,9 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix frbr:    <http://purl.org/vocab/frbr/core#> .
     @prefix gr:      <http://purl.org/goodrelations/v1#> .
     @prefix org:     <http://www.w3.org/ns/org#> .
-    @prefix rdaa:    <http://rdaregistry.info/Elements/a/> .
     @prefix owl:     <http://www.w3.org/2002/07/owl#> .
+    @prefix rdaa:    <http://rdaregistry.info/Elements/a/> .
+    @prefox rdam:    <http://rdaregistry.info/Elements/m/> .
     @prefix rdac:    <http://rdaregistry.info/Elements/c/> .
     @prefix rdai:    <http://rdaregistry.info/Elements/i/> .
     @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -242,6 +243,7 @@ identfied as other documents, one should better use property [narrowerExemplar].
         rdfs:domain holding:Document ;
         rdfs:range holding:Item ;
         rdfs:seeAlso frbr:exemplar ;
+        rdfs:seeAlso rdam:exemplarOfManifestation ;
         owl:inverseOf holding:exemplarOf .
 
 ## exemplarOf
@@ -255,6 +257,7 @@ Relates an item to the document that is exemplified by the item.
         rdfs:comment "Relates an item to the document that is exemplified by the item."@en ;
         rdfs:domain holding:Item ;
         rdfs:range holding:Document ;
+        rdfs:seeAlso rdai:manifestationExemplified ;
         owl:inverseOf holding:exemplar .
 
 ## broaderExemplar
