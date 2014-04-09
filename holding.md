@@ -257,6 +257,7 @@ Relates an item to the document that is exemplified by the item.
         rdfs:comment "Relates an item to the document that is exemplified by the item."@en ;
         rdfs:domain holding:Item ;
         rdfs:range holding:Document ;
+        rdfs:seeAlso bf:holdingFor ;
         rdfs:seeAlso rdai:manifestationExemplified ;
         owl:inverseOf holding:exemplar .
 
