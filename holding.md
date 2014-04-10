@@ -2,7 +2,7 @@
 
 The **Holding Ontology** is a vocabulary to express (library) holdings in RDF.
 
-This ontology deals with items and their relations to agents, documents and services. An item is a copy or exemplar of a document. Items are also referred to as holdings, but a holding is moreover the description of an agents inventory and access information for the item. Although this ontology derives the Item class from the FRBR Ontology, it does not imply the use of the FRBR model.
+This ontology deals with items and their relations to agents, documents and services. An item is a copy or exemplar of a document. Items are also referred to as holdings, but a holding is moreover the description of an agents inventory and access information for the item.
 
 ## Status of this document
 
@@ -33,6 +33,8 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix gr:      <http://purl.org/goodrelations/v1#> .
     @prefix org:     <http://www.w3.org/ns/org#> .
     @prefix owl:     <http://www.w3.org/2002/07/owl#> .
+    @prefix rdaa:    <http://rdaregistry.info/Elements/a/> .
+    @prefox rdam:    <http://rdaregistry.info/Elements/m/> .
     @prefix rdac:    <http://rdaregistry.info/Elements/c/> .
     @prefix rdai:    <http://rdaregistry.info/Elements/i/> .
     @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -174,7 +176,7 @@ Relates an [Item] to an [Agent] who collected the item.
         rdfs:comment "Relates an item to an agent who holds the item."@en ;
         rdfs:domain holding:Item ;
         rdfs:range holding:Agent ;
-        rdfs:subPropertyOf holding:collectedBy .
+        rdfs:seeAlso rdai:collector .
 
 ## heldBy
 
@@ -189,6 +191,8 @@ Relates an [Item] to an [Agent] who holds the item.
         rdfs:range holding:Agent ;
         owl:inverseOf holding:holds ;
         rdfs:seeAlso bf:heldBy ;
+        rdfs:seeAlso rdai:currentOwner ;
+        rdfs:seeAlso rdai:owner ;
         rdfs:subPropertyOf holding:collectedBy .
 
 ## holds
@@ -202,6 +206,8 @@ Relates an [Agent] to an [Item] which the [Agent] holds.
         rdfs:comment "Relates an agent to an item which the agent holds."@en ;
         rdfs:domain holding:Agent ;
         rdfs:range holding:Item ;
+        rdfs:seeAlso rdaa:currentOwnerOf ;
+        rdfs:seeAlso rdaa:ownerOf ;
         owl:inverseOf holding:heldBy .
 
 
@@ -233,9 +239,11 @@ identfied as other documents, one should better use property [narrowerExemplar].
 
     holding:exemplar a owl:ObjectProperty ;
         rdfs:label "has exemplar"@en ;
-        rdfs:comment "Relates a document to an item that is an exemplar of the document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation."@en ;
+        rdfs:comment "Relates a document to an item that is an exemplar of the document."@en ;
         rdfs:domain holding:Document ;
         rdfs:range holding:Item ;
+        rdfs:seeAlso frbr:exemplar ;
+        rdfs:seeAlso rdam:exemplarOfManifestation ;
         owl:inverseOf holding:exemplarOf .
 
 ## exemplarOf
@@ -249,6 +257,8 @@ Relates an item to the document that is exemplified by the item.
         rdfs:comment "Relates an item to the document that is exemplified by the item."@en ;
         rdfs:domain holding:Item ;
         rdfs:range holding:Document ;
+        rdfs:seeAlso bf:holdingFor ;
+        rdfs:seeAlso rdai:manifestationExemplified ;
         owl:inverseOf holding:exemplar .
 
 ## broaderExemplar
@@ -262,6 +272,7 @@ Relates a document to an item that contains an exemplar of the document as part.
         rdfs:comment "Relates a document to an item that contains an exemplar of the document as part."@en ;
         rdfs:domain holding:Document ;
         rdfs:range holding:Item ;
+        rdfs:seeAlso rdai:containedInItem ;
         owl:inverseOf holding:broaderExemplarOf .
     
 
@@ -276,32 +287,35 @@ Relates an item to a document which is partly exemplified by the item.
         rdfs:comment "Relates an item to a document which is partly exemplified by the item."@en ;
         rdfs:domain holding:Item ;
         rdfs:range holding:Document ;
+        rdfs:seeAlso rdai:containsItem ;
         owl:inverseOf holding:broaderExemplar .
 
 ## narrowerExemplar
 
 [narrowerExemplar]: #narrowerexemplar
 
-Relates an item to a document which is partly exemplified by the item.
+Relates a document to an item that is an exemplar of a part of the document.
 
     holding:narrowerExemplar a owl:ObjectProperty ;
         rdfs:label "narrower exemplar"@en ;
-        rdfs:comment "Relates an item to a document which is partly exemplified by the item."@en ;
-        rdfs:domain holding:Item ;
-        rdfs:range holding:Document ;
+        rdfs:comment "Relates a document to an item that is an exemplar of a part of the document."@en ;
+        rdfs:domain  holding:Document ;
+        rdfs:range holding:Item ;
+        rdfs:seeAlso rdai:containsItem ;
         owl:inverseOf holding:narrowerExemplarOf .
 
 ## narrowerExemplarOf
 
 [narrowerExemplarOf]: #narrowerexemplarof
 
-Relates a document to an item that is an exemplar of a part of the document.
+Relates an item to a document which is partly exemplified by the item.
 
     holding:narrowerExemplarOf a owl:ObjectProperty ;
         rdfs:label "narrower exemplar of"@en ;
-        rdfs:comment "Relates a document to an item that is an exemplar of a part of the document."@en ;
-        rdfs:domain holding:Document ;
-        rdfs:range holding:Item ;
+        rdfs:comment "Relates an item to a document which is partly exemplified by the item."@en ;
+        rdfs:domain holding:Item ;
+        rdfs:range holding:Document ;
+        rdfs:seeAlso rdai:containedInItem ;
         owl:inverseOf holding:narrowerExemplar .
 
 # Relation between Items and Services
