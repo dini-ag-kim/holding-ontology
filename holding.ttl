@@ -30,32 +30,6 @@ gr:Location
     rdfs:label "Location"@en ;
     owl:equivalentClass schema:Place .
 
-<<<<<<< HEAD
-=======
-gr:availableAtOrFrom
-    a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    skos:scopeNote "Used to relate a document service offered for an item with a location."@en .
-
-gr:hasStockKeepingUnit
-    a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    rdfs:seeAlso schema:sku ;
-    skos:scopeNote "Used to identify the item for which a document service is offered."@en .
-
-gr:name
-    a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
-    skos:scopeNote "When a document service is offered for an item, this property is used to name the location where the document service should be provided."@en .
-
-bibo:Document
-    a owl:Class ;
-    rdfs:isDefinedBy <http://purl.org/ontology/bibo/> ;
-    rdfs:label "Document"@en ;
-    rdfs:seeAlso bf:Work ;
-    owl:equivalentClass foaf:Document .
-
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 dso:DocumentService
     a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/ontology/dso> ;
@@ -69,18 +43,13 @@ ecpo:Chronology
 <http://purl.org/ontology/holding>
     cc:license <http://creativecommons.org/licenses/by/3.0/> ;
     dct:creator "Carsten Klee", "Jakob Voß" ;
-<<<<<<< HEAD
     dct:modified "2014-04-15"^^xsd:date ;
-=======
-    dct:modified "2014-01-10"^^xsd:date ;
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
     dct:title "Holding Ontology"@en ;
     vann:preferredNamespacePrefix "holding" ;
     vann:preferredNamespaceUri "http://purl.org/ontology/holding#" ;
     a owl:Ontology ;
     rdfs:label "Holding Ontology"@en ;
-<<<<<<< HEAD
-    owl:versionInfo "0.1.4" .
+    owl:versionInfo "0.1.2rev35" .
 
 holding:Agent
     a owl:Class ;
@@ -112,9 +81,6 @@ holding:Item
         frbr:Item
         rdac:Item
     ) .
-=======
-    owl:versionInfo "0.1.2" .
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 
 holding:broaderExemplar
     a owl:ObjectProperty ;
@@ -175,12 +141,8 @@ holding:holds
     rdfs:comment "Relates an agent to an item which the agent holds."@en ;
     rdfs:domain holding:Agent ;
     rdfs:label "holds"@en ;
-<<<<<<< HEAD
     rdfs:range holding:Item ;
     rdfs:seeAlso rdaa:currentOwnerOf, rdaa:ownerOf ;
-=======
-    rdfs:range frbr:Item ;
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
     owl:inverseOf holding:heldBy .
 
 holding:label
@@ -210,28 +172,3 @@ holding:narrowerExemplarOf
     rdfs:seeAlso rdai:containedInItem ;
     owl:inverseOf holding:narrowerExemplar .
 
-<<<<<<< HEAD
-=======
-service:providedBy
-    a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://purl.org/ontology/service> ;
-    skos:scopeNote "Used to relate a document service with an agent who offered the service." .
-
-frbr:Item
-    a owl:Class ;
-    rdfs:isDefinedBy <http://purl.org/vocab/frbr/core> ;
-    rdfs:label "Item"@en ;
-    rdfs:seeAlso bf:Instance .
-
-org:siteOf
-    a owl:AnnotationProperty ;
-    rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
-    skos:scopeNote "This property is used to relate a location with an agent."@en .
-
-foaf:Agent
-    a owl:Class ;
-    rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
-    rdfs:label "Agent"@en ;
-    rdfs:seeAlso bf:Agent .
-
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
