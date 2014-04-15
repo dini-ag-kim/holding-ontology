@@ -3,15 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Carsten Klee" />
-  <meta name="author" content="Jakob Voß" />
-<<<<<<< HEAD
-  <meta name="date" content="2014-04-15" />
-=======
-  <meta name="date" content="2014-01-10" />
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
+  <meta name="date" content="2013-12-05" />
   <title>Holding Ontology</title>
-  <link rel="alternate" type="application/rdf+xml" href="holding.owl" />
    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -33,19 +26,11 @@
   ol { margin-bottom: 1em; }
   table + p { margin-top: 1em; }
   </style>
-  <link rel="stylesheet" href="code-box.css" />
 </head>
 <body>
-<a href="http://github.com/dini-ag-kim/holding-ontology/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 <header>
 <h1 class="title">Holding Ontology</h1>
-<h3 class="author">Carsten Klee</h3>
-<h3 class="author">Jakob Voß</h3>
-<<<<<<< HEAD
-<h4 class="date">2014-04-15 (version 0.1.4)</h4>
-=======
-<h4 class="date">2014-01-10 (version 0.1.2)</h4>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
+<h4 class="date">2013-12-05 (version 0.1.1)</h4>
 </header>
 
 <h1>Table of Contents</h1>
@@ -61,37 +46,6 @@
 <li><a href="#agent"><span class="toc-section-number">3.2</span> Agent</a></li>
 <li><a href="#document"><span class="toc-section-number">3.3</span> Document</a></li>
 </ul></li>
-<<<<<<< HEAD
-<li><a href="#holding-labeling"><span class="toc-section-number">4</span> Holding labeling</a><ul>
-<li><a href="#label"><span class="toc-section-number">4.1</span> label</a></li>
-</ul></li>
-<li><a href="#holding-relationships"><span class="toc-section-number">5</span> Holding Relationships</a><ul>
-<li><a href="#collectedby"><span class="toc-section-number">5.1</span> collectedBy</a></li>
-<li><a href="#heldby"><span class="toc-section-number">5.2</span> heldBy</a></li>
-<li><a href="#holds"><span class="toc-section-number">5.3</span> holds</a></li>
-</ul></li>
-<li><a href="#relations-between-abstract-documents-and-items"><span class="toc-section-number">6</span> Relations between abstract Documents and Items</a><ul>
-<li><a href="#exemplar"><span class="toc-section-number">6.1</span> exemplar</a></li>
-<li><a href="#exemplarof"><span class="toc-section-number">6.2</span> exemplarOf</a></li>
-<li><a href="#broaderexemplar"><span class="toc-section-number">6.3</span> broaderExemplar</a></li>
-<li><a href="#broaderexemplarof"><span class="toc-section-number">6.4</span> broaderExemplarOf</a></li>
-<li><a href="#narrowerexemplar"><span class="toc-section-number">6.5</span> narrowerExemplar</a></li>
-<li><a href="#narrowerexemplarof"><span class="toc-section-number">6.6</span> narrowerExemplarOf</a></li>
-</ul></li>
-<li><a href="#relation-between-items-and-services"><span class="toc-section-number">7</span> Relation between Items and Services</a><ul>
-<li><a href="#documentservice"><span class="toc-section-number">7.1</span> DocumentService</a></li>
-<li><a href="#location"><span class="toc-section-number">7.2</span> Location</a></li>
-<li><a href="#chronology"><span class="toc-section-number">7.3</span> Chronology</a></li>
-</ul></li>
-<li><a href="#examples"><span class="toc-section-number">8</span> Examples</a><ul>
-<li><a href="#a-book-series-fully-held-by-a-library"><span class="toc-section-number">8.1</span> A book series, fully held by a library</a></li>
-<li><a href="#the-same-series-partially-held-by-alice"><span class="toc-section-number">8.2</span> The same series, partially held by Alice</a></li>
-<li><a href="#offering-a-service-for-an-item"><span class="toc-section-number">8.3</span> Offering a Service for an Item</a></li>
-</ul></li>
-<li><a href="#references"><span class="toc-section-number">9</span> References</a><ul>
-<li><a href="#normative-references"><span class="toc-section-number">9.1</span> Normative References</a></li>
-<li><a href="#informative-references"><span class="toc-section-number">9.2</span> Informative References</a></li>
-=======
 <li><a href="#holding-relationships"><span class="toc-section-number">4</span> Holding Relationships</a><ul>
 <li><a href="#heldby"><span class="toc-section-number">4.1</span> heldBy</a></li>
 <li><a href="#holds"><span class="toc-section-number">4.2</span> holds</a></li>
@@ -123,27 +77,25 @@
 <li><a href="#references"><span class="toc-section-number">8</span> References</a><ul>
 <li><a href="#normative-references"><span class="toc-section-number">8.1</span> Normative References</a></li>
 <li><a href="#informative-references"><span class="toc-section-number">8.2</span> Informative References</a></li>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 </ul></li>
 </ul>
 </nav>
 <section id="introduction" class="level1">
 <h1><a href="#introduction"><span class="header-section-number">1</span> Introduction</a></h1>
 <p>The <strong>Holding Ontology</strong> is a vocabulary to express (library) holdings in RDF.</p>
-<p>This ontology deals with items and their relations to agents, documents and services. An item is a copy or exemplar of a document. Items are also referred to as holdings, but a holding is moreover the description of an agents inventory and access information for the item.</p>
+<p>This ontology deals with items and their relations to agents, documents and services. An item is a copy or exemplar of a document. Items are also referred to as holdings, but a holding is moreover the description of an agents inventory and access information for the item. Although this ontology derives the Item class from the FRBR Ontology, it does not imply the use of the FRBR model.</p>
 <section id="status-of-this-document" class="level2">
 <a id="Status of this document"></a><h2><a href="#status-of-this-document"><span class="header-section-number">1.1</span> Status of this document</a></h2>
 <p>This document is an early draft, created by a DINI AG KIM Working Group. See <a href="https://wiki.dnb.de/display/DINIAGKIM/Bestandsdaten+Gruppe">https://wiki.dnb.de/display/DINIAGKIM/Bestandsdaten+Gruppe</a> for more resources.</p>
 </section>
 <section id="namespaces-and-ontology" class="level2">
 <a id="Namespaces and Ontology"></a><h2><a href="#namespaces-and-ontology"><span class="header-section-number">1.2</span> Namespaces and Ontology</a></h2>
-<p>The URI namespace of this ontology is <code>http://purl.org/ontology/holding#</code>. The namespace prefix <code>holding</code> is recommeded. The URI of this ontology as a whole is <a href="http://purl.org/ontology/holding">http://purl.org/ontology/holding</a>.</p>
-<pre><code>@prefix holding: &lt;http://purl.org/ontology/holding#&gt; .
-@base            &lt;http://purl.org/ontology/holding&gt; .</code></pre>
+<p>The URI namespace of this ontology is … The namespace prefix <code>holding</code> is recommeded. The URI of this ontology as a whole is …</p>
+<pre><code>@prefix holding: &lt;http://example.org/#&gt; .
+@base            &lt;http://example.org/&gt; .</code></pre>
 <p>The following namspace prefixes are used to refer to related ontologies:</p>
 <pre><code>@prefix bf:      &lt;http://bibframe.org/vocab/&gt; .
 @prefix bibo:    &lt;http://purl.org/ontology/bibo/&gt; .
-@prefix cc:      &lt;http://creativecommons.org/ns#&gt; .
 @prefix daia:    &lt;http://purl.org/ontology/daia/&gt; .
 @prefix dct:     &lt;http://purl.org/dc/terms/&gt; .
 @prefix dso:     &lt;http://purl.org/ontology/dso#&gt; .
@@ -153,13 +105,6 @@
 @prefix gr:      &lt;http://purl.org/goodrelations/v1#&gt; .
 @prefix org:     &lt;http://www.w3.org/ns/org#&gt; .
 @prefix owl:     &lt;http://www.w3.org/2002/07/owl#&gt; .
-<<<<<<< HEAD
-@prefix rdaa:    &lt;http://rdaregistry.info/Elements/a/&gt; .
-@prefix rdam:    &lt;http://rdaregistry.info/Elements/m/&gt; .
-@prefix rdac:    &lt;http://rdaregistry.info/Elements/c/&gt; .
-@prefix rdai:    &lt;http://rdaregistry.info/Elements/i/&gt; .
-=======
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 @prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs:    &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix schema:  &lt;http://schema.org/&gt; .
@@ -170,22 +115,8 @@
 @prefix xsd:     &lt;http://www.w3.org/2001/XMLSchema#&gt; .</code></pre>
 <p>The Holding Ontology is defined in RDF/Turtle as following:</p>
 <pre><code>&lt;&gt; a owl:Ontology ;
-    dct:title &quot;Holding Ontology&quot;@en ;
     rdfs:label &quot;Holding Ontology&quot;@en ;
-    vann:preferredNamespacePrefix &quot;holding&quot; ;
-    vann:preferredNamespaceUri &quot;http://purl.org/ontology/holding#&quot; ;
-<<<<<<< HEAD
-    dct:modified &quot;2014-04-15&quot;^^xsd:date ;
-    owl:versionInfo &quot;0.1.4&quot; ;
-    cc:license &lt;http://creativecommons.org/licenses/by/3.0/&gt; ;
-    dct:creator &quot;Carsten Klee&quot;, &quot;Jakob Voß&quot; .</code></pre>
-=======
-    dct:modified &quot;2014-01-10&quot;^^xsd:date ;
-    owl:versionInfo &quot;0.1.2&quot; ;
-    cc:license &lt;http://creativecommons.org/licenses/by/3.0/&gt; ;
-    dct:creator &quot;Carsten Klee&quot;, &quot;Jakob Voß&quot; 
-.</code></pre>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
+    vann:preferredNamespacePrefix &quot;holding&quot; .</code></pre>
 </section>
 </section>
 <section id="overview" class="level1">
@@ -193,7 +124,6 @@
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Classes<br>(defined by this ontology)</th>
 <th style="text-align: center;">Classes<br>(defined by other ontologies)</th>
 <th style="text-align: center;">Properties<br>(defined by this ontology)</th>
 <th style="text-align: center;">Properties<br>(defined by other ontologies)</th>
@@ -201,16 +131,9 @@
 </thead>
 <tbody>
 <tr class="odd">
-<<<<<<< HEAD
-<td><a href="#item">Item</a><br><a href="#agent">Agent</a><br><a href="#document">Document</a></td>
-<td><a href="#documentservice">DocumentService</a><br><a href="#location">Location</a><br><a href="#chronology">Chronology</a></td>
-<td><a href="#collectedby">collectedBy</a><br><a href="#heldby">heldBy</a><br><a href="#holds">holds</a><br><a href="#exemplar">exemplar</a><br><a href="#exemplarof">exemplarOf</a><br><a href="#broaderexemplar">broaderExemplar</a><br><a href="#broaderexemplarof">broaderExemplarOf</a><br><a href="#narrowerexemplar">narrowerExemplar</a><br><a href="#narrowerexemplarof">narrowerExemplarOf</a><br><a href="#label">label</a></td>
-<td><a href="http://purl.org/ontology/daia/availableFor">daia:availableFor</a><br><a href="http://purl.org/ontology/daia/availableOf">daia:availableOf</a><br><a href="http://purl.org/ontology/daia/unavailableFor">daia:unavailableFor</a><br><a href="http://purl.org/ontology/daia/unavailableOf">daia:unavailableOf</a><br><a href="http://purl.org/ontology/dso#hasService">dso:hasService</a><br><a href="http://purl.org/ontology/dso#hasDocument">dso:hasDocument</a><br><a href="http://purl.org/ontology/service#providedBy">service:providedBy</a><br><a href="http://purl.org/ontology/ecpo#hasChronology">ecpo:hasChronology</a><br><a href="http://purl.org/ontology/ecpo#hasChronologyGap">ecpo:hasChronologyGap</a><br><a href="http://purl.org/goodrelations/v1#availableAtOrFrom">gr:availableAtOrFrom</a><br><a href="http://www.w3.org/ns/org#siteOf">org:siteOf</a><br><a href="http://purl.org/goodrelations/v1#name">gr:name</a></td>
-=======
 <td><a href="#item">Item</a><br><a href="#agent">Agent</a><br><a href="#document">Document</a><br><a href="#documentservice">DocumentService</a><br><a href="#location">Location</a><br><a href="#chronology">Chronology</a></td>
 <td><a href="#heldby">heldBy</a><br><a href="#holds">holds</a><br><a href="#exemplar">exemplar</a><br><a href="#exemplarof">exemplarOf</a><br><a href="#broaderexemplar">broaderExemplar</a><br><a href="#broaderexemplarof">broaderExemplarOf</a><br><a href="#narrowerexemplar">narrowerExemplar</a><br><a href="#narrowerexemplarof">narrowerExemplarOf</a><br><a href="#label">label</a></td>
 <td><a href="http://purl.org/ontology/daia/availableFor">availableFor</a><br><a href="http://purl.org/ontology/daia/unavailableFor">unavailableFor</a><br><a href="#providedby">providedBy</a><br><a href="http://purl.org/ontology/ecpo#hasChronology">hasChronology</a><br><a href="http://purl.org/ontology/ecpo#hasChronologyGap">hasChronologyGap</a><br><a href="#availableatorfrom">availableAtOrFrom</a><br><a href="#hasstockkeepingunit">hasStockKeepingUnit</a><br><a href="#siteOf">siteOf</a><br><a href="#name">name</a></td>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 </tr>
 </tbody>
 </table>
@@ -220,30 +143,6 @@
 <p>The holding Ontology does not define classes on its own but makes usage of classes defined in other Ontologies. See <a href="#references">References</a> for references to the used onotologies.</p>
 <section id="item" class="level2">
 <a id="Item"></a><h2><a href="#item"><span class="header-section-number">3.1</span> Item</a></h2>
-<<<<<<< HEAD
-<p>An <strong>Item</strong> is a particular copy or exemplar of a document. The holding ontology recommends to either use class <a href="http://bibframe.org/vocab/HeldItem">bf:HeldItem</a> from the <a href="http://bibframe.org/">Bibframe Vocabulary</a>, class <a href="http://purl.org/vocab/frbr/core#Item">frbr:Item</a> from the <a href="http://purl.org/vocab/frbr/core">FRBR Ontology</a> or class <a href="http://rdaregistry.info/Elements/c/Item">rdac:Item</a> from the <a href="http://rdaregistry.info/Elements/c/">RDA Classes</a> vocabulary.</p>
-<pre><code>holding:Item a owl:Class ;
-    rdfs:label &quot;Item&quot;@en ;
-    rdfs:comment &quot;Use one of bf:HeldItem frbr:Item rdac:Item&quot;@en ;
-    owl:unionOf (bf:HeldItem frbr:Item rdac:Item) .</code></pre>
-</section>
-<section id="agent" class="level2">
-<a id="Agent"></a><h2><a href="#agent"><span class="header-section-number">3.2</span> Agent</a></h2>
-<p>An <strong>Agent</strong> is a person, organization, group or any other entity that can held items and provide services. The holding ontology recommends to either use class <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a> from the <a href="http://xmlns.com/foaf/spec/">FOAF Ontology</a>, class <a href="http://bibframe.org/vocab/Agent">bf:Agent</a> from the <a href="http://bibframe.org/">Bibframe Vocabulary</a>, class <a href="http://schema.org/Person">schema:Organization</a> from <a href="http://schema.org">Schema.org</a> or class <a href="http://rdaregistry.info/Elements/c/Agent">rdac:Agent</a> from the <a href="http://rdaregistry.info/Elements/c/">RDA Classes</a> vocabulary.</p>
-<pre><code>holding:Agent a owl:Class ;
-    rdfs:label &quot;Agent&quot;@en ;
-    rdfs:comment &quot;Use one of bf:Agent or foaf:Agent&quot;@en ;
-    owl:unionOf (bf:Agent foaf:Agent schema:Organization schema:Person rdac:Agent) .</code></pre>
-</section>
-<section id="document" class="level2">
-<a id="Document"></a><h2><a href="#document"><span class="header-section-number">3.3</span> Document</a></h2>
-<p>A <strong>Document</strong> is a body of information used designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information. Documents may include both abstract works, such as “Romeo and Juliet”, and more conrete entities, such as a specific edition of a book.</p>
-<p>The holding ontology recommends to either use class <a href="http://purl.org/ontology/bibo/Document">bibo:Document</a> from the <a href="http://purl.org/ontology/bibo/">Bibliographic Ontology</a>, class <a href="http://xmlns.com/foaf/0.1/Document">foaf:Document</a> from the <a href="http://xmlns.com/foaf/spec/">FOAF Ontology</a>, class <a href="http://bibframe.org/vocab/Work">bf:Work</a> or <a href="http://bibframe.org/vocab/Instance">bf:Instance</a> from the <a href="http://bibframe.org/">Bibframe Vocabulary</a> or <a href="http://schema.org/CreativeWork">schema:CreativeWork</a> from <a href="http://schema.org">Schema.org</a>. Some documents may also be items (<a href="#document">Document</a> and <a href="#item">Item</a> are not disjoint).</p>
-<pre><code>holding:Document a owl:Class ;
-    rdfs:label &quot;Document&quot;@en ;
-    rdfs:comment &quot;Use one of bibo:Document, foaf:Document, bf:Work or bf:Instance&quot;@en ;
-    owl:unionOf (bibo:Document foaf:Document bf:Work bf:Instance schema:CreativeWork) .</code></pre>
-=======
 <p>An <strong>Item</strong> is a particular copy or exemplar of a document. The holding ontology recommends to use class <a href="http://purl.org/vocab/frbr/core#Item">frbr:Item</a> as defined by the <a href="http://purl.org/vocab/frbr/core">FRBR Ontology</a>. Items may further be instances of class <a href="http://bibframe.org/vocab/Instance">bf:Instance</a> from the <a href="http://bibframe.org/">Bibframe Vocabulary</a>.</p>
 <pre><code>frbr:Item a owl:Class ;
     rdfs:label &quot;Item&quot;@en ;
@@ -266,7 +165,6 @@
     rdfs:label &quot;Document&quot;@en ;
     rdfs:isDefinedBy &lt;http://purl.org/ontology/bibo/&gt; ;
     rdfs:seeAlso bf:Work .</code></pre>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <p>In the context of this ontology when talking about documents several kinds of documents are involved:</p>
 <ul>
 <li>the abstract document</li>
@@ -277,7 +175,7 @@
 <p>The reltions between an <a href="#item">Item</a> and different kinds of document is shown in this diagram:</p>
 <pre class="ditaa"><code>        +---------------------+                 +---------------+                 +-----------+
         |      Document       |&lt;---exemplarOf---+               +----foaf:page---&gt;| Document  |
-        |     (abstract)      |                 |      Item     |                 | (Website) |
+        |     (abstract)      |                 |   frbr:Item   |                 | (Website) |
         |                     |-----exemplar---&gt;|               |&lt;---foaf:topic---+           |
         +------------------+--+                 +-------------+-+                 +-----------+
           ^                |                      ^           |
@@ -293,55 +191,6 @@
         +-----------------------+             +-----------------------+</code></pre>
 </section>
 </section>
-<<<<<<< HEAD
-<section id="holding-labeling" class="level1">
-<h1><a href="#holding-labeling"><span class="header-section-number">4</span> Holding labeling</a></h1>
-<section id="label" class="level2">
-<a id="label"></a><h2><a href="#label"><span class="header-section-number">4.1</span> label</a></h2>
-<p>A call number, shelf mark or similar label of an item.</p>
-<pre><code>holding:label a owl:DatatypeProperty ;
-    rdfs:label &quot;label&quot;@en ;
-    rdfs:comment &quot;A call number, shelf mark or similar label of an item&quot;@en ;
-    rdfs:domain holding:Item ;
-    rdfs:range rdfs:Literal ;
-    rdfs:seeAlso bf:label ;
-    rdfs:seeAlso bf:shelfMark ;
-    rdfs:seeAlso rdai:identifierForTheItem ;
-    rdfs:seeAlso gr:hasStockKeepingUnit ;
-    rdfs:seeAlso schema:sku ;
-    rdfs:seeAlso schema:name ;
-    rdfs:subPropertyOf dct:identifier .</code></pre>
-</section>
-</section>
-<section id="holding-relationships" class="level1">
-<h1><a href="#holding-relationships"><span class="header-section-number">5</span> Holding Relationships</a></h1>
-<section id="collectedby" class="level2">
-<a id="collectedBy"></a><h2><a href="#collectedby"><span class="header-section-number">5.1</span> collectedBy</a></h2>
-<p>Relates an <a href="#item">Item</a> to an <a href="#agent">Agent</a> who collected the item.</p>
-<pre><code>holding:collectedBy a owl:ObjectProperty ;
-    rdfs:label &quot;collected by&quot;@en ;
-    rdfs:comment &quot;Relates an item to an agent who holds the item.&quot;@en ;
-    rdfs:domain holding:Item ;
-    rdfs:range holding:Agent ;
-    rdfs:seeAlso rdai:collector .</code></pre>
-</section>
-<section id="heldby" class="level2">
-<a id="heldBy"></a><h2><a href="#heldby"><span class="header-section-number">5.2</span> heldBy</a></h2>
-<p>Relates an <a href="#item">Item</a> to an <a href="#agent">Agent</a> who holds the item.</p>
-<pre><code>holding:heldBy a owl:ObjectProperty ;
-    rdfs:label &quot;held by&quot;@en ;
-    rdfs:comment &quot;Relates an item to an agent who holds the item.&quot;@en ;
-    rdfs:domain holding:Item ;
-    rdfs:range holding:Agent ;
-    owl:inverseOf holding:holds ;
-    rdfs:seeAlso bf:heldBy ;
-    rdfs:seeAlso rdai:currentOwner ;
-    rdfs:seeAlso rdai:owner ;
-    rdfs:subPropertyOf holding:collectedBy .</code></pre>
-</section>
-<section id="holds" class="level2">
-<a id="holds"></a><h2><a href="#holds"><span class="header-section-number">5.3</span> holds</a></h2>
-=======
 <section id="holding-relationships" class="level1">
 <h1><a href="#holding-relationships"><span class="header-section-number">4</span> Holding Relationships</a></h1>
 <section id="heldby" class="level2">
@@ -357,31 +206,18 @@
 </section>
 <section id="holds" class="level2">
 <a id="holds"></a><h2><a href="#holds"><span class="header-section-number">4.2</span> holds</a></h2>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <p>Relates an <a href="#agent">Agent</a> to an <a href="#item">Item</a> which the <a href="#agent">Agent</a> holds.</p>
 <pre><code>holding:holds a owl:ObjectProperty ;
     rdfs:label &quot;holds&quot;@en ;
     rdfs:comment &quot;Relates an agent to an item which the agent holds.&quot;@en ;
-<<<<<<< HEAD
-    rdfs:domain holding:Agent ;
-    rdfs:range holding:Item ;
-    rdfs:seeAlso rdaa:currentOwnerOf ;
-    rdfs:seeAlso rdaa:ownerOf ;
-=======
     rdfs:domain foaf:Agent ;
     rdfs:range frbr:Item ;
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
     owl:inverseOf holding:heldBy .</code></pre>
 </section>
 </section>
 <section id="relations-between-abstract-documents-and-items" class="level1">
-<<<<<<< HEAD
-<h1><a href="#relations-between-abstract-documents-and-items"><span class="header-section-number">6</span> Relations between abstract Documents and Items</a></h1>
-<p>The <a href="#exemplar">exemplar</a> relation is used to state that a concrete <a href="#item">Item</a> is a copy of an abstract <a href="#document">Document</a>. Additional relations exist for items that only contain parts of a document and for items that contain multiple documents (for instance a collection that the document is part of).</p>
-=======
 <h1><a href="#relations-between-abstract-documents-and-items"><span class="header-section-number">5</span> Relations between abstract Documents and Items</a></h1>
 <p>The <a href="#exemplar">exemplar</a> relation is used to state that a concrete <a href="#item">Item</a> is a copy of an abstract <a href="#document">Document</a>. Additional relations exist for Items that only contain parts of a document and for Items that contain multiple documents (for instance a collection that the document is part of).</p>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre class="ditaa"><code>     +--------+      exemplar      +------------+
      |  Item  |&lt;-------------------|  Document  |
      |        |-------------------&gt;|            |
@@ -419,130 +255,81 @@
 <li>a <a href="#broaderexemplarof">broaderExemplarOf</a> a single chapter of the book (as <a href="#document">Document</a>).</li>
 </ul>
 <section id="exemplar" class="level2">
-<<<<<<< HEAD
-<a id="exemplar"></a><h2><a href="#exemplar"><span class="header-section-number">6.1</span> exemplar</a></h2>
-=======
 <a id="exemplar"></a><h2><a href="#exemplar"><span class="header-section-number">5.1</span> exemplar</a></h2>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <p>Relates a <a href="#document">Document</a> to an <a href="#item">Item</a> that is an exemplar of the <a href="#document">Document</a>. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation.</p>
 <p>An exemplar should include all parts of a document but there may be gaps and omissions. If an exemplar only includes parts of a documents that can be identfied as other documents, one should better use property <a href="#narrowerexemplar">narrowerExemplar</a>.</p>
 <pre><code>holding:exemplar a owl:ObjectProperty ;
     rdfs:label &quot;has exemplar&quot;@en ;
-    rdfs:comment &quot;Relates a document to an item that is an exemplar of the document.&quot;@en ;
-    rdfs:domain holding:Document ;
-    rdfs:range holding:Item ;
-    rdfs:seeAlso frbr:exemplar ;
-    rdfs:seeAlso rdam:exemplarOfManifestation ;
+    rdfs:comment &quot;Relates a Document to an Item that is an exemplar of the Document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation.&quot;@en ;
+    rdfs:domain bibo:Document ;        
+    rdfs:range frbr:Item ;
     owl:inverseOf holding:exemplarOf .</code></pre>
 </section>
 <section id="exemplarof" class="level2">
-<<<<<<< HEAD
-<a id="exemplarOf"></a><h2><a href="#exemplarof"><span class="header-section-number">6.2</span> exemplarOf</a></h2>
-<p>Relates an item to the document that is exemplified by the item.</p>
-=======
 <a id="exemplarOf"></a><h2><a href="#exemplarof"><span class="header-section-number">5.2</span> exemplarOf</a></h2>
 <p>Relates an Item to the Document that is exemplified by the Item.</p>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre><code>holding:exemplarOf a owl:ObjectProperty ;
     rdfs:label &quot;is examplar of&quot;@en ;
-    rdfs:comment &quot;Relates an item to the document that is exemplified by the item.&quot;@en ;
-    rdfs:domain holding:Item ;
-    rdfs:range holding:Document ;
-    rdfs:seeAlso bf:holdingFor ;
-    rdfs:seeAlso rdai:manifestationExemplified ;
+    rdfs:comment &quot;Relates an Item to the Document that is exemplified by the Item.&quot;@en ;
+    rdfs:domain frbr:Item ;
+    rdfs:range bibo:Document ;
     owl:inverseOf holding:exemplar .</code></pre>
 </section>
 <section id="broaderexemplar" class="level2">
-<<<<<<< HEAD
-<a id="broaderExemplar"></a><h2><a href="#broaderexemplar"><span class="header-section-number">6.3</span> broaderExemplar</a></h2>
-<p>Relates a document to an item that contains an exemplar of the document as part.</p>
-=======
 <a id="broaderExemplar"></a><h2><a href="#broaderexemplar"><span class="header-section-number">5.3</span> broaderExemplar</a></h2>
 <p>Relates a Document to an Item that contains an exemplar of the Document as part.</p>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre><code>holding:broaderExemplar a owl:ObjectProperty ;
     rdfs:label &quot;broader exemplar&quot;@en ;
-    rdfs:comment &quot;Relates a document to an item that contains an exemplar of the document as part.&quot;@en ;
-    rdfs:domain holding:Document ;
-    rdfs:range holding:Item ;
-    rdfs:seeAlso rdai:containedInItem ;
+    rdfs:comment &quot;Relates a Document to an Item that contains an exemplar of the Document as part.&quot;@en ;
+    rdfs:domain bibo:Document ;
+    rdfs:range frbr:Item ;
     owl:inverseOf holding:broaderExemplarOf .</code></pre>
 </section>
 <section id="broaderexemplarof" class="level2">
-<<<<<<< HEAD
-<a id="broaderExemplarOf"></a><h2><a href="#broaderexemplarof"><span class="header-section-number">6.4</span> broaderExemplarOf</a></h2>
-<p>Relates an item to a document which is partly exemplified by the item.</p>
-=======
 <a id="broaderExemplarOf"></a><h2><a href="#broaderexemplarof"><span class="header-section-number">5.4</span> broaderExemplarOf</a></h2>
 <p>Relates an Item to a Document which is partly exemplified by the Item.</p>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre><code>holding:broaderExemplarOf a owl:ObjectProperty ;
     rdfs:label &quot;broader exemplar of&quot;@en ;
-    rdfs:comment &quot;Relates an item to a document which is partly exemplified by the item.&quot;@en ;
-    rdfs:domain holding:Item ;
-    rdfs:range holding:Document ;
-    rdfs:seeAlso rdai:containsItem ;
+    rdfs:comment &quot;Relates an Item to a Document which is partly exemplified by the Item.&quot;@en ;
+    rdfs:domain frbr:Item ;
+    rdfs:range bibo:Document ;
     owl:inverseOf holding:broaderExemplar .</code></pre>
 </section>
 <section id="narrowerexemplar" class="level2">
-<<<<<<< HEAD
-<a id="narrowerExemplar"></a><h2><a href="#narrowerexemplar"><span class="header-section-number">6.5</span> narrowerExemplar</a></h2>
-<p>Relates a document to an item that is an exemplar of a part of the document.</p>
-=======
 <a id="narrowerExemplar"></a><h2><a href="#narrowerexemplar"><span class="header-section-number">5.5</span> narrowerExemplar</a></h2>
 <p>Relates an Item to a Document which is partly exemplified by the Item.</p>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre><code>holding:narrowerExemplar a owl:ObjectProperty ;
     rdfs:label &quot;narrower exemplar&quot;@en ;
-    rdfs:comment &quot;Relates a document to an item that is an exemplar of a part of the document.&quot;@en ;
-    rdfs:domain  holding:Document ;
-    rdfs:range holding:Item ;
-    rdfs:seeAlso rdai:containsItem ;
+    rdfs:comment &quot;Relates an Item to a Document which is partly exemplified by the Item.&quot;@en ;
+    rdfs:domain frbr:Item ;
+    rdfs:range bibo:Document ;
     owl:inverseOf holding:narrowerExemplarOf .</code></pre>
 </section>
 <section id="narrowerexemplarof" class="level2">
-<<<<<<< HEAD
-<a id="narrowerExemplarOf"></a><h2><a href="#narrowerexemplarof"><span class="header-section-number">6.6</span> narrowerExemplarOf</a></h2>
-<p>Relates an item to a document which is partly exemplified by the item.</p>
-=======
 <a id="narrowerExemplarOf"></a><h2><a href="#narrowerexemplarof"><span class="header-section-number">5.6</span> narrowerExemplarOf</a></h2>
 <p>Relates a Document to an Item that is an exemplar of a part of the Document.</p>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre><code>holding:narrowerExemplarOf a owl:ObjectProperty ;
     rdfs:label &quot;narrower exemplar of&quot;@en ;
-    rdfs:comment &quot;Relates an item to a document which is partly exemplified by the item.&quot;@en ;
-    rdfs:domain holding:Item ;
-    rdfs:range holding:Document ;
-    rdfs:seeAlso rdai:containedInItem ;
+    rdfs:comment &quot;Relates a Document to an Item that is an exemplar of a part of the Document.&quot;@en ;
+    rdfs:domain bibo:Document ;
+    rdfs:range frbr:Item ;
     owl:inverseOf holding:narrowerExemplar .</code></pre>
 </section>
 </section>
 <section id="relation-between-items-and-services" class="level1">
-<<<<<<< HEAD
-<h1><a href="#relation-between-items-and-services"><span class="header-section-number">7</span> Relation between Items and Services</a></h1>
-=======
 <h1><a href="#relation-between-items-and-services"><span class="header-section-number">6</span> Relation between Items and Services</a></h1>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre class="ditaa"><code>    +-----------------------------+
     |       service:Service       |
     |  +-----------------------+  |
     |  |  dso:DocumentService  |  |
     |  | +------------------+  |  |   service:providedBy   +------------+
-<<<<<<< HEAD
-    |  | | dso:Presentation |  +--------------------------&gt;|   Agent    |
-=======
     |  | | dso:Presentation |  +--------------------------&gt;| foaf:Agent |
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
     |  | +------------------+  |  |   service:consumedBy   +------------+
     |  |                       |  |
     |  | +------------------+  |  |
     |  | |    dso:Loan      |  |  |
     |  | +------------------+  |  |    daia:availableFor   +-----------|
-<<<<<<< HEAD
-    |  |                       |&lt;--------------------------+   Item    |
-=======
     |  |                       |&lt;--------------------------+ frbr:Item |
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
     |  | +------------------+  |  |   daia:unavailableFor  +-----------+
     |  | |    dso:...       |  |  |
     |  | +------------------+  |  |
@@ -568,39 +355,19 @@
         gr:includes $alicecopies
     ] .</code></pre>
 <section id="documentservice" class="level2">
-<<<<<<< HEAD
-<a id="DocumentService"></a><h2><a href="#documentservice"><span class="header-section-number">7.1</span> DocumentService</a></h2>
-=======
 <a id="DocumentService"></a><h2><a href="#documentservice"><span class="header-section-number">6.1</span> DocumentService</a></h2>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <p>A <strong>DocumentService</strong> is a service that is related to one or more <a href="#document">documents</a>. The service involves a service provider (e.g. a library) and an optional service consumer (e.g. a library patron). Both service provider and service consumer SHOULD be instances of <a href="#agent">Agent</a>. The DocumentService class is defined by the <a href="http://purl.org/ontology/dso">Document Service Ontology</a>.</p>
 <pre><code>dso:DocumentService a owl:Class ;
     rdfs:label &quot;DocumentService&quot; ;
     rdfs:isDefinedBy &lt;http://purl.org/ontology/dso&gt; .</code></pre>
-<p>To relate an <a href="#item">Item</a> to a DocumentService one should use the properties <a href="http://purl.org/ontology/dso#hasService">dso:hasService</a>, <a href="http://purl.org/ontology/daia/availableFor">daia:availableFor</a> or <a href="http://purl.org/ontology/daia/unavailableFor">daia:unavailableFor</a>.</p>
-<p>To relate a DocumentService to an <a href="#item">Item</a> one should use the properties <a href="http://purl.org/ontology/dso#hasDocument">dso:hasDocument</a>, <a href="http://purl.org/ontology/daia/availableOf">daia:availableOf</a> or <a href="http://purl.org/ontology/daia/unavailableOf">daia:unavailableOf</a>.</p>
 </section>
 <section id="location" class="level2">
-<<<<<<< HEAD
-<a id="Location"></a><h2><a href="#location"><span class="header-section-number">7.2</span> Location</a></h2>
-<p>A <strong>Location</strong> is a point or area of interest from which a particular <a href="#item">Item</a> or <a href="#documentservice">DocumentService</a> is available. The property [availableAtorFrom] should be used to indicate the location of an offered <a href="#documentservice">DocumentService</a> for an <a href="#item">Item</a>. The Location class is defined by <a href="http://purl.org/goodrelations/v1">GoodRelations</a>.</p>
-=======
 <a id="Location"></a><h2><a href="#location"><span class="header-section-number">6.2</span> Location</a></h2>
 <p>A <strong>Location</strong> is a point or area of interest from which a particular <a href="#item">Item</a> or <a href="#documentservice">DocumentService</a> is available. The property <a href="#availableatorfrom">availableAtorFrom</a> should be used to indicate the location of an offered <a href="#documentservice">DocumentService</a> for an <a href="#item">Item</a>. The Location class is defined by <a href="http://purl.org/goodrelations/v1">GoodRelations</a>.</p>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre><code>gr:Location a owl:Class ;
     rdfs:label &quot;Location&quot;@en ;
     owl:equivalentClass schema:Place ;
     rdfs:isDefinedBy &lt;http://purl.org/goodrelations/v1&gt; .</code></pre>
-<<<<<<< HEAD
-<p>When a <a href="#documentservice">DocumentService</a> is offered for an <a href="#item">Item</a>, one should use the property <a href="http://purl.org/goodrelations/v1#name">gr:name</a> from <a href="http://purl.org/goodrelations/v1">GoodRelations</a> to name the location where the <a href="#documentservice">DocumentService</a> should be provided.</p>
-<p>The property <a href="http://purl.org/goodrelations/v1#availableAtOrFrom">gr:availableAtOrFrom</a> from <a href="http://purl.org/goodrelations/v1">GoodRelations</a> should be used to relate an offering of a <a href="#documentservice">DocumentService</a> for an <a href="#item">Item</a> with a <a href="#location">Location</a>.</p>
-<p>The property <a href="http://purl.org/ontology/service#providedBy">service:providedBy</a> from the <a href="http://purl.org/ontology/service">Service Ontology</a> should be used to relate a <a href="#documentservice">DocumentService</a> with an <a href="#agent">Agent</a> who offered the service.</p>
-<p>The property <a href="http://www.w3.org/ns/org#siteOf">org:siteOf</a> from <a href="http://www.w3.org/ns/org">Organization Ontology</a> should be used to relate a <a href="#location">Location</a> with an <a href="#agent">Agent</a>.</p>
-</section>
-<section id="chronology" class="level2">
-<a id="Chronology"></a><h2><a href="#chronology"><span class="header-section-number">7.3</span> Chronology</a></h2>
-=======
 </section>
 <section id="name" class="level2">
 <a id="name"></a><h2><a href="#name"><span class="header-section-number">6.3</span> name</a></h2>
@@ -640,20 +407,10 @@
 </section>
 <section id="chronology" class="level2">
 <a id="Chronology"></a><h2><a href="#chronology"><span class="header-section-number">6.8</span> Chronology</a></h2>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <p>A <strong>Chronology</strong> is the description of enumeration and chronology of a periodical. The Chronology class is defined by the <a href="http://purl.org/ontology/ecpo">Enumeration and Chronology of Periodicals Ontology</a>.</p>
 <pre><code>ecpo:Chronology a owl:Class ;
     rdfs:label &quot;Chronology&quot;@en ;
     rdfs:isDefinedBy &lt;http://purl.org/ontology/ecpo&gt; .</code></pre>
-<<<<<<< HEAD
-<p>To relate an <a href="#item">Item</a> to a Chronology use <a href="http://purl.org/ontology/ecpo#hasChronology">ecpo:hasChronology</a> or <a href="http://purl.org/ontology/ecpo#hasChronologyGap">ecpo:hasChronologyGap</a>. To be more specific on the nature (current or closed) of a Chronology use <a href="http://purl.org/ontology/ecpo#CurrentChronology">ecpo:CurrentChronology</a> or <a href="http://purl.org/ontology/ecpo#ClosedChronology">ecpo:ClosedChronology</a>. To simply express the fact that an <a href="#item">Item</a> has a current chronology or a closed chronology without giving further information one MAY use <a href="http://purl.org/ontology/ecpo#Current">ecpo:Current</a> or <a href="http://purl.org/ontology/ecpo#Closed">ecpo:Closed</a>.</p>
-</section>
-</section>
-<section id="examples" class="level1">
-<h1><a href="#examples"><span class="header-section-number">8</span> Examples</a></h1>
-<section id="a-book-series-fully-held-by-a-library" class="level2">
-<a id="A book series, fully held by a library"></a><h2><a href="#a-book-series-fully-held-by-a-library"><span class="header-section-number">8.1</span> A book series, fully held by a library</a></h2>
-=======
 <p>To relate an <a href="#item">Item</a> to a Chronology use <a href="http://purl.org/ontology/ecpo#hasChronology">hasChronology</a> or <a href="http://purl.org/ontology/ecpo#hasChronologyGap">hasChronologyGap</a>. To be more specific on the nature (current or closed) of a Chronology use <a href="http://purl.org/ontology/ecpo#CurrentChronology">CurrentChronology</a> or <a href="http://purl.org/ontology/ecpo#ClosedChronology">ClosedChronology</a>. To simply express the fact that an <a href="#item">Item</a> has a current chronology or a closed chronology without giving further information one MAY use <a href="http://purl.org/ontology/ecpo#Current">Current</a> or <a href="http://purl.org/ontology/ecpo#Closed">Closed</a>.</p>
 </section>
 <section id="label" class="level2">
@@ -672,11 +429,10 @@
 <h1><a href="#examples"><span class="header-section-number">7</span> Examples</a></h1>
 <section id="a-book-series-fully-held-by-a-library" class="level2">
 <a id="A book series, fully held by a library"></a><h2><a href="#a-book-series-fully-held-by-a-library"><span class="header-section-number">7.1</span> A book series, fully held by a library</a></h2>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre class="example"><code>
 # The series is a document, consisting of multiple volumes
 $series a bibo:Periodical 
-    dct:hasPart $volume1, $volume2, $volume3 .
+    dcterms:hasPart $volume1, $volume2, $volume3 .
 
 $volume1 a bibo:Book ; bibo:volume &quot;1&quot; .
 $volume2 a bibo:Book ; bibo:volume &quot;2&quot; .
@@ -684,7 +440,7 @@ $volume3 a bibo:Book ; bibo:volume &quot;3&quot; .
 
 # One chapter in Volume 1
 $chapter3 a bibo:Document ;
-    dct:isPartOf $volume1 .
+    dcterms:isPartOf $volume1 .
 
 # A copy of the full series
 $librarycopies 
@@ -702,16 +458,12 @@ $librarycopyofvolume1
     holding:broaderExemplaOf $chapter3 .</code></pre>
 </section>
 <section id="the-same-series-partially-held-by-alice" class="level2">
-<<<<<<< HEAD
-<a id="The same series, partially held by Alice"></a><h2><a href="#the-same-series-partially-held-by-alice"><span class="header-section-number">8.2</span> The same series, partially held by Alice</a></h2>
-=======
 <a id="The same series, partially held by Alice"></a><h2><a href="#the-same-series-partially-held-by-alice"><span class="header-section-number">7.2</span> The same series, partially held by Alice</a></h2>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre class="example"><code># A copy of volume 1 and 2
 $alicecopies 
     holding:exemplarOf $series ;  
         # alteratively: holdings:narrowerExemplarOf $series
-    dct:hasPart $volume2, $volume3
+    dcterms:hasPart $volume2, $volume3
     holding:heldBy $alice ;
     ecpo:hasChronology [
         a ecpo:CurrentChronology ;
@@ -727,11 +479,7 @@ $alicescopyofvolume1
 </code></pre>
 </section>
 <section id="offering-a-service-for-an-item" class="level2">
-<<<<<<< HEAD
-<a id="Offering a Service for an Item"></a><h2><a href="#offering-a-service-for-an-item"><span class="header-section-number">8.3</span> Offering a Service for an Item</a></h2>
-=======
 <a id="Offering a Service for an Item"></a><h2><a href="#offering-a-service-for-an-item"><span class="header-section-number">7.3</span> Offering a Service for an Item</a></h2>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <pre class="example"><code>$alicecopies
     daia:availableFor (
         [
@@ -752,15 +500,6 @@ $alicescopyofvolume1
 </section>
 </section>
 <section id="references" class="level1">
-<<<<<<< HEAD
-<h1><a href="#references"><span class="header-section-number">9</span> References</a></h1>
-<section id="normative-references" class="level2">
-<a id="Normative References"></a><h2><a href="#normative-references"><span class="header-section-number">9.1</span> Normative References</a></h2>
-<p>…</p>
-</section>
-<section id="informative-references" class="level2">
-<a id="Informative References"></a><h2><a href="#informative-references"><span class="header-section-number">9.2</span> Informative References</a></h2>
-=======
 <h1><a href="#references"><span class="header-section-number">8</span> References</a></h1>
 <section id="normative-references" class="level2">
 <a id="Normative References"></a><h2><a href="#normative-references"><span class="header-section-number">8.1</span> Normative References</a></h2>
@@ -768,7 +507,6 @@ $alicescopyofvolume1
 </section>
 <section id="informative-references" class="level2">
 <a id="Informative References"></a><h2><a href="#informative-references"><span class="header-section-number">8.2</span> Informative References</a></h2>
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 <ul>
 <li>ISO 20775</li>
 <li><a href="http://purl.org/ontology/bibo/">Bibliographic Ontology</a></li>
@@ -783,10 +521,6 @@ $alicescopyofvolume1
 <li><a href="http://purl.org/ontology/service">Service Ontology</a></li>
 <li><a href="http://schema.org">Schema.org</a></li>
 <li><a href="http://bibframe.org/">Bibframe Vocabulary</a></li>
-<<<<<<< HEAD
-<li><a href="http://rdaregistry.info/Elements/c/">RDA Classes</a></li>
-=======
->>>>>>> 4378097681999aada3f9174afa8962399f19ab56
 </ul>
 </section>
 </section>
