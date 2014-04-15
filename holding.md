@@ -34,7 +34,7 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix org:     <http://www.w3.org/ns/org#> .
     @prefix owl:     <http://www.w3.org/2002/07/owl#> .
     @prefix rdaa:    <http://rdaregistry.info/Elements/a/> .
-    @prefox rdam:    <http://rdaregistry.info/Elements/m/> .
+    @prefix rdam:    <http://rdaregistry.info/Elements/m/> .
     @prefix rdac:    <http://rdaregistry.info/Elements/c/> .
     @prefix rdai:    <http://rdaregistry.info/Elements/i/> .
     @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
