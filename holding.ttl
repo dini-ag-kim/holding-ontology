@@ -49,7 +49,7 @@ ecpo:Chronology
     vann:preferredNamespaceUri "http://purl.org/ontology/holding#" ;
     a owl:Ontology ;
     rdfs:label "Holding Ontology"@en ;
-    owl:versionInfo "rev133" .
+    owl:versionInfo "0.1.4" .
 
 holding:Agent
     a owl:Class ;
