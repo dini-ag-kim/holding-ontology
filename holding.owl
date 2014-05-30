@@ -19,7 +19,7 @@
     <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-05-30</dct:modified>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/holding">
-    <owl:versionInfo>0.1.3-dirty</owl:versionInfo>
+    <owl:versionInfo>0.1.3rev1</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/holding">
     <cc:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
