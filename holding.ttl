@@ -43,13 +43,13 @@ ecpo:Chronology
 <http://purl.org/ontology/holding>
     cc:license <http://creativecommons.org/licenses/by/3.0/> ;
     dct:creator "Carsten Klee", "Jakob Voß" ;
-    dct:modified "2014-04-15"^^xsd:date ;
+    dct:modified "2014-05-30"^^xsd:date ;
     dct:title "Holding Ontology"@en ;
     vann:preferredNamespacePrefix "holding" ;
     vann:preferredNamespaceUri "http://purl.org/ontology/holding#" ;
     a owl:Ontology ;
     rdfs:label "Holding Ontology"@en ;
-    owl:versionInfo "0.1.2rev35" .
+    owl:versionInfo "0.1.3-dirty" .
 
 holding:Agent
     a owl:Class ;
@@ -102,11 +102,12 @@ holding:broaderExemplarOf
 
 holding:collectedBy
     a owl:ObjectProperty ;
-    rdfs:comment "Relates an item to an agent who holds the item."@en ;
-    rdfs:domain holding:Item ;
-    rdfs:label "collected by"@en ;
-    rdfs:range holding:Agent ;
-    rdfs:seeAlso rdai:collector .
+    rdfs:comment "Relates a document and/or item to an agent who collects it."@en, "Relates an agent to a document and/or item that is collected by the agent."@en ;
+    rdfs:domain holding:Agent, holding:Document, holding:Item ;
+    rdfs:label "collected by"@en, "collects"@en ;
+    rdfs:range holding:Agent, holding:Document, holding:Item ;
+    rdfs:seeAlso rdai:collector, rdai:collectorOf ;
+    owl:inverseOf holding:collectedBy, holding:collects .
 
 holding:exemplar
     a owl:ObjectProperty ;
@@ -143,6 +144,7 @@ holding:holds
     rdfs:label "holds"@en ;
     rdfs:range holding:Item ;
     rdfs:seeAlso rdaa:currentOwnerOf, rdaa:ownerOf ;
+    rdfs:subPropertyOf holding:collects ;
     owl:inverseOf holding:heldBy .
 
 holding:label
