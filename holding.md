@@ -70,10 +70,13 @@ The Holding Ontology is defined in RDF/Turtle as following:
 |:---:|:---:|:---:|:---:|
 | [Item]<br>[Agent]<br>[Document]| [DocumentService]<br>[Location]<br>[Chronology]| [collectedBy]<br>[collects]<br>[heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [daia:availableFor]<br>[daia:availableOf]<br>[daia:unavailableFor]<br>[daia:unavailableOf]<br>[dso:hasService]<br>[dso:hasDocument]<br>[service:providedBy]<br>[ecpo:hasChronology]<br>[ecpo:hasChronologyGap]<br>[gr:availableAtOrFrom]<br>[org:siteOf]<br>[gr:name] |
 
-# Core Classes
+# Holding Classes
 
 The holding ontology defines three classes [Item], [Agent], and [Document]
-based on existing classes defined in other ontologies.
+based on existing classes defined in other ontologies. Relations between and
+properties of the holding classes are explained below as [holding
+relationships](#holding-relationships) and [holding
+properties](#holding-properties).
 
 ## Item
 
@@ -105,89 +108,64 @@ class [rdac:Agent] from the [RDA Vocabularies].
 A **Document** is a body of information used designed with the capacity (and
 usually intent) to communicate.  A document may manifest symbolic, diagrammatic
 or sensory-representational information.  Documents may include both abstract
-works, such as "Romeo and Juliet", and more conrete entities, such as a
-specific edition of a book.
+works, such as the story of "Romeo and Juliet", and more concrete entities,
+such as a specific edition of a book. Abstract documents are exemplified by
+[Items](#item). Some documents, such as unique physical pieces of art, may also
+be be refered to as both abstract and concrete. For this reason the classes
+[Document] and [Item] are not disjoint.
 
-The holding ontology recommends to either use class
-[bibo:Document] from the [Bibliographic Ontology], class
-[foaf:Document] from the [FOAF Ontology], class [bf:Work] or [bf:Instance] from the [Bibframe Vocabulary] or [schema:CreativeWork] from [Schema.org]. Some documents may
-also be items ([Document] and [Item] are not disjoint).
+The holding ontology recommends to use class [bibo:Document] from the
+[Bibliographic Ontology], class [foaf:Document] from the [FOAF Ontology], class
+[bf:Work] or [bf:Instance] from the [Bibframe Vocabulary] or
+[schema:CreativeWork] from [Schema.org].
 
     holding:Document a owl:Class ;
         rdfs:label "Document"@en ;
         rdfs:comment "Use one of bibo:Document, foaf:Document, bf:Work or bf:Instance"@en ;
         owl:unionOf (bibo:Document foaf:Document bf:Work bf:Instance schema:CreativeWork) .
 
-[bibo:Document]: http://purl.org/ontology/bibo/Document
-[foaf:Document]: http://xmlns.com/foaf/0.1/Document
-[bf:Work]: http://bibframe.org/vocab/Work
-[bf:Instance]: http://bibframe.org/vocab/Instance
-[schema:CreativeWork]: http://schema.org/CreativeWork
-[frbr:Item]: http://purl.org/vocab/frbr/core#Item
-[bf:HeldItem]: http://bibframe.org/vocab/HeldItem
-
-
-In the context of this ontology when talking about documents several kinds of documents are involved:
-
-* the abstract document
-* the document describing the title
-* the document describing the holdings
-* document as a website 
-
-The reltions between an [Item] and different kinds of document is shown in this diagram:
-
-`item-description-relation.md`{.include}
-
-# Holding labeling
-
-## label
-
-A call number, shelf mark or similar label of an item.
-
-    holding:label a owl:DatatypeProperty ;
-        rdfs:label "label"@en ;
-        rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
-        rdfs:domain holding:Item ;
-        rdfs:range rdfs:Literal ;
-        rdfs:seeAlso bf:label ;
-        rdfs:seeAlso bf:shelfMark ;
-        rdfs:seeAlso rdai:identifierForTheItem ;
-        rdfs:seeAlso gr:hasStockKeepingUnit ;
-        rdfs:seeAlso schema:sku ;
-        rdfs:seeAlso schema:name ;
-        rdfs:subPropertyOf dct:identifier .
-
 # Holding Relationships
 
-## collectedBy
+## Between Documents and Agents
 
-Relates an [Item] to an [Agent] who collects the item by selecting, arranging,
-describing and/or cataloging the item in a collection. This property may
-coincode with [rdai:collector] from [RDA Vocabularies].
+A [Document] can be collected or described by an [Agent], for instance in a
+bibliography or catalog. The properties [collectedBy] and [collects] can be
+used to express this relationship. The properties can also be used for
+[Items](#items) which are collected by an [Agent]. The sub-properties [heldBy]
+and [held] should be preferred when an item is not only collected by
+description but also by possession.
+
+### collectedBy
+
+Relates a [Document] and/or [Item] to an [Agent] who collects the document or
+item by selecting, arranging, describing and/or cataloging it in a collection.
+This property may coincode with [rdai:collector] from [RDA Vocabularies].
 
     holding:collectedBy a owl:ObjectProperty ;
         rdfs:label "collected by"@en ;
-        rdfs:comment "Relates an item to an agent who collects the item."@en ;
-        rdfs:domain holding:Item ;
+        rdfs:comment "Relates a document and/or item to an agent who collects it."@en ;
+        rdfs:domain holding:Document, holding:Item ;
         rdfs:range holding:Agent ;
         owl:inverseOf holding:collects ;
         rdfs:seeAlso rdai:collector .
 
-## collects
+### collects
 
-Relates an [Agent] to an [Item] that is collected by the agent. This property
-may coincode with [rdaa:collectorOf] from [RDA Vocabularies].
+Relates an [Agent] to an [Item] and/or [Document] that is collected by the
+agent. This property may coincode with [rdaa:collectorOf] from [RDA
+Vocabularies].
 
     holding:collectedBy a owl:ObjectProperty ;
         rdfs:label "collects"@en ;
-        rdfs:comment "Relates an agent to an item that is collected by the agent."@en ;
+        rdfs:comment "Relates an agent to a document and/or item that is collected by the agent."@en ;
         rdfs:domain holding:Agent ;
-        rdfs:range holding:Item ;
+        rdfs:range holding:Document, holding:Item ;
         owl:inverseOf holding:collectedBy ;
         rdfs:seeAlso rdai:collectorOf .
 
+## Between Items and Agents
 
-## heldBy
+### heldBy
 
 Relates an [Item] to an [Agent] who holds the item.
 
@@ -202,7 +180,7 @@ Relates an [Item] to an [Agent] who holds the item.
         rdfs:seeAlso rdai:owner ;
         rdfs:subPropertyOf holding:collectedBy .
 
-## holds
+### holds
 
 Relates an [Agent] to an [Item] which the agent holds.
 
@@ -213,10 +191,10 @@ Relates an [Agent] to an [Item] which the agent holds.
         rdfs:range holding:Item ;
         rdfs:seeAlso rdaa:currentOwnerOf ;
         rdfs:seeAlso rdaa:ownerOf ;
+        rdfs:subPropertyOf holding:collects ;
         owl:inverseOf holding:heldBy .
 
-
-# Relations between abstract Documents and Items
+## Between Documents and Items
 
 The [exemplar] relation is used to state that a concrete [Item] is a copy of an
 abstract [Document]. Additional relations exist for items that only contain
@@ -235,7 +213,14 @@ To give an example:
   * a [narrowerExemplarOf] the series (as [Document]), and
   * a [broaderExemplarOf] a single chapter of the book (as [Document]).
 
-## exemplar
+Items and Documents may further be connected to other Documents that describe
+the connected item or document (also known as metadata). Such documents can 
+be linked with properties [foaf:page] and [foaf:primaryTopicOf] as illustrated
+below:
+
+`item-description-relation.md`{.include}
+
+### exemplar
 
 Relates a [Document] to an [Item] that is an exemplar or copy of the
 [Document]. This property may coincide with [frbr:exemplar] from the [FRBR
@@ -258,7 +243,7 @@ property [narrowerExemplar].
         rdfs:seeAlso rdam:exemplarOfManifestation ;
         owl:inverseOf holding:exemplarOf .
 
-## exemplarOf
+### exemplarOf
 
 Relates an [Item] to the [Document] that is exemplified by the item.
 
@@ -271,7 +256,7 @@ Relates an [Item] to the [Document] that is exemplified by the item.
         rdfs:seeAlso rdai:manifestationExemplified ;
         owl:inverseOf holding:exemplar .
 
-## broaderExemplar
+### broaderExemplar
 
 Relates a [Document] to an [Item] that contains a part of the document as
 [exemplar].
@@ -284,7 +269,7 @@ Relates a [Document] to an [Item] that contains a part of the document as
         rdfs:seeAlso rdai:containedInItem ;
         owl:inverseOf holding:broaderExemplarOf .
 
-## broaderExemplarOf
+### broaderExemplarOf
 
 Relates an [Item] to a [Document] which is partly exemplified by
 ([exemplarOf]) the item.
@@ -297,7 +282,7 @@ Relates an [Item] to a [Document] which is partly exemplified by
         rdfs:seeAlso rdai:containsItem ;
         owl:inverseOf holding:broaderExemplar .
 
-## narrowerExemplar
+### narrowerExemplar
 
 Relates a [Document] to an [Item] that is an [exemplar] of a part of the document.
 
@@ -309,7 +294,7 @@ Relates a [Document] to an [Item] that is an [exemplar] of a part of the documen
         rdfs:seeAlso rdai:containsItem ;
         owl:inverseOf holding:narrowerExemplarOf .
 
-## narrowerExemplarOf
+### narrowerExemplarOf
 
 Relates an [Item] to a [Document] which is partly exemplified by ([exemplarOf]) the item.
 
@@ -321,7 +306,69 @@ Relates an [Item] to a [Document] which is partly exemplified by ([exemplarOf]) 
         rdfs:seeAlso rdai:containedInItem ;
         owl:inverseOf holding:narrowerExemplar .
 
-# Relation between Items and Services
+# Holding Properties
+
+## label
+
+A call number, shelf mark or similar label of an item.
+
+    holding:label a owl:DatatypeProperty ;
+        rdfs:label "label"@en ;
+        rdfs:comment "A call number, shelf mark or similar label of an item"@en ;
+        rdfs:domain holding:Item ;
+        rdfs:range rdfs:Literal ;
+        rdfs:seeAlso bf:label ;
+        rdfs:seeAlso bf:shelfMark ;
+        rdfs:seeAlso rdai:identifierForTheItem ;
+        rdfs:seeAlso gr:hasStockKeepingUnit ;
+        rdfs:seeAlso schema:sku ;
+        rdfs:seeAlso schema:name ;
+        rdfs:subPropertyOf dct:identifier .
+
+
+# Additional Classes
+
+## Chronology
+
+A **Chronology** is the description of enumeration and chronology of a periodical. The Chronology class is defined by the [Enumeration and Chronology of Periodicals Ontology].
+
+    ecpo:Chronology a owl:Class ;
+        rdfs:label "Chronology"@en ;
+        rdfs:isDefinedBy <http://purl.org/ontology/ecpo> .
+
+## Location
+
+A **Location** is a point or area of interest from which a particular [Item] or [DocumentService] is available. The property [availableAtorFrom] should be used to indicate the location of an offered [DocumentService] for an [Item]. The Location class is defined by [GoodRelations].
+
+    gr:Location a owl:Class ;
+        rdfs:label "Location"@en ;
+        owl:equivalentClass schema:Place ;
+        rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
+
+## DocumentService
+
+A **DocumentService** is a service that is related to one or more [documents](#document). The service involves a service provider (e.g.
+a library) and an optional service consumer (e.g. a library patron). Both service provider and service consumer SHOULD be instances of [Agent]. The DocumentService class is defined by the [Document Service Ontology].
+
+    dso:DocumentService a owl:Class ;
+        rdfs:label "DocumentService" ;
+        rdfs:isDefinedBy <http://purl.org/ontology/dso> .
+
+# Additional Relationships
+
+## Relating to Chronologies
+
+To relate an [Item] to a Chronology use [ecpo:hasChronology] or [ecpo:hasChronologyGap]. To be more specific on the nature (current or closed) of a Chronology use [ecpo:CurrentChronology] or [ecpo:ClosedChronology]. To simply express the fact that an [Item] has a current chronology or a closed chronology without giving further information one MAY use [ecpo:Current] or [ecpo:Closed].
+
+[ecpo:hasChronology]: http://purl.org/ontology/ecpo#hasChronology
+[ecpo:hasChronologyGap]: http://purl.org/ontology/ecpo#hasChronologyGap
+[ecpo:CurrentChronology]: http://purl.org/ontology/ecpo#CurrentChronology
+[ecpo:ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
+[ecpo:Current]: http://purl.org/ontology/ecpo#Current
+[ecpo:Closed]: http://purl.org/ontology/ecpo#Closed
+
+
+## Relating to Services
 
 `item-offering-relation.md`{.include}
 
@@ -352,15 +399,6 @@ is a shortcut for
     ] .
 ```
 
-## DocumentService
-
-A **DocumentService** is a service that is related to one or more [documents](#document). The service involves a service provider (e.g.
-a library) and an optional service consumer (e.g. a library patron). Both service provider and service consumer SHOULD be instances of [Agent]. The DocumentService class is defined by the [Document Service Ontology].
-
-    dso:DocumentService a owl:Class ;
-        rdfs:label "DocumentService" ;
-        rdfs:isDefinedBy <http://purl.org/ontology/dso> .
-
 To relate an [Item] to a DocumentService one should use the properties [dso:hasService], [daia:availableFor] or  [daia:unavailableFor].
 
 To relate a DocumentService to an [Item] one should use the properties [dso:hasDocument], [daia:availableOf] or  [daia:unavailableOf].
@@ -373,15 +411,7 @@ To relate a DocumentService to an [Item] one should use the properties [dso:hasD
 [daia:unavailableFor]: http://purl.org/ontology/daia/unavailableFor 
 [daia:unavailableOf]: http://purl.org/ontology/daia/unavailableOf 
 
-## Location
-
-A **Location** is a point or area of interest from which a particular [Item] or [DocumentService] is available. The property [availableAtorFrom] should be used to indicate the location of an offered [DocumentService] for an [Item]. The Location class is defined by [GoodRelations].
-
-    gr:Location a owl:Class ;
-        rdfs:label "Location"@en ;
-        owl:equivalentClass schema:Place ;
-        rdfs:isDefinedBy <http://purl.org/goodrelations/v1> .
-
+## Relating to Locations
 
 When a [DocumentService] is offered for an [Item], one should use the property [gr:name] from [GoodRelations] to name the location where the [DocumentService] should be provided.
 
@@ -389,30 +419,12 @@ The property [gr:availableAtOrFrom] from [GoodRelations] should be used to relat
 
 The property [service:providedBy] from the [Service Ontology] should be used to relate a [DocumentService] with an [Agent] who offered the service.
 
-The property [org:siteOf] from [Organization Ontology] should be used to relate a [Location] with an [Agent].
+The property [org:siteOf] from [Organization Ontology] should be used to relate
+a [Location] with an [Agent] if the location belongs to the agent.
 
 [gr:name]: http://purl.org/goodrelations/v1#name
 [gr:availableAtOrFrom]: http://purl.org/goodrelations/v1#availableAtOrFrom
 [service:providedBy]: http://purl.org/ontology/service#providedBy
-[org:siteOf]: http://www.w3.org/ns/org#siteOf
-
-## Chronology
-
-A **Chronology** is the description of enumeration and chronology of a periodical. The Chronology class is defined by the [Enumeration and Chronology of Periodicals Ontology].
-
-    ecpo:Chronology a owl:Class ;
-        rdfs:label "Chronology"@en ;
-        rdfs:isDefinedBy <http://purl.org/ontology/ecpo> .
-
-To relate an [Item] to a Chronology use [ecpo:hasChronology] or [ecpo:hasChronologyGap]. To be more specific on the nature (current or closed) of a Chronology use [ecpo:CurrentChronology] or [ecpo:ClosedChronology]. To simply express the fact that an [Item] has a current chronology or a closed chronology without giving further information one MAY use [ecpo:Current] or [ecpo:Closed].
-
-[ecpo:hasChronology]: http://purl.org/ontology/ecpo#hasChronology
-[ecpo:hasChronologyGap]: http://purl.org/ontology/ecpo#hasChronologyGap
-[ecpo:CurrentChronology]: http://purl.org/ontology/ecpo#CurrentChronology
-[ecpo:ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
-[ecpo:Current]: http://purl.org/ontology/ecpo#Current
-[ecpo:Closed]: http://purl.org/ontology/ecpo#Closed
-        
 
 # Examples
 
@@ -517,15 +529,40 @@ $alicecopies
 * [RDA Vocabularies]
 
 [Bibframe Vocabulary]: http://bibframe.org/
+[bf:Agent]: http://bibframe.org/vocab/Agent
+[bf:Work]: http://bibframe.org/vocab/Work
+[bf:Instance]: http://bibframe.org/vocab/Instance
+[bf:HeldItem]: http://bibframe.org/vocab/HeldItem
+
 [Bibliographic Ontology]: http://purl.org/ontology/bibo/
+[bibo:Document]: http://purl.org/ontology/bibo/Document
+
 [DAIA Ontology]: http://purl.org/ontology/daia
+
 [DCMI Metadata Terms]: http://dublincore.org/documents/dcmi-terms/
+
 [Document Service Ontology]: http://purl.org/ontology/dso
+[dso:Loan]: http://purl.org/ontology/dso#Loan
+[dso:Interloan]: http://purl.org/ontology/dso#Interloan
+[dso:Presentation]: http://purl.org/ontology/dso#Presentation
+
 [Enumeration and Chronology of Periodicals Ontology]: http://purl.org/ontology/ecpo
+
 [FOAF Ontology]: http://xmlns.com/foaf/spec/ 
+[foaf:Agent]: http://xmlns.com/foaf/0.1/Agent
+[foaf:Document]: http://xmlns.com/foaf/0.1/Document
+[foaf:page]: http://xmlns.com/foaf/0.1/page
+[foaf:topicOf]: http://xmlns.com/foaf/0.1/topicOf
+[foaf:primaryTopicOf]: http://xmlns.com/foaf/0.1/primaryTopicOf
+
 [FRBR Ontology]: http://purl.org/vocab/frbr/core
+[frbr:Item]: http://purl.org/vocab/frbr/core#Item
+
 [GoodRelations]: http://purl.org/goodrelations/v1
+[gr:Offering]: http://purl.org/goodrelations/v1#Offering
+
 [Organization Ontology]: http://www.w3.org/ns/org
+[org:siteOf]: http://www.w3.org/ns/org#siteOf
 
 [RDA Vocabularies]: http://www.rdaregistry.info/
 [rdac:Agent]: http://rdaregistry.info/Elements/c/Agent
@@ -533,19 +570,11 @@ $alicecopies
 [rdai:collector]: http://rdaregistry.info/Elements/i/collector
 [rdaa:collectorOf]: http://rdaregistry.info/Elements/a/collector
 
-
 [Schema.org]: http://schema.org
-[Service Ontology]:  http://purl.org/ontology/service
-
-[dso:Loan]: http://purl.org/ontology/dso#Loan
-[dso:Interloan]: http://purl.org/ontology/dso#Interloan
-[dso:Presentation]: http://purl.org/ontology/dso#Presentation
-[schema:Offer]: http://schema.org/Offer
-[gr:Offering]: http://purl.org/goodrelations/v1#Offering
-
-[foaf:Agent]: http://xmlns.com/foaf/0.1/Agent
-[bf:Agent]: http://bibframe.org/vocab/Agent
 [schema:Organization]: http://schema.org/Organization
 [schema:Person]: http://schema.org/Person
+[schema:CreativeWork]: http://schema.org/CreativeWork
+[schema:Offer]: http://schema.org/Offer
 
+[Service Ontology]:  http://purl.org/ontology/service
 
