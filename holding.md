@@ -68,7 +68,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 | Classes<br>(defined by this ontology)| Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)|
 |:---:|:---:|:---:|:---:|
-| [Item]<br>[Agent]<br>[Document]| [DocumentService]<br>[Location]<br>[Chronology]| [collectedBy]<br>[heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [daia:availableFor]<br>[daia:availableOf]<br>[daia:unavailableFor]<br>[daia:unavailableOf]<br>[dso:hasService]<br>[dso:hasDocument]<br>[service:providedBy]<br>[ecpo:hasChronology]<br>[ecpo:hasChronologyGap]<br>[gr:availableAtOrFrom]<br>[org:siteOf]<br>[gr:name] |
+| [Item]<br>[Agent]<br>[Document]| [DocumentService]<br>[Location]<br>[Chronology]| [collectedBy]<br>[collects]<br>[heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [daia:availableFor]<br>[daia:availableOf]<br>[daia:unavailableFor]<br>[daia:unavailableOf]<br>[dso:hasService]<br>[dso:hasDocument]<br>[service:providedBy]<br>[ecpo:hasChronology]<br>[ecpo:hasChronologyGap]<br>[gr:availableAtOrFrom]<br>[org:siteOf]<br>[gr:name] |
 
 # Core Classes
 
@@ -161,14 +161,31 @@ A call number, shelf mark or similar label of an item.
 
 ## collectedBy
 
-Relates an [Item] to an [Agent] who collected the item.
+Relates an [Item] to an [Agent] who collects the item by selecting, arranging,
+describing and/or cataloging the item in a collection. This property may
+coincode with [rdai:collector] from [RDA Vocabularies].
 
     holding:collectedBy a owl:ObjectProperty ;
         rdfs:label "collected by"@en ;
-        rdfs:comment "Relates an item to an agent who holds the item."@en ;
+        rdfs:comment "Relates an item to an agent who collects the item."@en ;
         rdfs:domain holding:Item ;
         rdfs:range holding:Agent ;
+        owl:inverseOf holding:collects ;
         rdfs:seeAlso rdai:collector .
+
+## collects
+
+Relates an [Agent] to an [Item] that is collected by the agent. This property
+may coincode with [rdaa:collectorOf] from [RDA Vocabularies].
+
+    holding:collectedBy a owl:ObjectProperty ;
+        rdfs:label "collects"@en ;
+        rdfs:comment "Relates an agent to an item that is collected by the agent."@en ;
+        rdfs:domain holding:Agent ;
+        rdfs:range holding:Item ;
+        owl:inverseOf holding:collectedBy ;
+        rdfs:seeAlso rdai:collectorOf .
+
 
 ## heldBy
 
@@ -418,10 +435,10 @@ $chapter3 a bibo:Document ;
 # A copy of the full series
 $librarycopies 
     holding:exemplarOf $series ;
-    holding:heldBy $libray ;
+    holding:heldBy $library ;
     ecpo:hasChronology [
         a ecpo:CurrentChronology ;
-        ecpo:hasBeginVolumeNumbering "1"        
+        ecpo:hasBeginVolumeNumbering "1"
     ] .
 
 # A particular copy of volume 1, located in the library
@@ -513,6 +530,9 @@ $alicecopies
 [RDA Vocabularies]: http://www.rdaregistry.info/
 [rdac:Agent]: http://rdaregistry.info/Elements/c/Agent
 [rdac:Item]: http://rdaregistry.info/Elements/c/Item
+[rdai:collector]: http://rdaregistry.info/Elements/i/collector
+[rdaa:collectorOf]: http://rdaregistry.info/Elements/a/collector
+
 
 [Schema.org]: http://schema.org
 [Service Ontology]:  http://purl.org/ontology/service
