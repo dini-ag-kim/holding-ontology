@@ -126,6 +126,28 @@ The holding ontology recommends to use class [bibo:Document] from the
 
 # Holding Relationships
 
+The [holding classes](#holding-classes) can be connected by the following
+holding relationships to express collection ([between documents and
+agents](#between-documents-and-agents)), possession ([between items and
+agents](#between-items-and-agents)), and exemplification ([between documents
+and items](#between-documents-and-items)). The main relationships are
+illustrated below.
+
+~~~ {.ditaa}
+       +------------+      collectedBy
+       |  Document  |--------------------------+
+       |            |<-----------------------+ |
+       +------------+      collects          | v
+            ^ |                          +---------+
+ exemplarOf | | exemplar                 |  Agent  |
+            | v                          +---------+
+        +--------+         holds             | ^
+        |  Item  |<--------------------------+ |
+        |        |-----------------------------+
+        +--------+         heldBy
+~~~
+
+
 ## Between Documents and Agents
 
 A [Document] can be collected or described by an [Agent], for instance in a
@@ -167,7 +189,10 @@ Vocabularies].
 
 ### heldBy
 
-Relates an [Item] to an [Agent] who holds the item.
+Relates an [Item] to an [Agent] who holds the item. This property may coincide
+with [rdai:owner] or [rdai:currentOwner] from [RDA Vocabularies]. The heldBy
+property is a sub-property of [collectedBy]\: an item that is held is also
+collected by the same agent.
 
     holding:heldBy a owl:ObjectProperty ;
         rdfs:label "held by"@en ;
@@ -182,7 +207,10 @@ Relates an [Item] to an [Agent] who holds the item.
 
 ### holds
 
-Relates an [Agent] to an [Item] which the agent holds.
+Relates an [Agent] to an [Item] which the agent holds. This property may
+coincide with [rdai:ownerOf] or [rdai:currentOwnerOf] from [RDA Vocabularies].
+The holds property is a sub-property of [collects]\: if an agent holds an item
+that the agent also collects the item.
 
     holding:holds a owl:ObjectProperty ;
         rdfs:label "holds"@en ;
