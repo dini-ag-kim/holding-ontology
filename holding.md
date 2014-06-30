@@ -60,6 +60,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
         rdfs:label "Holding Ontology"@en ;
         vann:preferredNamespacePrefix "holding" ;
         vann:preferredNamespaceUri "http://purl.org/ontology/holding#" ;
+        dct:description "A vocabulary to express (library) holdings in RDF" ;
         dct:modified "{GIT_REVISION_DATE}"^^xsd:date ;
         owl:versionInfo "{VERSION}" ;
         cc:license <http://creativecommons.org/licenses/by/3.0/> ;
