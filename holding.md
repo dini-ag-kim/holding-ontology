@@ -50,11 +50,12 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
     @prefix ssso:    <http://purl.org/ontology/ssso#> .
     @prefix vann:    <http://purl.org/vocab/vann/> .
+    @prefix voaf:    <http://purl.org/vocommons/voaf#> .
     @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 The Holding Ontology is defined in RDF/Turtle as following:
 
-    <> a owl:Ontology ;
+    <> a owl:Ontology, voaf:Vocabulary ;
         dct:title "Holding Ontology"@en ;
         rdfs:label "Holding Ontology"@en ;
         vann:preferredNamespacePrefix "holding" ;
