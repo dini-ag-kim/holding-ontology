@@ -168,7 +168,10 @@ This property may coincode with [rdai:collector] from [RDA Vocabularies].
     holding:collectedBy a owl:ObjectProperty ;
         rdfs:label "collected by"@en ;
         rdfs:comment "Relates a document and/or item to an agent who collects it."@en ;
-        rdfs:domain holding:Document, holding:Item ;
+        rdfs:domain [
+          a owl:Class ;
+            owl:unionOf (holding:Document holding:Item )
+         ] ;
         rdfs:range holding:Agent ;
         owl:inverseOf holding:collects ;
         rdfs:seeAlso rdai:collector .
@@ -179,11 +182,14 @@ Relates an [Agent] to an [Item] and/or [Document] that is collected by the
 agent. This property may coincode with [rdaa:collectorOf] from [RDA
 Vocabularies].
 
-    holding:collectedBy a owl:ObjectProperty ;
+    holding:collects a owl:ObjectProperty ;
         rdfs:label "collects"@en ;
         rdfs:comment "Relates an agent to a document and/or item that is collected by the agent."@en ;
         rdfs:domain holding:Agent ;
-        rdfs:range holding:Document, holding:Item ;
+        rdfs:range [
+         a owl:Class ;
+           owl:unionOf (holding:Document holding:Item )
+        ] ;
         owl:inverseOf holding:collectedBy ;
         rdfs:seeAlso rdai:collectorOf .
 
