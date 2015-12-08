@@ -68,9 +68,11 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 # Overview
 
-| Classes<br>(defined by this ontology)| Classes<br>(defined by other ontologies) | Properties<br>(defined by this ontology) | Properties<br>(defined by other ontologies)|
+![holding-classes-relation](holding-classes-relation.png)
+
+|Classes<br>(defined by this ontology)|Classes<br>(defined by other ontologies)|Properties<br>(defined by this ontology)|Properties<br>(defined by other ontologies)|
 |:---:|:---:|:---:|:---:|
-| [Item]<br>[Agent]<br>[Document]| [DocumentService]<br>[Location]<br>[Chronology]| [collectedBy]<br>[collects]<br>[heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label] | [daia:availableFor]<br>[daia:availableOf]<br>[daia:unavailableFor]<br>[daia:unavailableOf]<br>[dso:hasService]<br>[dso:hasDocument]<br>[service:providedBy]<br>[ecpo:hasChronology]<br>[ecpo:hasChronologyGap]<br>[gr:availableAtOrFrom]<br>[org:siteOf]<br>[gr:name] |
+|[Item]<br>[Agent]<br>[Document]|[DocumentService]<br>[Location]<br>[Chronology]|[collectedBy]<br>[collects]<br>[heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label]|[daia:availableFor]<br>[daia:availableOf]<br>[daia:unavailableFor]<br>[daia:unavailableOf]<br>[dso:hasService]<br>[dso:hasDocument]<br>[service:providedBy]<br>[ecpo:hasChronology]<br>[ecpo:hasChronologyGap]<br>[gr:availableAtOrFrom]<br>[org:siteOf]<br>[gr:name]|
 
 # Holding Classes
 
@@ -135,20 +137,7 @@ agents](#between-items-and-agents)), and exemplification ([between documents
 and items](#between-documents-and-items)). The main relationships are
 illustrated below.
 
-~~~ {.ditaa}
-       +------------+      collectedBy
-       |  Document  |--------------------------+
-       |            |<-----------------------+ |
-       +------------+      collects          | v
-            ^ |                          +---------+
- exemplarOf | | exemplar                 |  Agent  |
-            | v                          +---------+
-        +--------+         holds             | ^
-        |  Item  |<--------------------------+ |
-        |        |-----------------------------+
-        +--------+         heldBy
-~~~
-
+![holding-classes-relation](holding-classes-relation.png)
 
 ## Between Documents and Agents
 
@@ -156,7 +145,7 @@ A [Document] can be collected or described by an [Agent], for instance in a
 bibliography or catalog. The properties [collectedBy] and [collects] can be
 used to express this relationship. The properties can also be used for
 [Items](#items) which are collected by an [Agent]. The sub-properties [heldBy]
-and [held] should be preferred when an item is not only collected by
+and [holds] should be preferred when an item is not only collected by
 description but also by possession.
 
 ### collectedBy
@@ -237,7 +226,7 @@ abstract [Document]. Additional relations exist for items that only contain
 parts of a document and for items that contain multiple documents (for instance
 a collection that the document is part of). 
 
-`item-doc-relation.md`{.include}
+![item-doc-relation](item-doc-relation.png)
 
 To give an example:
 
@@ -254,7 +243,7 @@ the connected item or document (also known as metadata). Such documents can
 be linked with properties [foaf:page] and [foaf:primaryTopicOf] as illustrated
 below:
 
-`item-description-relation.md`{.include}
+![item-description-relation](item-description-relation.png)
 
 ### exemplar
 
@@ -262,8 +251,6 @@ Relates a [Document] to an [Item] that is an exemplar or copy of the
 [Document]. This property may coincide with [frbr:exemplar] from the [FRBR
 Ontology] and [rdam:exemplarOfManifestation] from [RDA Vocabularies] but 
 the holding ontology does not imply a "manifestation" class.
-
-[rdam:exemplarOfManifestation]: http://rdaregistry.info/Elements/m/exemplarOfManifestation
 
 An exemplar should include all parts of a document but there may be gaps and
 omissions. See [Chronology] for examples. If an exemplar only includes parts of
@@ -374,7 +361,7 @@ A **Chronology** is the description of enumeration and chronology of a periodica
 
 ## Location
 
-A **Location** is a point or area of interest from which a particular [Item] or [DocumentService] is available. The property [availableAtorFrom] should be used to indicate the location of an offered [DocumentService] for an [Item]. The Location class is defined by [GoodRelations].
+A **Location** is a point or area of interest from which a particular [Item] or [DocumentService] is available. The property [gr:availableAtorFrom] should be used to indicate the location of an offered [DocumentService] for an [Item]. The Location class is defined by [GoodRelations].
 
     gr:Location a owl:Class ;
         rdfs:label "Location"@en ;
@@ -396,56 +383,39 @@ a library) and an optional service consumer (e.g. a library patron). Both servic
 
 To relate an [Item] to a Chronology use [ecpo:hasChronology] or [ecpo:hasChronologyGap]. To be more specific on the nature (current or closed) of a Chronology use [ecpo:CurrentChronology] or [ecpo:ClosedChronology]. To simply express the fact that an [Item] has a current chronology or a closed chronology without giving further information one MAY use [ecpo:Current] or [ecpo:Closed].
 
-[ecpo:hasChronology]: http://purl.org/ontology/ecpo#hasChronology
-[ecpo:hasChronologyGap]: http://purl.org/ontology/ecpo#hasChronologyGap
-[ecpo:CurrentChronology]: http://purl.org/ontology/ecpo#CurrentChronology
-[ecpo:ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
-[ecpo:Current]: http://purl.org/ontology/ecpo#Current
-[ecpo:Closed]: http://purl.org/ontology/ecpo#Closed
-
-
 ## Relating to Services
 
-`item-offering-relation.md`{.include}
+![item-offering-relation](item-offering-relation.png)
 
 An [Item] may be available for a specific [DocumentService]. While an [Agent] provides a [DocumentService] for an [Item] this often implies an offer ([gr:Offering] and/or [schema:Offer]) to an unknown [Agent].
 
 Thus
 
-``` {.example}
-$alicecopies
-    daia:availableFor [
-        a dso:Presentation ;
-        gr:hasStockKeepingUnit "HB 17 Rg 500" ;
-        service:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
-    ] .
-```
+<div class="example">
+
+    $alicecopies
+        daia:availableFor [
+            a dso:Presentation ;
+            gr:hasStockKeepingUnit "HB 17 Rg 500" ;
+            service:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
+        ] .
 
 is a shortcut for
 
-``` {.example}
-<http://ld.zdb-services.de/resource/organisations/DE-1a>
-    gr:offers [
-        a gr:Offering ;
-        gr:hasBusinessFunction [
-            dso:Presentation;
-            gr:hasStockKeepingUnit "HB 17 Rg 500" ;
-        ] ;
-        gr:includes $alicecopies
-    ] .
-```
+    <http://ld.zdb-services.de/resource/organisations/DE-1a>
+        gr:offers [
+            a gr:Offering ;
+            gr:hasBusinessFunction [
+                dso:Presentation;
+                gr:hasStockKeepingUnit "HB 17 Rg 500" ;
+            ] ;
+            gr:includes $alicecopies
+        ] .
+</div>
 
 To relate an [Item] to a DocumentService one should use the properties [dso:hasService], [daia:availableFor] or  [daia:unavailableFor].
 
 To relate a DocumentService to an [Item] one should use the properties [dso:hasDocument], [daia:availableOf] or  [daia:unavailableOf].
-
-
-[dso:hasService]: http://purl.org/ontology/dso#hasService
-[dso:hasDocument]: http://purl.org/ontology/dso#hasDocument
-[daia:availableFor]: http://purl.org/ontology/daia/availableFor 
-[daia:availableOf]: http://purl.org/ontology/daia/availableOf 
-[daia:unavailableFor]: http://purl.org/ontology/daia/unavailableFor 
-[daia:unavailableOf]: http://purl.org/ontology/daia/unavailableOf 
 
 ## Relating to Locations
 
@@ -457,89 +427,6 @@ The property [service:providedBy] from the [Service Ontology] should be used to 
 
 The property [org:siteOf] from [Organization Ontology] should be used to relate
 a [Location] with an [Agent] if the location belongs to the agent.
-
-[gr:name]: http://purl.org/goodrelations/v1#name
-[gr:availableAtOrFrom]: http://purl.org/goodrelations/v1#availableAtOrFrom
-[service:providedBy]: http://purl.org/ontology/service#providedBy
-
-# Examples
-
-## A book series, fully held by a library
-
-``` {.example}
-
-# The series is a document, consisting of multiple volumes
-$series a bibo:Periodical 
-    dct:hasPart $volume1, $volume2, $volume3 .
-
-$volume1 a bibo:Book ; bibo:volume "1" .
-$volume2 a bibo:Book ; bibo:volume "2" .
-$volume3 a bibo:Book ; bibo:volume "3" .
-
-# One chapter in Volume 1
-$chapter3 a bibo:Document ;
-    dct:isPartOf $volume1 .
-
-# A copy of the full series
-$librarycopies 
-    holding:exemplarOf $series ;
-    holding:heldBy $library ;
-    ecpo:hasChronology [
-        a ecpo:CurrentChronology ;
-        ecpo:hasBeginVolumeNumbering "1"
-    ] .
-
-# A particular copy of volume 1, located in the library
-$librarycopyofvolume1
-    holding:exemplarOf $volume1 ;
-    holding:narrowerExemplarOf $series ;
-    holding:broaderExemplaOf $chapter3 .
-```
-
-## The same series, partially held by Alice
-
-``` {.example}
-# A copy of volume 1 and 2
-$alicecopies 
-    holding:exemplarOf $series ;  
-        # alteratively: holdings:narrowerExemplarOf $series
-    dct:hasPart $volume2, $volume3
-    holding:heldBy $alice ;
-    ecpo:hasChronology [
-        a ecpo:CurrentChronology ;
-        ecpo:hasBeginVolumeNumbering "1" ;
-        ecpo:hasEndVolumeNumbering "2" 
-    ] .
-
-# Alice`s copies of volume 1
-$alicescopyofvolume1
-    holding:exemplarOf $volume1 ;
-    holding:narrowerExemplarOf $series ;
-    holding:narrowerExemplarOf $alicescopies .
-
-```
-
-## Offering a Service for an Item
-
-``` {.example}
-$alicecopies
-    daia:availableFor (
-        [
-            a dso:Presentation ;
-            gr:hasStockKeepingUnit "HB 17 Rg 500" ;
-            service:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
-            gr:availableAtOrFrom [
-                a gr:Location ;
-                gr:name "Leesesaal" ;
-                org:siteOf <http://ld.zdb-services.de/resource/organisations/DE-1a>
-            ]
-        ] [
-            dso:Loan ;
-            gr:hasStockKeepingUnit "Zsn 70488" ;
-            service:providedBy <http://ld.zdb-services.de/resource/organisations/DE-1a> ;
-        ]
-    ) .
-```
 
 # References
 
@@ -564,53 +451,64 @@ $alicecopies
 * [Bibframe Vocabulary]
 * [RDA Vocabularies]
 
+`examples.md`{.include}
+
+
 [Bibframe Vocabulary]: http://bibframe.org/
 [bf:Agent]: http://bibframe.org/vocab/Agent
 [bf:Work]: http://bibframe.org/vocab/Work
 [bf:Instance]: http://bibframe.org/vocab/Instance
 [bf:HeldItem]: http://bibframe.org/vocab/HeldItem
-
 [Bibliographic Ontology]: http://purl.org/ontology/bibo/
 [bibo:Document]: http://purl.org/ontology/bibo/Document
-
 [DAIA Ontology]: http://purl.org/ontology/daia
-
 [DCMI Metadata Terms]: http://dublincore.org/documents/dcmi-terms/
-
 [Document Service Ontology]: http://purl.org/ontology/dso
 [dso:Loan]: http://purl.org/ontology/dso#Loan
 [dso:Interloan]: http://purl.org/ontology/dso#Interloan
 [dso:Presentation]: http://purl.org/ontology/dso#Presentation
-
 [Enumeration and Chronology of Periodicals Ontology]: http://purl.org/ontology/ecpo
-
 [FOAF Ontology]: http://xmlns.com/foaf/spec/ 
 [foaf:Agent]: http://xmlns.com/foaf/0.1/Agent
 [foaf:Document]: http://xmlns.com/foaf/0.1/Document
 [foaf:page]: http://xmlns.com/foaf/0.1/page
 [foaf:topicOf]: http://xmlns.com/foaf/0.1/topicOf
 [foaf:primaryTopicOf]: http://xmlns.com/foaf/0.1/primaryTopicOf
-
 [FRBR Ontology]: http://purl.org/vocab/frbr/core
 [frbr:Item]: http://purl.org/vocab/frbr/core#Item
-
+[frbr:exemplar]: http://purl.org/vocab/frbr/core#exemplar
 [GoodRelations]: http://purl.org/goodrelations/v1
 [gr:Offering]: http://purl.org/goodrelations/v1#Offering
-
 [Organization Ontology]: http://www.w3.org/ns/org
 [org:siteOf]: http://www.w3.org/ns/org#siteOf
-
 [RDA Vocabularies]: http://www.rdaregistry.info/
 [rdac:Agent]: http://rdaregistry.info/Elements/c/Agent
 [rdac:Item]: http://rdaregistry.info/Elements/c/Item
 [rdai:collector]: http://rdaregistry.info/Elements/i/collector
-[rdaa:collectorOf]: http://rdaregistry.info/Elements/a/collector
-
+[rdaa:collectorOf]: http://rdaregistry.info/Elements/a/collectorOf
+[rdai:owner]:  http://rdaregistry.info/Elements/i/owner
+[rdai:ownerOf]:  http://rdaregistry.info/Elements/i/ownerOf
+[rdai:currentOwnerOf]: http://rdaregistry.info/Elements/i/currentOwnerOf
 [Schema.org]: http://schema.org
 [schema:Organization]: http://schema.org/Organization
 [schema:Person]: http://schema.org/Person
 [schema:CreativeWork]: http://schema.org/CreativeWork
 [schema:Offer]: http://schema.org/Offer
-
 [Service Ontology]:  http://purl.org/ontology/service
-
+[dso:hasService]: http://purl.org/ontology/dso#hasService
+[dso:hasDocument]: http://purl.org/ontology/dso#hasDocument
+[daia:availableFor]: http://purl.org/ontology/daia/availableFor 
+[daia:availableOf]: http://purl.org/ontology/daia/availableOf 
+[daia:unavailableFor]: http://purl.org/ontology/daia/unavailableFor 
+[daia:unavailableOf]: http://purl.org/ontology/daia/unavailableOf 
+[daia:availableAtorFrom]: http://purl.org/ontology/daia/availableAtorFrom 
+[gr:name]: http://purl.org/goodrelations/v1#name
+[gr:availableAtOrFrom]: http://purl.org/goodrelations/v1#availableAtOrFrom
+[service:providedBy]: http://purl.org/ontology/service#providedBy
+[ecpo:hasChronology]: http://purl.org/ontology/ecpo#hasChronology
+[ecpo:hasChronologyGap]: http://purl.org/ontology/ecpo#hasChronologyGap
+[ecpo:CurrentChronology]: http://purl.org/ontology/ecpo#CurrentChronology
+[ecpo:ClosedChronology]: http://purl.org/ontology/ecpo#ClosedChronology
+[ecpo:Current]: http://purl.org/ontology/ecpo#Current
+[ecpo:Closed]: http://purl.org/ontology/ecpo#Closed
+[rdam:exemplarOfManifestation]: http://rdaregistry.info/Elements/m/exemplarOfManifestation

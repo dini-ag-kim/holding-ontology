@@ -1,20 +1,18 @@
-``` {.ditaa}
     +-----------------------------+
-    |       service:Service       |
+    |       service_Service       |
     |  +-----------------------+  |
-    |  |  dso:DocumentService  |  |
-    |  | +------------------+  |  |   service:providedBy   +------------+
-    |  | | dso:Presentation |  +-------------------------->|   Agent    |
-    |  | +------------------+  |  |   service:consumedBy   +------------+
+    |  |  dso_DocumentService  |  |
+    |  | +------------------+  |  |   service_providedBy   +------------+
+    |  | | dso_Presentation |  |  +----------------------->|   Agent    |
+    |  | +------------------+  |  |   service_consumedBy   +------------+
     |  |                       |  |
     |  | +------------------+  |  |
-    |  | |    dso:Loan      |  |  |
-    |  | +------------------+  |  |    daia:availableFor   +-----------|
-    |  |                       |<--------------------------+   Item    |
-    |  | +------------------+  |  |   daia:unavailableFor  +-----------+
-    |  | |    dso:...       |  |  |
+    |  | |    dso_Loan      |  |  |
+    |  | +------------------+  |  |    daia_availableFor   +-----------+
+    |  |                       |  |<-----------------------+   Item    |
+    |  | +------------------+  |  |   daia_unavailableFor  +-----------+
+    |  | |    dso_...       |  |  |
     |  | +------------------+  |  |
     |  +-----------------------+  |
-    |  gr:Offering / schema:Offer |
+    |  gr_Offering / schema_Offer |
     +-----------------------------+
-```

@@ -1,18 +1,16 @@
-``` {.ditaa}
         +---------------------+                 +---------------+                 +-----------+
-        |      Document       |<---exemplarOf---+               +----foaf:page--->| Document  |
+        |      Document       |<---exemplarOf---+               +----foaf_page--->| Document  |
         |     (abstract)      |                 |      Item     |                 | (Website) |
-        |                     |-----exemplar--->|               |<---foaf:topic---+           |
+        |                     |-----exemplar--->|               |<---foaf_topic---+           |
         +------------------+--+                 +-------------+-+                 +-----------+
           ^                |                      ^           |
           |                |                      |           |
-    foaf:primaryTopic      |              foaf:primaryTopic   |
+          |foaf_primaryTopic                   foaf_primaryTopicOf
           |                |                      |           |
-          |        foaf:primaryTopicOf            |   foaf:primaryTopicOf
+          |                |                      |           |
           |                |                      |           |
           |                v                      |           v
         +-+---------------------+             +---+-------------------+
         |      Document         |             |      Document         |
         | (Title Description)   |             | (Holding Description) |
         +-----------------------+             +-----------------------+
-```

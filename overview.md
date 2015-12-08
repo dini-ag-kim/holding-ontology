@@ -1,33 +1,28 @@
-# Overview
-
-## Relations between Documents, Items, Places, Services and Agents
-``` {.ditaa}
    +------------------+                   +----------------------+
-   |                  +----org:siteOf---->|                      +-----------------------------------+
+   |                  +----org_siteOf---->|                      +-----------------------------------+
    |     Location     |                   |         Agent        |                                   |
-   |                  |<---gr:hasPOS------|      (provider)      |                                 holds
+   |                  |<---gr_hasPOS------|      (provider)      |                                 holds
    +------------------+                   |                      |<--------heldBy--------------+     |
             ^                             +------------------+---+                             |     |
             |                                 ^              |                                 |     |
-            |                                 |       service:provides                         |     |
+            |                                 |       service_provides                         |     |
             |                                 |              |                                 |     |
-   gr:availableAtorFrom             service:providedBy       |                                 |     |
-            |                                 |              |          dso:hasService /       |     |
-            |                                 |              v         daia:availableFor /     |     v
-            |                            +----+--------------------+  daia:unavailableFor   +--+----------+
+   gr_availableAtorFrom             service_providedBy       |                                 |     |
+            |                                 |              |                                 |     |
+            |                                 |              v         daia_availableFor /     |     v
+            |                            +----+--------------------+  daia_unavailableFor   +--+----------+
             +----------------------------+                         |<-----------------------+             |<----------------------+
-        +--------------------------------+         Service         |                        |     Item    |                       |
+        +--------------------------------+   dso_DocumentService   |                        |     Item    |                       |
         |                +-------------->|                         +----------------------->|             +------+             exemplar
-        |                |               +----------------+--------+    daia:availableOf /  +-------------+      |            broaderExemplar
-        |                |                    ^           |             daia:unavailableOf /                 exemplarOf       narrowerExemplar
-        |                |                    |           |             dso:hasDocument                     broaderExemplarOf     |
-   service:limitedBy service:limits    service:consumes   |                                                narrowerExemplarOf     |
-        |                |                    |           |                                  +---------------+   |                |
-        |                |                    |  service:consumedBy                          |               |<--+                |
-        v                |                    |           |                                  |    Document   |                    |
-   +---------------------+-----+              |           v                                  |               +--------------------+
-   |                           |           +--+-----------+----+                             +---------------+
-   |     ServiceLimitation     |           |        Agent      |
+        |                |               +----------------+--------+    daia_availableOf /  +-------------+      |             broaderExemplar
+        |                |                    ^           |    ^        daia_unavailableOf                 exemplarOf          narrowerExemplar
+        |                |                    |           |    |                                           broaderExemplarOf      |
+service_limitedBy    service_limits    service_consumes   |    +--------------------------------------+    narrowerExemplarOf     |
+        |                |                    |           |                   dso_hasService          |          |                |
+        |                |                    |  service_consumedBy                          +--------+------+   |                |
+        v                |                    |           |                                  |    Document   |<--+                |
+   +---------------------+-----+              |           v                                  |               |                    |
+   |                           |           +--+-----------+----+                             |               +--------------------+
+   | service_ServiceLimitation |           |        Agent      |                             +---------------+
    |                           |           |     (consumer)    |
    +---------------------------+           +-------------------+
-```
