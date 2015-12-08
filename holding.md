@@ -489,6 +489,7 @@ a [Location] with an [Agent] if the location belongs to the agent.
 [rdai:owner]:  http://rdaregistry.info/Elements/i/owner
 [rdai:ownerOf]:  http://rdaregistry.info/Elements/i/ownerOf
 [rdai:currentOwnerOf]: http://rdaregistry.info/Elements/i/currentOwnerOf
+[rdai:currentOwner]: http://rdaregistry.info/Elements/i/currentOwner
 [Schema.org]: http://schema.org
 [schema:Organization]: http://schema.org/Organization
 [schema:Person]: http://schema.org/Person
