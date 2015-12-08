@@ -68,7 +68,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 # Overview
 
-![holding-classes-relation](holding-classes-relation.png)
+![Overview](overview.png)
 
 |Classes<br>(defined by this ontology)|Classes<br>(defined by other ontologies)|Properties<br>(defined by this ontology)|Properties<br>(defined by other ontologies)|
 |:---:|:---:|:---:|:---:|
