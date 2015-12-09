@@ -3,7 +3,7 @@ body {
     counter-reset: examples;
 }
 
-section > pre {
+section > pre, div.example > pre {
     margin-top: 15px;
     margin-right: 0px;
     margin-bottom: 15px;
