@@ -6,7 +6,7 @@ development git for holding ontology
 # Overview
 
 ## Relations between Documents, Items, Places, Services and Agents
-``` .dita
+``` {.ditaa}
                                               +----------------------------------------collects-----------------------------------------------------+
                                               |               +----------------------------------------------------------------------------------+  |
                                               |               |                                                                                  |  |
