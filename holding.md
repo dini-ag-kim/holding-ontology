@@ -27,7 +27,7 @@ is <http://purl.org/ontology/holding>.
 
 The following namspace prefixes are used to refer to related ontologies:
 
-    @prefix bf:      <http://bibframe.org/vocab/> .
+    @prefix bf:      <http://id.loc.gov/ontologies/bibframe/> .
     @prefix bibo:    <http://purl.org/ontology/bibo/> .
     @prefix cc:      <http://creativecommons.org/ns#> .
     @prefix daia:    <http://purl.org/ontology/daia/> .
@@ -52,6 +52,7 @@ The following namspace prefixes are used to refer to related ontologies:
     @prefix vann:    <http://purl.org/vocab/vann/> .
     @prefix voaf:    <http://purl.org/vocommons/voaf#> .
     @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+    @prefix dctype:  <http://purl.org/dc/dcmitype/> . 
 
 The Holding Ontology is defined in RDF/Turtle as following:
 
@@ -72,7 +73,7 @@ The Holding Ontology is defined in RDF/Turtle as following:
 
 |Classes<br>(defined by this ontology)|Classes<br>(defined by other ontologies)|Properties<br>(defined by this ontology)|Properties<br>(defined by other ontologies)|
 |:---:|:---:|:---:|:---:|
-|[Item]<br>[Agent]<br>[Document]|[DocumentService]<br>[Location]<br>[Chronology]|[collectedBy]<br>[collects]<br>[heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[label]|[daia:availableFor]<br>[daia:availableOf]<br>[daia:unavailableFor]<br>[daia:unavailableOf]<br>[dso:hasService]<br>[dso:hasDocument]<br>[service:providedBy]<br>[ecpo:hasChronology]<br>[ecpo:hasChronologyGap]<br>[gr:availableAtOrFrom]<br>[org:siteOf]<br>[gr:name]|
+|[Item]<br>[Agent]<br>[Document]<br>[Holdings]|[DocumentService]<br>[Location]<br>[Chronology]|[collectedBy]<br>[collects]<br>[heldBy]<br>[holds]<br>[exemplar]<br>[exemplarOf]<br>[broaderExemplar]<br>[broaderExemplarOf]<br>[narrowerExemplar]<br>[narrowerExemplarOf]<br>[contains]<br>[label]|[daia:availableFor]<br>[daia:availableOf]<br>[daia:unavailableFor]<br>[daia:unavailableOf]<br>[dso:hasService]<br>[dso:hasDocument]<br>[service:providedBy]<br>[ecpo:hasChronology]<br>[ecpo:hasChronologyGap]<br>[gr:availableAtOrFrom]<br>[org:siteOf]<br>[gr:name]<br>[dct:isPartOf]|
 
 # Holding Classes
 
@@ -85,14 +86,14 @@ properties](#holding-properties).
 ## Item
 
 An **Item** is a particular copy or [exemplar of](#exemplarof) a [Document]. The holding
-ontology recommends to use class [bf:HeldItem] from the [Bibframe Vocabulary],
+ontology recommends to use class [bf:Item] from the [Bibframe Vocabulary],
 class [frbr:Item] from the [FRBR Ontology] or class [rdac:Item] from the [RDA
 Vocabularies].
 
     holding:Item a owl:Class ;
         rdfs:label "Item"@en ;
-        rdfs:comment "Use one of bf:HeldItem frbr:Item rdac:Item"@en ;
-        owl:unionOf (bf:HeldItem frbr:Item rdac:Item) .
+        rdfs:comment "Use one of bf:Item frbr:Item rdac:Item"@en ;
+        owl:unionOf (bf:Item frbr:Item rdac:Item) .
 
 ## Agent
 
@@ -128,14 +129,27 @@ The holding ontology recommends to use class [bibo:Document] from the
         rdfs:comment "Use one of bibo:Document, foaf:Document, bf:Work or bf:Instance"@en ;
         owl:unionOf (bibo:Document foaf:Document bf:Work bf:Instance schema:CreativeWork) .
 
+## Holdings
+
+**Holdings** describes the collection of [Items](#item) held by an [Agent](#agent).
+Members of this collection may not only be Items but also abstract [Documents](#document). 
+
+The holding ontology recommends to use class [bibo:Collection] from the [Bibliographic Ontology], 
+class [bf:Collection] from the [Bibframe Vocabulary], class [schema:Collection] from [Schema.org] or class [dctype:Collection] from the [DCMI Type Vocabulary].
+
+    holding:Holdings a owl:Class ;
+        rdfs:label "Holdings"@en ;
+        rdfs:comment "A collection of Items. Use one of bf:Collection, schema:Collection, dctype:Collection, bibo:Collection"@en ;
+        owl:unionOf (bf:Collection schema:Collection dctype:Collection bibo:Collection) .
+
 # Holding Relationships
 
 The [holding classes](#holding-classes) can be connected by the following
 holding relationships to express collection ([between documents and
-agents](#between-documents-and-agents)), possession ([between items and
-agents](#between-items-and-agents)), and exemplification ([between documents
-and items](#between-documents-and-items)). The main relationships are
-illustrated below.
+agents](#between-documents-and-agents)), possession ([between items, collections and
+agents](#between-items-colletions-and-agents)), exemplification ([between documents
+and items](#between-documents-and-items)) and inclusion ([between collections and items]).
+The main relationships are illustrated below.
 
 ![holding-classes-relation](holding-classes-relation.png)
 
@@ -182,7 +196,7 @@ Vocabularies].
         owl:inverseOf holding:collectedBy ;
         rdfs:seeAlso rdai:collectorOf .
 
-## Between Items and Agents
+## Between Items, Collections and Agents
 
 ### heldBy
 
@@ -194,7 +208,10 @@ collected by the same agent.
     holding:heldBy a owl:ObjectProperty ;
         rdfs:label "held by"@en ;
         rdfs:comment "Relates an item to an agent who holds the item."@en ;
-        rdfs:domain holding:Item ;
+        rdfs:domain [
+            a owl:Class ;
+                owl:unionOf (holding:Holdings holding:Item)
+            ] ;
         rdfs:range holding:Agent ;
         owl:inverseOf holding:holds ;
         rdfs:seeAlso bf:heldBy ;
@@ -204,16 +221,19 @@ collected by the same agent.
 
 ### holds
 
-Relates an [Agent] to an [Item] which the agent holds. This property may
+Relates an [Agent] to an [Item] or a [Collection of Items](#holdings) which the agent holds. This property may
 coincide with [rdai:ownerOf] or [rdai:currentOwnerOf] from [RDA Vocabularies].
 The holds property is a sub-property of [collects]\: if an agent holds an item
 that the agent also collects the item.
 
     holding:holds a owl:ObjectProperty ;
         rdfs:label "holds"@en ;
-        rdfs:comment "Relates an agent to an item which the agent holds."@en ;
+        rdfs:comment "Relates an agent to an item or a collection of items which the agent holds."@en ;
         rdfs:domain holding:Agent ;
-        rdfs:range holding:Item ;
+        rdfs:range [
+        a owl:Class ;
+            owl:unionOf (holding:Holdings holding:Item)
+        ] ;
         rdfs:seeAlso rdaa:currentOwnerOf ;
         rdfs:seeAlso rdaa:ownerOf ;
         rdfs:subPropertyOf holding:collects ;
@@ -264,6 +284,7 @@ property [narrowerExemplar].
         rdfs:range holding:Item ;
         rdfs:seeAlso frbr:exemplar ;
         rdfs:seeAlso rdam:exemplarOfManifestation ;
+        rdfs:seeAlso bf:itemOf ;
         owl:inverseOf holding:exemplarOf .
 
 ### exemplarOf
@@ -275,7 +296,7 @@ Relates an [Item] to the [Document] that is exemplified by the item.
         rdfs:comment "Relates an item to the document that is exemplified by the item."@en ;
         rdfs:domain holding:Item ;
         rdfs:range holding:Document ;
-        rdfs:seeAlso bf:holdingFor ;
+        rdfs:seeAlso bf:hasItem ;
         rdfs:seeAlso rdai:manifestationExemplified ;
         owl:inverseOf holding:exemplar .
 
@@ -328,6 +349,23 @@ Relates an [Item] to a [Document] which is partly exemplified by ([exemplarOf]) 
         rdfs:range holding:Document ;
         rdfs:seeAlso rdai:containedInItem ;
         owl:inverseOf holding:narrowerExemplar .
+
+## Between Collections and Items
+
+The collection of items held by an Agent can be described as its holdings. While this ontology provides a property to state that a collection contains an item, other ontologies  might be used to express the inverse property, eg. dct:isPartOf.
+
+### contains
+
+Relates an [Collection](#holdings) to an [Item] or an abstract [Document] which is part of the collection.
+
+    holding:contains owl:ObjectProperty ;
+        rdfs:label "contains"@en ;
+        rdfs:comment "Relates a collection withs its items or holding descriptions."@en ;
+        rdfs:domain holding:Holdings ;
+        rdfs:range [
+            a owl:Class ;
+            owl:unionOf (holding:Document holding:Item)
+            ] ;
 
 # Holding Properties
 
@@ -450,19 +488,21 @@ a [Location] with an [Agent] if the location belongs to the agent.
 * [Schema.org]
 * [Bibframe Vocabulary]
 * [RDA Vocabularies]
+* [Dublin Core Collection Description Application Profile]
 
 `examples.md`{.include}
 
 
-[Bibframe Vocabulary]: http://bibframe.org/
-[bf:Agent]: http://bibframe.org/vocab/Agent
-[bf:Work]: http://bibframe.org/vocab/Work
-[bf:Instance]: http://bibframe.org/vocab/Instance
-[bf:HeldItem]: http://bibframe.org/vocab/HeldItem
+[Bibframe Vocabulary]: http://id.loc.gov/ontologies/bibframe/
+[bf:Agent]: http://id.loc.gov/ontologies/bibframe/Agent
+[bf:Work]: http://id.loc.gov/ontologies/bibframe/Work
+[bf:Instance]: http://id.loc.gov/ontologies/bibframe/Instance
+[bf:Item]: http://id.loc.gov/ontologies/bibframe/HeldItem
 [Bibliographic Ontology]: http://purl.org/ontology/bibo/
 [bibo:Document]: http://purl.org/ontology/bibo/Document
 [DAIA Ontology]: http://purl.org/ontology/daia
 [DCMI Metadata Terms]: http://dublincore.org/documents/dcmi-terms/
+[DCMI Type Vocabulary]: http://purl.org/dc/dcmitype/
 [Document Service Ontology]: http://purl.org/ontology/dso
 [dso:Loan]: http://purl.org/ontology/dso#Loan
 [dso:Interloan]: http://purl.org/ontology/dso#Interloan
@@ -513,3 +553,6 @@ a [Location] with an [Agent] if the location belongs to the agent.
 [ecpo:Current]: http://purl.org/ontology/ecpo#Current
 [ecpo:Closed]: http://purl.org/ontology/ecpo#Closed
 [rdam:exemplarOfManifestation]: http://rdaregistry.info/Elements/m/exemplarOfManifestation
+[dctype:Collection]: http://purl.org/dc/dcmitype/Collection
+[dct:isPartOf]: http://purl.org/dc/terms/isPartOf
+[Dublin Core Collection Description Application Profile]: https://www.dublincore.org/specifications/dublin-core/collection-description/collection-application-profile/
